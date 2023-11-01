@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <!-- <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+         crossorigin="anonymous"
+      /> -->
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <div class="container">
+         <div class="left-block">
+            <img class="banner" src="pic/banner.webp" alt="cover picture" />
+            <h2 class="promotion">PROMOTION</h2>
+         </div>
+         <div class="box-slide right-block">
+            <h2 class="center-content">HOT ITEMS</h2>
+            <h5 class="center-content">Xem thêm</h5>
+            <div class="slideshow-container">
+               <div class="slideshow">
+                  <div class="slide">
+                     <img
+                        class="pic"
+                        src="pic/pic1.jpeg"
+                        alt="Slide 1"
+                        onmouseover="changeImage('pic2.jpeg')"
+                        onmouseout="restoreImage('pic1.jpeg')"
+                     />
+                  </div>
+                  <div class="slide">
+                     <img class="pic" src="pic/pic4.jpeg" alt="Slide 2" />
+                  </div>
+                  <div class="slide">
+                     <img class="pic" src="pic/pic5.jpeg" alt="Slide 3" />
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- <div class="test-img"></div> -->
+      <script src="script.js"></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+         $(document).ready(function () {
+            const slideshow = $(".slideshow");
+            const slides = $(".slide");
+
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            const slideWidth = slides.first().outerWidth();
+            const slideInterval = 3000; // 3 giây1
+
+            function nextSlide() {
+               currentSlide = (currentSlide + 1) % slideCount;
+               updateSlideshow();
+            }
+
+            function updateSlideshow() {
+               const offsetX = -currentSlide * slideWidth;
+               slideshow.css("transform", `translateX(${offsetX}px)`);
+            }
+            setInterval(nextSlide, slideInterval);
+            updateSlideshow();
+         });
+      </script> -->
+   </body>
 </html>
