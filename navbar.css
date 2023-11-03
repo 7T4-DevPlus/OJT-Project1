@@ -81,7 +81,7 @@ input[type="search"] {
 
 /* Định dạng gạch ngang */
 .separator {
-    width: 100%;
+    width: 80%;
     height: 2px;
     background: #0d0c0c; /* Đổi màu gạch ngang tùy ý */
     margin: 10px auto; /* Điều chỉnh khoảng cách trên và dưới gạch ngang */
