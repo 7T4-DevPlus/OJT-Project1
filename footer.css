@@ -1,0 +1,332 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.subscribe-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.subscribe-image {
+    flex: 1;
+
+}
+
+.subscribe-image img {
+    max-width: 100%; /* Đảm bảo ảnh không vượt quá kích thước của khung */
+
+}
+
+.subscribe-form {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    display: block;
+    text-align: -webkit-center; 
+
+}
+
+.subscribe-form h2 {
+    font-size: 24px;
+    color: #cdc5b7;
+    text-transform: uppercase !important;
+}
+
+.subscribe-form p {
+    margin-bottom: 20px;
+    color: #cdc5b7
+}
+button {
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+input {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+input:focus {
+    outline: 2px solid white;
+}
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.wrapper {
+    width: 400px;
+    max-width: 100%;
+    position: relative;
+    width: 70%;
+
+
+}
+.wrapper input {
+    background: #cdc5b7 ;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center; /* Center the text within the input */
+}
+
+.wrapper button {
+    background: white;
+    border-radius: 50px;
+    aspect-ratio: 1;
+    height: 80%;
+
+    position: absolute;
+    top: 10%;
+    right: 5px;
+}
+.footer {
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("http://andreeabunget.co.uk/Img/footer.jpg");
+    background-size: cover;
+
+}
+
+.address img {
+    width: 20px; /* Điều chỉnh kích thước chiều rộng của hình ảnh bản đồ */
+    height: 20px; /* Điều chỉnh kích thước chiều cao của hình ảnh bản đồ */
+}
+
+.address  p span{
+    display:block;
+
+}
+
+.address  p a{
+    color:  lightseagreen;
+    text-decoration: none;;
+}
+.flex-container {
+    display: flex;
+
+}
+
+.flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+}
+.first ul {
+    list-style: none; /* Loại bỏ dấu đầu dòng của danh sách */
+    padding: 0;
+    margin: 0;
+}
+
+.first ul li {
+    margin-bottom: 10px;
+}
+
+.first ul li a {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(206,206,206);
+    display: block;
+    text-decoration: none; /* Loại bỏ gạch chân mặc định cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng màu khi di chuột qua liên kết */
+}
+
+.first ul li a:hover {
+    color: rgb(205, 197, 183); /* Màu vàng khi di chuột qua liên kết */
+}
+
+.first {
+
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: burlywood;
+    font-family: 'Poppins', sans-serif;
+}
+
+.first h4 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    color: #fff;
+    padding-bottom: 0.5em;
+}
+
+.first h4::after {
+    content: '';
+    background: #66c83d;
+    width: 20%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.first p {
+    font-size: 14px;
+
+}
+
+.second {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: rgb(206,206,206);
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+.second2 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: rgb(206,206,206);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.second h4 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    color: #fff;
+    padding-bottom: 0.5em;
+}
+
+.second h4::after {
+    content: '';
+    background: rgb(205, 197, 183);
+    width: 20%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+}
+
+
+.second li {
+    list-style: none;
+    padding-bottom: 30px;
+}
+
+.second a, .second2 a {
+    color: rgb(206, 206, 206);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.second a:hover, .second2 a:hover {
+    color: #fff;
+    transition: 0.2s;
+    text-shadow: 1px 1px 20px rgba(0,0,0,1);
+    text-decoration: none
+
+}
+
+
+
+.third {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: rgb(206,206,206);
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+
+.third h4 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    color: #fff;
+    padding-bottom: 0.5em;
+}
+
+
+.third h4::after {
+    content: '';
+    background: rgb(205, 197, 183);
+    width: 20%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+}
+
+
+
+.third li {
+    list-style: none;
+    padding-bottom: 15px;
+}
+
+
+.third a {
+    color: rgb(206, 206, 206);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+
+.third a:hover {
+    color: #fff;
+    transition: 0.2s;
+    text-shadow: 1px 1px 20px rgba(0,0,0,1);
+}
+
+
+@media screen and (max-width:1000px) {
+    .first {
+        text-align: center;
+    }
+
+    .first h4::after {
+        left: 40%;
+    }
+}
+.footer-icons a {
+    padding: 10px; /* Sử dụng padding cho khoảng cách giữa các biểu tượng */
+}
+.footer-icons a img {
+    width: 40px; /* Điều chỉnh kích thước chiều rộng */
+    height: 40px; /* Điều chỉnh kích thước chiều cao */
+}
+@media screen and (max-width:1000px) {
+    .third {
+        text-align: center;
+    }
+
+    .third h4::after {
+        left: 40% !important;
+    }
+}
+
+.margin {
+    margin-left: 20px;
+}
+
+.line {
+    height:2px;
+    background-color:rgb(206,206,206);
+    width:100%;
+}
+
+.container h1{
+    text-align:center;
+    margin-top:100px;
+    margin-bottom:100px;
+}
