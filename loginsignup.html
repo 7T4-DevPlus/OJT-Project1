@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up and Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="" id="signup-form">
+                <h1 style="padding-top: 15px">Create Account</h1>
+
+                <div class="input-with-error">
+                    <input type="text" name="email" placeholder="Email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="input-with-error">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="input-with-error">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Re-enter password" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="input-with-error">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+
+                <div class="password-toggle">
+                    <div class="eye-icon-register-password" onclick="togglePasswordVisibility('password', 'eyeIconPassword')">
+                        <i class="fa fa-eye-slash" id="eyeIconPassword"></i>
+                    </div>
+                </div>
+                <div class="password-toggle">
+                    <div class="eye-icon-register-re-password" onclick="togglePasswordVisibility('confirmPassword', 'eyeIconConfirmPassword')">
+                        <i class="fa fa-eye-slash" id="eyeIconConfirmPassword"></i>
+                    </div>
+                </div>
+                <button style="margin-top:10px">Create Account</button>
+                <h5>Already have an account! <a class="ghost" id="signIn" style="color:blue;"><u>Sign In</u></a></h5>
+            </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <form action="#" id="signin-form">
+                <h1 style="padding-bottom: 15px">Login Now</h1>
+
+                <div class="input-with-error">
+                    <input type="text" name="email" placeholder="Email" required>
+                    <span class="error-message" id="loginEmailError"></span>
+                </div>
+
+                <div class="input-with-error">
+                    <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+
+                <div class="password-toggle">
+                    <div class="eye-icon-login" onclick="togglePasswordVisibility('loginPassword', 'eyeIconLoginPassword')">
+                       <i class="fa fa-eye-slash" id="eyeIconLoginPassword"></i>
+                    </div>
+                </div>
+
+                <button style="margin-top: 10px">Login</button>
+                <h5>Don't have an account! <a class="ghost" id="signUp" style="color:blue;"><u>Sign Up</u></a></h5>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <img src="images-khanh-login_register/1.jpg" alt="movie-1" height="480" width="500" />
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <img src="images-khanh-login_register/2.jpg" alt="movie-2" height="480" width="auto" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
