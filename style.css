@@ -1,31 +1,284 @@
-.container{
+/* Luan */
+.slideshow-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slideshow {
+    display: flex;
+    transition: transform 1s;
+}
+
+.slide {
+    flex: 0 0 24%;
+    padding: 5px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.slide .imgHover {
+    display: none;
+}
+
+.slide:hover .imgHover {
+    display: inline;
+}
+
+.slide:hover .imgUnhover {
+    display: none;
+}
+
+.hover-part-session1 {
+    height: 40px;
+    width: 24%;
+    position: absolute;
+    background-color: #333;
+    border-bottom: 20px;
+    opacity: 0;
+}
+
+.slide:hover .hover-part-session1 {
+    opacity: 0.6;
+    transform: translateY(-43px);
+    transition: all 0.2s ease-in-out;
+}
+
+.pumpup-item-session1 {
+    display: inline-block;
+    color: white;
+    width: 49%;
+    height: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+.slide p {
+    font-family: "Times New Roman";
+    text-align: center;
+}
+
+.SessionName {
+    text-align: center;
+    margin: 0;
+}
+
+.icon-look {
+    background-image: url("icon-look.png");
+}
+
+.icon-look {
+    background-image: url("icon-cart.png");
+}
+
+
+/* Thao */
+.thao {
+    height: 100%;
+    margin: 0;
+}
+
+.container-session2 {
+    display: flex;
+    height: 100%;
+    margin: 20px;
+}
+
+.left,
+.right {
+    flex: 1;
+    height: 100%;
+    margin: 0 10px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.top-line,
+.bottom-line {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.bottom-line {
+    padding-top: 0;
+}
+
+.square {
+    flex: 1;
+    margin: 10px;
+    position: relative;
+    display: block;
+    text-align: -webkit-center;
+}
+
+.image-container {
+    width: 80%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.original,
+.hover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hover {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.square:hover .original {
+    /* display: none; */
+    animation: fadeout 0.7s;
+}
+
+.square:hover .hover {
+    display: block;
+    animation: fadein 0.7s;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Set a width to contain the animation */
+    height: 1050px;
+    /* Set a fixed height for the container */
+}
+
+.right img {
+    width: 100%;
+    height: auto;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+}
+
+.right::after {
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transform: rotate(30deg);
+
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.13) 77%,
+            rgba(255, 255, 255, 0.5) 92%,
+            rgba(255, 255, 255, 0.0) 100%);
+}
+
+.right:hover::after {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 1s, 1s, 0.15s;
+    transition-timing-function: ease;
+}
+
+.hover-part-session2 {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: -40px;
+    background-color: #121212;
+    opacity: 0.5;
+    border-bottom: 6px;
+}
+
+.image-container:hover .hover-part-session2 {
+    transform: translateY(-40px);
+    transition: all 0.3s ease-in-out;
+}
+
+.hover-content {
+    position: relative;
+    display: inline-block;
+    width: 46%;
+    text-align: center;
+    color: white;
+    top: 4px;
+    opacity: 1;
+}
+
+
+/* Nguyen */
+.container-session3 {
     display: block;
     margin: 0;
     padding: 0;
 
 }
-.left-block{
+
+.left-block {
     position: absolute;
     width: 50%;
     height: auto;
     overflow: hidden;
-}  
-.banner{
+}
+
+.banner {
     width: 100%;
     transition: transform 0.3s;
 }
-.left-block:hover .banner{
-    transform:scale(1.2);
+
+.left-block:hover .banner {
+    transform: scale(1.2);
 }
-.promotion{
+
+.promotion {
     position: absolute;
     z-index: 2;
     top: 40%;
     left: 20%;
     font-size: 60px;
-}     
+}
 
-.box-slide{
+.box-slide {
     position: absolute;
     /* padding: 4%; */
     padding: 20px;
@@ -35,24 +288,28 @@
     right: 0;
     background-color: white;
 }
-.box-slide img{
+
+.box-slide img {
     margin: -10px;
 }
-.box-slide div h2{
+
+.box-slide div h2 {
     margin-top: -10px;
     font-size: 20px;
 }
 
-img {
+/* img {
     width: 100%;
     height: auto;
-   }
-.center-content{
+} */
+
+.center-content {
     text-align: center;
     font-size: 20px;
     margin-bottom: 0;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 .my-card {
     margin: 30px;
     width: 300px;
@@ -65,7 +322,7 @@ img {
     border: none !important;
 }
 
-.hover-part {
+.hover-part-session3 {
     height: 40px;
     width: 100%;
     position: absolute;
@@ -76,7 +333,7 @@ img {
     margin: 0;
 }
 
-.my-card:hover .hover-part {
+.my-card:hover .hover-part-session3 {
     transform: translateY(-40px);
     transition: all 0.3s ease-in-out;
 }
@@ -84,16 +341,17 @@ img {
 .card .img-hover {
     display: none;
 }
-    
+
 .card:hover .img-hover {
     display: inline;
     transition: all 0.5 ease;
 }
-    
+
 .card:hover .img-un-hover {
     display: none;
 }
-.pumpup-item {
+
+.pumpup-item-session3 {
     display: inline-block;
     color: white;
     left: 20px;
@@ -101,16 +359,18 @@ img {
     width: 49%;
     padding-top: 0;
     /* margin: 0; */
-    bottom: 10px;   
+    bottom: 10px;
 
 }
-.small-item{
+
+.small-item {
     display: inline;
     width: 13px;
     position: relative;
     left: 2vh;
 }
-.dress-inf p{
+
+.dress-inf p {
     text-align: center;
     margin: 0;
 }
