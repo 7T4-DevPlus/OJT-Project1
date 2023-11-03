@@ -1,318 +1,483 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-      <style>
-    .slideshow-container {
-      overflow: hidden;
-      width: 100%;
-    }
 
-    .slideshow {
-      display: flex;
-      transition: transform 1s;
-    }
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+         crossorigin="anonymous"
+      />
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
 
-    .slide {
-      flex: 0 0 24%;
-      padding: 5px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    .slide .imgHover {
-      display: none;
-    }
-
-    .slide:hover .imgHover {
-      display: inline;
-    }
-
-    .slide:hover .imgUnhover {
-      display: none;
-    }
-
-    .hover-part{
-      height: 40px;
-      width: 24%;
-      position: absolute;
-      background-color: #333;
-      border-bottom: 20px;
-      opacity: 0;
-    }   
-
-    .slide:hover .hover-part {
-      opacity: 0.6;
-      transform: translateY(-43px);
-      transition: all 0.2s ease-in-out;
-    }
-
-    .pumpup-item{
-      display: inline-block; 
-      color: white; 
-      width: 49%; 
-      height: 100%;
-      text-align: center; 
-      margin: 0; 
-      padding: 0; 
-      padding-top: 10px;
-    }
-
-    .slide p{
-      font-family: 'Times New Roman';
-      text-align: center;
-    }
-
-    .SessionName{
-      text-align: center;
-      margin: 0;
-    }
-
-    .icon-look{
-      background-image: url("icon-look.png");
-    }
-
-    .icon-look{
-      background-image: url("icon-cart.png");
-    }
-
-  </style>
-</head>
-
-<body>
-    <!-- This is SESSION 1 -->
-<div class="SessionName">
-  <p>FALL'23 COLLECTION</p>
-  <img src="line.jpg" style="width: 8%; height: auto;" />
-  <p>xem thêm</p>
-</div>
-<div class="slideshow-container">
-  <div class="slideshow">
-    <div class="slide">
-      <img src="1.jpeg" class="imgUnhover">
-      <img src="1.1.jpeg" class="imgHover">
-      <div class="hover-part">          
-        <div class="pumpup-item" style="border-right:1px solid white;">
-          Xem nhanh
-          <span>
-            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-        <div class="pumpup-item">
-          Mua ngay
-          <span>
-            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
+   <body>
+      <!-- This is SESSION 1 -->
+      <div class="SessionName">
+         <p>FALL'23 COLLECTION</p>
+         <img src="line.jpg" style="width: 8%; height: auto" />
+         <p>xem thêm</p>
       </div>
-      <p>NINA DRESS</p>
-      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-    <div class="slide">
-      <img src="2.jpeg" class="imgUnhover">
-      <div>
-        <img src="2.1.jpeg" class="imgHover">
-      </div>
-      <div class="hover-part">          
-        <div class="pumpup-item" style="border-right:1px solid white;">
-          Xem nhanh
-          <span>
-            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-        <div class="pumpup-item">
-          Mua ngay
-          <span>
-            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-      </div>
-      <p>MONICA DRESS</p>
-      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-    <div class="slide">
-      <img src="3.jpeg" class="imgUnhover">
-      <div>
-        <img src="3.1.jpeg" class="imgHover">
-      </div>
-      <div class="hover-part">          
-        <div class="pumpup-item" style="border-right:1px solid white;">
-          Xem nhanh
-          <span>
-            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-        <div class="pumpup-item">
-          Mua ngay
-          <span>
-            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-      </div>
-      <p>SELINA DRESS</p>
-      <p>1,880,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-    <div class="slide">
-      <img src="4.jpeg" class="imgUnhover">
-      <div>
-        <img src="4.1.jpeg" class="imgHover">
-      </div>
-      <div class="hover-part">          
-        <div class="pumpup-item" style="border-right:1px solid white;">
-          Xem nhanh
-          <span>
-            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-        <div class="pumpup-item">
-          Mua ngay
-          <span>
-            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-      </div>
-      <p>JENNIE DRESS</p>
-      <p>1,090,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-    <div class="slide">
-      <img src="5.jpeg" class="imgUnhover">
-      <div>
-        <img src="5.1.jpeg" class="imgHover">
-      </div>
-      <div class="hover-part">          
-        <div class="pumpup-item" style="border-right:1px solid white;">
-          Xem nhanh
-          <span>
-            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-        <div class="pumpup-item">
-          Mua ngay
-          <span>
-            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-          </span>
-        </div>
-      </div>
-      <p>GINNA DRESS</p>
-      <p>2,650,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-    <div class="slide">
-      <img src="6.jpeg" class="imgUnhover">
-      <div>
-        <img src="6.1.jpeg" class="imgHover">
-        <div class="hover-part">          
-          <div class="pumpup-item" style="border-right:1px solid white;">
-            Xem nhanh
-            <span>
-              <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
-            </span>
-          </div>
-          <div class="pumpup-item">
-            Mua ngay
-            <span>
-              <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
-            </span>
-          </div>
-        </div>
-      <p>DAISY JUMPSUIT</p>
-      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
-    </div>
-  </div>
-</div>
-
-<!-- This is SESSION 2 -->
-<div>
-    <div class="center-content" style="text-align: center;">
-        <h4 style="margin-bottom: 0;">AO DAI AN</h4>
-        <img src="image/decoration.jpg" width="70px">
-    </div>
-    <div class="container">
-        <div class="left">
-            <div class="top-line">
-                <div class="square">
-                    <div class="image-container">
-                        <img class="original" src="image/anh1.jpg" alt="Image 1">
-                        <img class="hover" src="image/anh1.1.jpg" alt="Image 1.1">
-                        <div class="hover-part">
-                            <div class="hover-content">Xem nhanh</div>
-                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
-                            <div class="hover-content">Mua ngay</div>
-                        </div>
-                    </div>
-                    <div style="display: block; text-align: center;">
-                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN HY</b></p>
-                        <p style="margin-top: 8px;">3,900,000 <u>đ</u></p>
-                    </div>
-                </div>
-                
-                <div class="square">
-                    <div class="image-container">
-                        <img class="original" src="image/anh2.jpg" alt="Image 2">
-                        <img class="hover" src="image/anh2.1.jpg" alt="Image 2.1">
-                        <div class="hover-part">
-                            <div class="hover-content">Xem nhanh</div>
-                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
-                            <div class="hover-content">Mua ngay</div>
-                        </div>
-                    </div>
-                    <div style="display: block; text-align: center;">
-                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN ĐIỆP</b></p>
-                        <p style="margin-top: 8px;">3,900,000 <u>đ</u></p>
-                    </div>
-                </div>
+      <div class="slideshow-container">
+         <div class="slideshow">
+            <div class="slide">
+               <img src="1.jpeg" class="imgUnhover" />
+               <img src="1.1.jpeg" class="imgHover" />
+               <div class="hover-part-session1">
+                  <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                     Xem nhanh
+                     <span>
+                        <img
+                           src="icon-look.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+                  <div class="pumpup-item-session1">
+                     Mua ngay
+                     <span>
+                        <img
+                           src="icon-cart.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+               </div>
+               <p>NINA DRESS</p>
+               <p>1,550,000 <span style="text-decoration: underline">đ</span></p>
             </div>
-
-            <div class="bottom-line">
-                <div class="square">
-                    <div class="image-container">
-                        <img class="original" src="image/anh3.jpg" alt="Image 3">
-                        <img class="hover" src="image/anh3.1.jpg" alt="Image 3.1">
-                        <div class="hover-part">
-                            <div class="hover-content">Xem nhanh</div>
-                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
-                            <div class="hover-content">Mua ngay</div>
-                        </div>
-                    </div>
-                    <div style="display: block; text-align: center;">
-                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN NGUYỆT</b></p>
-                        <p style="margin-top: 8px;">3,300,000 <u>đ</u></p>
-                    </div>
-                </div>
-
-                <div class="square">
-                    <div class="image-container">
-                        <img class="original" src="image/anh4.jpg" alt="Image 4">
-                        <img class="hover" src="image/anh4.1.jpg" alt="Image 4.1">
-                        <div class="hover-part">
-                            <div class="hover-content">Xem nhanh</div>
-                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
-                            <div class="hover-content">Mua ngay</div>
-                        </div>
-                    </div>
-                    <div style="text-align: center;">
-                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN VŨ</b></p>
-                        <p style="margin-top: 8px;">3,300,000 <u>đ</u></p>
-                    </div>
-                </div>
+            <div class="slide">
+               <img src="2.jpeg" class="imgUnhover" />
+               <div>
+                  <img src="2.1.jpeg" class="imgHover" />
+               </div>
+               <div class="hover-part-session1">
+                  <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                     Xem nhanh
+                     <span>
+                        <img
+                           src="icon-look.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+                  <div class="pumpup-item-session1">
+                     Mua ngay
+                     <span>
+                        <img
+                           src="icon-cart.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+               </div>
+               <p>MONICA DRESS</p>
+               <p>1,550,000 <span style="text-decoration: underline">đ</span></p>
             </div>
-        </div>
-        <div class="right">
-            <img src="image/anhbia.jpeg" alt="Ao dai An">
-        </div>
-    </div>
-    <script type="text/javascript" src="script.js"></script>
+            <div class="slide">
+               <img src="3.jpeg" class="imgUnhover" />
+               <div>
+                  <img src="3.1.jpeg" class="imgHover" />
+               </div>
+               <div class="hover-part-session1">
+                  <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                     Xem nhanh
+                     <span>
+                        <img
+                           src="icon-look.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+                  <div class="pumpup-item-session1">
+                     Mua ngay
+                     <span>
+                        <img
+                           src="icon-cart.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+               </div>
+               <p>SELINA DRESS</p>
+               <p>1,880,000 <span style="text-decoration: underline">đ</span></p>
+            </div>
+            <div class="slide">
+               <img src="4.jpeg" class="imgUnhover" />
+               <div>
+                  <img src="4.1.jpeg" class="imgHover" />
+               </div>
+               <div class="hover-part-session1">
+                  <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                     Xem nhanh
+                     <span>
+                        <img
+                           src="icon-look.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+                  <div class="pumpup-item-session1">
+                     Mua ngay
+                     <span>
+                        <img
+                           src="icon-cart.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+               </div>
+               <p>JENNIE DRESS</p>
+               <p>1,090,000 <span style="text-decoration: underline">đ</span></p>
+            </div>
+            <div class="slide">
+               <img src="5.jpeg" class="imgUnhover" />
+               <div>
+                  <img src="5.1.jpeg" class="imgHover" />
+               </div>
+               <div class="hover-part-session1">
+                  <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                     Xem nhanh
+                     <span>
+                        <img
+                           src="icon-look.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+                  <div class="pumpup-item-session1">
+                     Mua ngay
+                     <span>
+                        <img
+                           src="icon-cart.png"
+                           style="display: inline; width: 10px; height: auto"
+                        />
+                     </span>
+                  </div>
+               </div>
+               <p>GINNA DRESS</p>
+               <p>2,650,000 <span style="text-decoration: underline">đ</span></p>
+            </div>
+            <div class="slide">
+               <img src="6.jpeg" class="imgUnhover" />
+               <div>
+                  <img src="6.1.jpeg" class="imgHover" />
+                  <div class="hover-part-session1">
+                     <div
+                        class="pumpup-item-session1"
+                        style="border-right: 1px solid white"
+                     >
+                        Xem nhanh
+                        <span>
+                           <img
+                              src="icon-look.png"
+                              style="display: inline; width: 10px; height: auto"
+                           />
+                        </span>
+                     </div>
+                     <div class="pumpup-item-session1">
+                        Mua ngay
+                        <span>
+                           <img
+                              src="icon-cart.png"
+                              style="display: inline; width: 10px; height: auto"
+                           />
+                        </span>
+                     </div>
+                  </div>
+                  <p>DAISY JUMPSUIT</p>
+                  <p>1,550,000 <span style="text-decoration: underline">đ</span></p>
+               </div>
+            </div>
+         </div>
+      </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            const slideshow = $('.slideshow');
-            const slides = $('.slide');
+      <!-- This is SESSION 2 -->
+      <div class="thao">
+         <div>
+            <div class="center-content" style="text-align: center">
+               <h4 style="margin-bottom: 0">AO DAI AN</h4>
+               <img src="image/decoration.jpg" width="70px" />
+            </div>
+            <div class="container-session2">
+               <div class="left">
+                  <div class="top-line">
+                     <div class="square">
+                        <div class="image-container">
+                           <img class="original" src="image/anh1.jpg" alt="Image 1" />
+                           <img class="hover" src="image/anh1.1.jpg" alt="Image 1.1" />
+                           <div class="hover-part-session2">
+                              <div class="hover-content">Xem nhanh</div>
+                              <div
+                                 style="
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 1%;
+                                    text-align: center;
+                                    color: white;
+                                    font-size: 25px;
+                                    top: 3px;
+                                    opacity: 1;
+                                 "
+                              >
+                                 |
+                              </div>
+                              <div class="hover-content">Mua ngay</div>
+                           </div>
+                        </div>
+                        <div style="display: block; text-align: center">
+                           <p style="margin-bottom: 0"><b>ÁO DÀI AN HY</b></p>
+                           <p style="margin-top: 8px">3,900,000 <u>đ</u></p>
+                        </div>
+                     </div>
+
+                     <div class="square">
+                        <div class="image-container">
+                           <img class="original" src="image/anh2.jpg" alt="Image 2" />
+                           <img class="hover" src="image/anh2.1.jpg" alt="Image 2.1" />
+                           <div class="hover-part-session2">
+                              <div class="hover-content">Xem nhanh</div>
+                              <div
+                                 style="
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 1%;
+                                    text-align: center;
+                                    color: white;
+                                    font-size: 25px;
+                                    top: 3px;
+                                    opacity: 1;
+                                 "
+                              >
+                                 |
+                              </div>
+                              <div class="hover-content">Mua ngay</div>
+                           </div>
+                        </div>
+                        <div style="display: block; text-align: center">
+                           <p style="margin-bottom: 0"><b>ÁO DÀI AN ĐIỆP</b></p>
+                           <p style="margin-top: 8px">3,900,000 <u>đ</u></p>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="bottom-line">
+                     <div class="square">
+                        <div class="image-container">
+                           <img class="original" src="image/anh3.jpg" alt="Image 3" />
+                           <img class="hover" src="image/anh3.1.jpg" alt="Image 3.1" />
+                           <div class="hover-part-session2">
+                              <div class="hover-content">Xem nhanh</div>
+                              <div
+                                 style="
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 1%;
+                                    text-align: center;
+                                    color: white;
+                                    font-size: 25px;
+                                    top: 3px;
+                                    opacity: 1;
+                                 "
+                              >
+                                 |
+                              </div>
+                              <div class="hover-content">Mua ngay</div>
+                           </div>
+                        </div>
+                        <div style="display: block; text-align: center">
+                           <p style="margin-bottom: 0"><b>ÁO DÀI AN NGUYỆT</b></p>
+                           <p style="margin-top: 8px">3,300,000 <u>đ</u></p>
+                        </div>
+                     </div>
+
+                     <div class="square">
+                        <div class="image-container">
+                           <img class="original" src="image/anh4.jpg" alt="Image 4" />
+                           <img class="hover" src="image/anh4.1.jpg" alt="Image 4.1" />
+                           <div class="hover-part-session2">
+                              <div class="hover-content">Xem nhanh</div>
+                              <div
+                                 style="
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 1%;
+                                    text-align: center;
+                                    color: white;
+                                    font-size: 25px;
+                                    top: 3px;
+                                    opacity: 1;
+                                 "
+                              >
+                                 |
+                              </div>
+                              <div class="hover-content">Mua ngay</div>
+                           </div>
+                        </div>
+                        <div style="text-align: center">
+                           <p style="margin-bottom: 0"><b>ÁO DÀI AN VŨ</b></p>
+                           <p style="margin-top: 8px">3,300,000 <u>đ</u></p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="right">
+                  <img src="image/anhbia.jpeg" alt="Ao dai An" />
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- this is SESSION 3 -->
+      <div class="container-session3">
+         <div class="left-block">
+            <img class="banner" src="pic/banner.webp" alt="cover picture" />
+            <h2 class="promotion" style="top: 45%">PROMOTION</h2>
+         </div>
+         <div class="box-slide right-block">
+            <h2 class="center-content">HOT ITEMS</h2>
+            <img
+               src="pic/seperate-icon.png"
+               alt=""
+               style="object-fit: scale-down; margin: -15px; margin-left: 0"
+            />
+            <h5 class="center-content" style="font-size: 13px">Xem thêm</h5>
+            <div class="slideshow-container">
+               <div class="container-session3">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="card my-card">
+                           <img
+                              src="pic/pic1.jpeg"
+                              class="img-card img-un-hover"
+                              alt="Hình ảnh 1"
+                           />
+                           <div>
+                              <img
+                                 src="pic/pic4.jpeg"
+                                 alt="Hình Hover 1"
+                                 class="img-card img-hover"
+                              />
+                           </div>
+                           <div class="card-body hover-part-session3">
+                              <div
+                                 class="pumpup-item-session3"
+                                 style="border-right: 1px solid white"
+                              >
+                                 Xem nhanh
+                                 <span
+                                    ><img src="pic/eye.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                              <div class="pumpup-item-session3">
+                                 Mua ngay
+                                 <span
+                                    ><img src="pic/cart.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="dress-inf">
+                           <p style="font-size: 20px">JENNIE DRESS</p>
+                           <p>
+                              1,650,000 <span style="text-decoration: underline">đ</span>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card my-card">
+                           <img
+                              src="pic/pic2.jpeg"
+                              class="img-card img-un-hover"
+                              alt="Hình ảnh 2"
+                           />
+                           <div>
+                              <img
+                                 src="pic/pic5.jpeg"
+                                 alt="Hình Hover 2"
+                                 class="img-card img-hover"
+                              />
+                           </div>
+                           <div class="card-body hover-part-session3">
+                              <div
+                                 class="pumpup-item-session3"
+                                 style="border-right: 1px solid white"
+                              >
+                                 Xem nhanh
+                                 <span
+                                    ><img src="pic/eye.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                              <div class="pumpup-item-session3">
+                                 Mua ngay
+                                 <span
+                                    ><img src="pic/cart.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="dress-inf">
+                           <p style="font-size: 20px">SHOPIE DRESS</p>
+                           <p>
+                              1,850,000 <span style="text-decoration: underline">đ</span>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card my-card">
+                           <img
+                              src="pic/pic4.jpeg"
+                              class="img-card img-un-hover"
+                              alt="Hình ảnh 3"
+                           />
+                           <div>
+                              <img
+                                 src="pic/pic6.jpeg"
+                                 alt="Hình Hover 1"
+                                 class="img-card img-hover"
+                              />
+                           </div>
+                           <div class="card-body hover-part-session3">
+                              <div
+                                 class="pumpup-item-session3"
+                                 style="border-right: 1px solid white"
+                              >
+                                 Xem nhanh
+                                 <span
+                                    ><img src="pic/eye.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                              <div class="pumpup-item-session3">
+                                 Mua ngay
+                                 <span
+                                    ><img src="pic/cart.png" alt="" class="small-item"
+                                 /></span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="dress-inf">
+                           <p style="font-size: 20px">CRUSHIE DRESS</p>
+                           <p>
+                              1,850,000 <span style="text-decoration: underline">đ</span>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script type="text/javascript" src="script.js"></script>
+
+      <script>
+         $(document).ready(function () {
+            const slideshow = $(".slideshow");
+            const slides = $(".slide");
 
             let currentSlide = 0;
             const slideCount = slides.length;
@@ -320,25 +485,23 @@
             const slideInterval = 3000;
 
             function nextSlide() {
-                if(currentSlide < slideCount-4){
-                    currentSlide += 1;
-                }else{
-                    currentSlide = 0;
-                }
-            updateSlideshow();
+               if (currentSlide < slideCount - 4) {
+                  currentSlide += 1;
+               } else {
+                  currentSlide = 0;
+               }
+               updateSlideshow();
             }
 
             function updateSlideshow() {
-                const offsetX = -currentSlide * slideWidth;
-                slideshow.css('transform', `translateX(${offsetX}px)`);
+               const offsetX = -currentSlide * slideWidth;
+               slideshow.css("transform", `translateX(${offsetX}px)`);
             }
 
             setInterval(nextSlide, slideInterval);
 
             updateSlideshow();
-        });
-    </script>
-</div>
-
-</body>
+         });
+      </script>
+   </body>
 </html>
