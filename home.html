@@ -1,12 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+      <style>
+    .slideshow-container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .slideshow {
+      display: flex;
+      transition: transform 1s;
+    }
+
+    .slide {
+      flex: 0 0 24%;
+      padding: 5px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .slide .imgHover {
+      display: none;
+    }
+
+    .slide:hover .imgHover {
+      display: inline;
+    }
+
+    .slide:hover .imgUnhover {
+      display: none;
+    }
+
+    .hover-part{
+      height: 40px;
+      width: 24%;
+      position: absolute;
+      background-color: #333;
+      border-bottom: 20px;
+      opacity: 0;
+    }   
+
+    .slide:hover .hover-part {
+      opacity: 0.6;
+      transform: translateY(-43px);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .pumpup-item{
+      display: inline-block; 
+      color: white; 
+      width: 49%; 
+      height: 100%;
+      text-align: center; 
+      margin: 0; 
+      padding: 0; 
+      padding-top: 10px;
+    }
+
+    .slide p{
+      font-family: 'Times New Roman';
+      text-align: center;
+    }
+
+    .SessionName{
+      text-align: center;
+      margin: 0;
+    }
+
+    .icon-look{
+      background-image: url("icon-look.png");
+    }
+
+    .icon-look{
+      background-image: url("icon-cart.png");
+    }
+
+  </style>
 </head>
+
 <body>
+    <!-- This is SESSION 1 -->
+<div class="SessionName">
+  <p>FALL'23 COLLECTION</p>
+  <img src="line.jpg" style="width: 8%; height: auto;" />
+  <p>xem thêm</p>
+</div>
+<div class="slideshow-container">
+  <div class="slideshow">
+    <div class="slide">
+      <img src="1.jpeg" class="imgUnhover">
+      <img src="1.1.jpeg" class="imgHover">
+      <div class="hover-part">          
+        <div class="pumpup-item" style="border-right:1px solid white;">
+          Xem nhanh
+          <span>
+            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+        <div class="pumpup-item">
+          Mua ngay
+          <span>
+            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+      </div>
+      <p>NINA DRESS</p>
+      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+    <div class="slide">
+      <img src="2.jpeg" class="imgUnhover">
+      <div>
+        <img src="2.1.jpeg" class="imgHover">
+      </div>
+      <div class="hover-part">          
+        <div class="pumpup-item" style="border-right:1px solid white;">
+          Xem nhanh
+          <span>
+            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+        <div class="pumpup-item">
+          Mua ngay
+          <span>
+            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+      </div>
+      <p>MONICA DRESS</p>
+      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+    <div class="slide">
+      <img src="3.jpeg" class="imgUnhover">
+      <div>
+        <img src="3.1.jpeg" class="imgHover">
+      </div>
+      <div class="hover-part">          
+        <div class="pumpup-item" style="border-right:1px solid white;">
+          Xem nhanh
+          <span>
+            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+        <div class="pumpup-item">
+          Mua ngay
+          <span>
+            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+      </div>
+      <p>SELINA DRESS</p>
+      <p>1,880,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+    <div class="slide">
+      <img src="4.jpeg" class="imgUnhover">
+      <div>
+        <img src="4.1.jpeg" class="imgHover">
+      </div>
+      <div class="hover-part">          
+        <div class="pumpup-item" style="border-right:1px solid white;">
+          Xem nhanh
+          <span>
+            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+        <div class="pumpup-item">
+          Mua ngay
+          <span>
+            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+      </div>
+      <p>JENNIE DRESS</p>
+      <p>1,090,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+    <div class="slide">
+      <img src="5.jpeg" class="imgUnhover">
+      <div>
+        <img src="5.1.jpeg" class="imgHover">
+      </div>
+      <div class="hover-part">          
+        <div class="pumpup-item" style="border-right:1px solid white;">
+          Xem nhanh
+          <span>
+            <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+        <div class="pumpup-item">
+          Mua ngay
+          <span>
+            <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+          </span>
+        </div>
+      </div>
+      <p>GINNA DRESS</p>
+      <p>2,650,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+    <div class="slide">
+      <img src="6.jpeg" class="imgUnhover">
+      <div>
+        <img src="6.1.jpeg" class="imgHover">
+        <div class="hover-part">          
+          <div class="pumpup-item" style="border-right:1px solid white;">
+            Xem nhanh
+            <span>
+              <img src="icon-look.png" style="display: inline; width: 10px; height: auto;">
+            </span>
+          </div>
+          <div class="pumpup-item">
+            Mua ngay
+            <span>
+              <img src="icon-cart.png" style="display: inline; width: 10px; height: auto;">
+            </span>
+          </div>
+        </div>
+      <p>DAISY JUMPSUIT</p>
+      <p>1,550,000 <span style="text-decoration: underline;">đ</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- This is SESSION 2 -->
+<div>
     <div class="center-content" style="text-align: center;">
         <h4 style="margin-bottom: 0;">AO DAI AN</h4>
         <img src="image/decoration.jpg" width="70px">
@@ -86,5 +307,38 @@
         </div>
     </div>
     <script type="text/javascript" src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const slideshow = $('.slideshow');
+            const slides = $('.slide');
+
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            const slideWidth = slides.first().outerWidth();
+            const slideInterval = 3000;
+
+            function nextSlide() {
+                if(currentSlide < slideCount-4){
+                    currentSlide += 1;
+                }else{
+                    currentSlide = 0;
+                }
+            updateSlideshow();
+            }
+
+            function updateSlideshow() {
+                const offsetX = -currentSlide * slideWidth;
+                slideshow.css('transform', `translateX(${offsetX}px)`);
+            }
+
+            setInterval(nextSlide, slideInterval);
+
+            updateSlideshow();
+        });
+    </script>
+</div>
+
 </body>
 </html>
