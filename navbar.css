@@ -1,10 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-}
-
-/* CSS cho phần popup */
+/* Search box */
 .popup {
     display: none;
     position: fixed;
@@ -12,11 +6,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Màu nền làm mờ */
+    background: rgba(0, 0, 0, 0.7); 
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
 }
 
 .popup-content {
-    background: rgba(87, 83, 83, 0.7); /* Màu nền hộp thoại popup và làm trong suốt */
+    background: rgba(87, 83, 83, 0.7);
     position: fixed;
     top: 0;
     left: 0;
@@ -41,53 +38,217 @@ body {
     cursor: pointer;
 }
 
-img#show-popup {
-    width: 30px; /* Điều chỉnh chiều rộng của ảnh */
-    height: 30px; /* Điều chỉnh chiều cao của ảnh */
+/* img#show-popup {
+    width: 30px; 
+    height: 30px;
     background-color: #8aa1b3;
     border: none;
     padding: 5px;
     cursor: pointer;
-}
+} */
 
-/* Định dạng input search */
 input[type="search"] {
     width: 100%;
-    padding: 25px; /* Điều chỉnh kích thước ô nhập */
-    font-size: 16px; /* Điều chỉnh kích thước chữ */
+    padding: 25px; 
+    font-size: 16px; 
     border: none;
-    background: rgba(255, 255, 255, 0); /* Màu nền nhẹ, trong suốt */
-    color: #fffcfc; /* Màu chữ */
-    outline: none; /* Loại bỏ đường viền khi tập trung vào ô nhập */
-    text-align: center; /* Căn giữa chữ bên trong ô nhập */
+    background: rgba(255, 255, 255, 0); 
+    color: #fffcfc; 
+    outline: none; 
+    text-align: center; 
 }
 
-/* Định dạng nút Tìm kiếm */
+
 .search-button {
-    
-    background-color: #363d41; /* Màu nền của nút */
-    color: #fff; /* Màu chữ trắng */
-    padding: 15px 40px; /* Điều chỉnh kích thước nút */
-    border: none; /* Xóa viền của nút */
-    border-radius: 10px; /* Bo góc của nút */
+    background-color: #363d41; 
+    color: #fff; 
+    padding: 15px 40px; 
+    border: none; 
+    border-radius: 10px; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
-    margin-top: 90px; /* Điều chỉnh khoảng cách từ phần gạch ngang lên nút */
+    transition: background-color 0.3s ease;
+    margin-top: 90px;
     
 }
 .search-button:hover {
-    background-color: #666d74; /* Màu nền khi di chuột qua nút */
+    background-color: #666d74; 
 }
 
-/* Định dạng gạch ngang */
 .separator {
     width: 80%;
     height: 2px;
-    background: #0d0c0c; /* Đổi màu gạch ngang tùy ý */
-    margin: 10px auto; /* Điều chỉnh khoảng cách trên và dưới gạch ngang */
-
-    /* Thêm khoảng cách giữa gạch ngang và nút Tìm kiếm */
+    background: #0d0c0c; 
+    margin: 10px auto; 
     margin-bottom: -50px; 
 }
 
+
+/* navbar */
+nav{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    min-height:10vh;
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top:0;
+
+}
+a{
+    text-decoration: none;
+}
+nav a{
+    color:black;
+}
+nav a:hover{
+    color:#f84258;
+    text-decoration: none;
+
+}
+#login{
+    color:#f84258;
+}
+.logo h3{
+    font-family: 'Sacramento', cursive;
+    font-weight: 500;
+    text-align: center;
+    font-size:45px;
+}
+.logo-name{
+    color:#f84258;
+}
+.logo-name:hover{
+    color:#f84258;
+    text-decoration: none;
+}
+
+.nav-links{
+    display:flex;
+    list-style: none;
+    width:50%;
+    justify-content: space-around;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size:14px;
+    font-family: 'Montserrat', sans-serif;
+}
+.burger div{
+    background-color:#000000;
+    width:25px;
+    height:3px;
+    margin:5px;
+    transition: all 0.3s ease;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+}
+.logo {
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+}
+.icon img {
+    width: 20px; 
+    height: 20px; 
+}
+.icon-group {
+    display: flex;
+}
+.icon {
+    margin-right: 10px;
+}
+@media screen and (max-width:1024px){
+    .nav-links{
+        width:80%;
+    }
+
+}
+.navbar-brand{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+@media screen and (max-width:768px){
+    body {
+        overflow-x: hidden;
+    }
+
+    .nav-links {
+        position: absolute;
+        right: 0;
+        height: 90vh;
+        top: 10vh;
+        background-color: #232323;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .burger {
+        display: block;
+        left: 20px; 
+    }
+    nav a{
+        color:rgb(231, 216, 216);
+    }
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+    nav a:hover{
+        color:#f7f7f7;
+        text-decoration: none;
+
+    }
+
+}
+.nav-active{
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+
+}
+.toggle .line2{
+    opacity:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+.language-switch {
+    margin-top: 10px;
+}
+
+.language-switch button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+}
 
