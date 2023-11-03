@@ -374,3 +374,42 @@ img {
     text-align: center;
     margin: 0;
 }
+
+/* Binh */
+#main {
+/* background-image: url("https://bizweb.dktcdn.net/100/474/290/themes/892181/assets/slider_1.png?1691725029305"); */
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+}
+
+#main div {
+    height: 100vh;
+    background-color: transparent;
+    position: relative;
+    font-family: Oswald;
+    margin-top: -20px;
+}
+
+#main div p{
+    margin-bottom: 4em;
+}
+
+#main div:hover {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.30)
+}
+
+#main div:hover>*{
+    transition: transform 0.3s ease-in-out; 
+    transform: translate(0px, -70px); 
+    font-family: Oswald;
+
+}
+
+#footer {
+    background-color: #333; 
+    color: #fff; 
+    padding: 20px; 
+    text-align: center; 
+} 
