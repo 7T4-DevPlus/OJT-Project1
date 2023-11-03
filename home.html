@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+      <style>
     .slideshow-container {
       overflow: hidden;
       width: 100%;
@@ -80,7 +84,9 @@
 
   </style>
 </head>
+
 <body>
+    <!-- This is SESSION 1 -->
 <div class="SessionName">
   <p>FALL'23 COLLECTION</p>
   <img src="line.jpg" style="width: 8%; height: auto;" />
@@ -220,36 +226,119 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function() {
-    const slideshow = $('.slideshow');
-    const slides = $('.slide');
+<!-- This is SESSION 2 -->
+<div>
+    <div class="center-content" style="text-align: center;">
+        <h4 style="margin-bottom: 0;">AO DAI AN</h4>
+        <img src="image/decoration.jpg" width="70px">
+    </div>
+    <div class="container">
+        <div class="left">
+            <div class="top-line">
+                <div class="square">
+                    <div class="image-container">
+                        <img class="original" src="image/anh1.jpg" alt="Image 1">
+                        <img class="hover" src="image/anh1.1.jpg" alt="Image 1.1">
+                        <div class="hover-part">
+                            <div class="hover-content">Xem nhanh</div>
+                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
+                            <div class="hover-content">Mua ngay</div>
+                        </div>
+                    </div>
+                    <div style="display: block; text-align: center;">
+                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN HY</b></p>
+                        <p style="margin-top: 8px;">3,900,000 <u>đ</u></p>
+                    </div>
+                </div>
+                
+                <div class="square">
+                    <div class="image-container">
+                        <img class="original" src="image/anh2.jpg" alt="Image 2">
+                        <img class="hover" src="image/anh2.1.jpg" alt="Image 2.1">
+                        <div class="hover-part">
+                            <div class="hover-content">Xem nhanh</div>
+                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
+                            <div class="hover-content">Mua ngay</div>
+                        </div>
+                    </div>
+                    <div style="display: block; text-align: center;">
+                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN ĐIỆP</b></p>
+                        <p style="margin-top: 8px;">3,900,000 <u>đ</u></p>
+                    </div>
+                </div>
+            </div>
 
-    let currentSlide = 0;
-    const slideCount = slides.length;
-    const slideWidth = slides.first().outerWidth();
-    const slideInterval = 3000;
+            <div class="bottom-line">
+                <div class="square">
+                    <div class="image-container">
+                        <img class="original" src="image/anh3.jpg" alt="Image 3">
+                        <img class="hover" src="image/anh3.1.jpg" alt="Image 3.1">
+                        <div class="hover-part">
+                            <div class="hover-content">Xem nhanh</div>
+                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
+                            <div class="hover-content">Mua ngay</div>
+                        </div>
+                    </div>
+                    <div style="display: block; text-align: center;">
+                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN NGUYỆT</b></p>
+                        <p style="margin-top: 8px;">3,300,000 <u>đ</u></p>
+                    </div>
+                </div>
 
-    function nextSlide() {
-        if(currentSlide < slideCount-4){
-            currentSlide += 1;
-        }else{
-            currentSlide = 0;
-        }
-      updateSlideshow();
-    }
+                <div class="square">
+                    <div class="image-container">
+                        <img class="original" src="image/anh4.jpg" alt="Image 4">
+                        <img class="hover" src="image/anh4.1.jpg" alt="Image 4.1">
+                        <div class="hover-part">
+                            <div class="hover-content">Xem nhanh</div>
+                            <div style="position: relative; display: inline-block; width: 1%; text-align: center; color: white; font-size: 25px; top: 3px; opacity: 1;">|</div>
+                            <div class="hover-content">Mua ngay</div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 0;"><b>ÁO DÀI AN VŨ</b></p>
+                        <p style="margin-top: 8px;">3,300,000 <u>đ</u></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <img src="image/anhbia.jpeg" alt="Ao dai An">
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
 
-    function updateSlideshow() {
-      const offsetX = -currentSlide * slideWidth;
-      slideshow.css('transform', `translateX(${offsetX}px)`);
-    }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const slideshow = $('.slideshow');
+            const slides = $('.slide');
 
-    setInterval(nextSlide, slideInterval);
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            const slideWidth = slides.first().outerWidth();
+            const slideInterval = 3000;
 
-    updateSlideshow();
-  });
-</script>
+            function nextSlide() {
+                if(currentSlide < slideCount-4){
+                    currentSlide += 1;
+                }else{
+                    currentSlide = 0;
+                }
+            updateSlideshow();
+            }
+
+            function updateSlideshow() {
+                const offsetX = -currentSlide * slideWidth;
+                slideshow.css('transform', `translateX(${offsetX}px)`);
+            }
+
+            setInterval(nextSlide, slideInterval);
+
+            updateSlideshow();
+        });
+    </script>
+</div>
 
 </body>
 </html>
