@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 /* Search box */
 .popup {
     display: none;
@@ -89,11 +92,11 @@ nav{
     justify-content: space-around;
     align-items:center;
     min-height:10vh;
+    height: 72px;
     background-color: #ffffff;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     top:0;
-
 }
 a{
     text-decoration: none;

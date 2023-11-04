@@ -1,5 +1,16 @@
 body{
-    z-index: -1;
+    overflow-x: hidden ;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+iframe{
+    margin: 0;
+    padding: 0;
 }
 /* Luan-Session1-Home */
 .slideshow-container {
@@ -288,10 +299,11 @@ img {
     /* padding: 4%; */
     padding: 20px;
     margin-right: 0;
-    top: 15vh;
+    /* top: 15vh; */
     width: 60%;
     right: 0;
     background-color: white;
+    margin-top: 10vh;
 }
 
 .box-slide img {
@@ -342,7 +354,6 @@ img {
 
 .my-card:hover .img-hover {
     display: inline;
-    transition: all 0.5 ease;
 }
 
 .my-card:hover .img-un-hover {
@@ -385,7 +396,8 @@ img {
     background-color: transparent;
     position: relative;
     font-family: Oswald;
-    margin-top: -20px;
+    /* margin-top: -20px; */
+    /* z-index: -1; */
 }
 
 #main div p{

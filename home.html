@@ -13,15 +13,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/home.css" />
-        <!-- Navbar -->
-        <div style="position: sticky; top: 0;">
-            <iframe src="navbar.html" width="100%" height="600px" scrolling="no"></iframe>
-        </div>
     </head>
-
+    
     <body>
-        
 
+        
         <!-- This is HEADER -->
         <div id="main" class="row">
              <div class="header-left col-md-6 text-white d-flex flex-column justify-content-end align-items-center ">
@@ -33,6 +29,11 @@
                  <p>Dining - Party</p>
              </div>
         </div>
+
+        <!-- Navbar -->
+        <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; height: 72px; z-index: 1">
+            <iframe src="navbar.html" width="100%" height="72px" scrolling="no"></iframe>
+        </div> 
 
         <!-- This is SESSION 1 -->
         <div class="session1_title">
@@ -504,6 +505,13 @@
             </div>
         </div>
 
+        <div style="position: relative; min-height: 190vh;">
+
+            <div style="position: absolute; bottom: 0; width: 100%; right: 0;">
+            <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
+        </div>            
+    </div>
+
         <script type="text/javascript" src="js/header_home.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -537,7 +545,4 @@
             });
         </script>
     </body>
-    <footer>
-        <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
-    </footer>
 </html>
