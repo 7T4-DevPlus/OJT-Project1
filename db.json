@@ -1,0 +1,35 @@
+{
+    "products":[
+    {
+        "id": "product1",
+        "name": "Product 1",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230925_xDutcbHoQi.jpeg"
+    },
+    {
+        "id": "product2",
+        "name": "Product 2",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230920_rxXNVBCsfj.jpeg"
+    },
+    {
+        "id": "product3",
+        "name": "Product 3",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230925_6csgRJPGvn.jpeg"
+    },
+    {
+        "id": "product4",
+        "name": "Product 4",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230925_FSlVK4aPuu.jpeg"
+    },
+    {
+        "id": "product5",
+        "name": "Product 5",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230925_TmBXvfOs2Y.jpeg"
+    },
+     {
+        "id": "product6",
+        "name": "Product 6",
+        "image": "https://pos.nvncdn.net/27a4d8-122812/ps/20230925_fJurXPRIbe.jpeg"
+    }
+    
+]
+}
