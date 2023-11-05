@@ -13,27 +13,33 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/home.css" />
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+        <style>
+            body {
+                font-family: 'Oswald';font-size: 22px;
+            }
+        </style>
     </head>
     
     <body>
+        <!-- Navbar -->
+        <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
+            <div style="position: absolute; width:100%; height: 100vh;">
+                <iframe src="navbar.html" width="100%" scrolling="no"></iframe>
+            </div>
+        </div> 
 
-        
         <!-- This is HEADER -->
         <div id="main" class="row">
-             <div class="header-left col-md-6 text-white d-flex flex-column justify-content-end align-items-center ">
-                 <h3>BREEZE</h3>
-                 <p>Travel - Event</p>
-             </div>
-             <div class="header-right col-md-6 text-white d-flex flex-column justify-content-end align-items-center">
-                 <h3>WILD</h3>
-                 <p>Dining - Party</p>
-             </div>
+            <div class="header-left col-md-6 text-white d-flex flex-column justify-content-end align-items-center ">
+                <h3>BREEZE</h3>
+                <p>Travel - Event</p>
+            </div>
+            <div class="header-right col-md-6 text-white d-flex flex-column justify-content-end align-items-center">
+                <h3>WILD</h3>
+                <p>Dining - Party</p>
+            </div>
         </div>
-
-        <!-- Navbar -->
-        <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; height: 72px; z-index: 1">
-            <iframe src="navbar.html" width="100%" height="72px" scrolling="no"></iframe>
-        </div> 
 
         <!-- This is SESSION 1 -->
         <div class="session1_title">
@@ -248,7 +254,7 @@
                             </div>
                             </div>
                             <div style="display: block; text-align: center">
-                            <p style="margin-bottom: 0"><b>ÁO DÀI AN HY</b></p>
+                            <p style="margin-bottom: 0">ÁO DÀI AN HY</p>
                             <p style="margin-top: 8px">3,900,000 <u>đ</u></p>
                             </div>
                         </div>
@@ -279,7 +285,7 @@
                             </div>
                             </div>
                             <div style="display: block; text-align: center">
-                            <p style="margin-bottom: 0"><b>ÁO DÀI AN ĐIỆP</b></p>
+                            <p style="margin-bottom: 0">ÁO DÀI AN ĐIỆP</p>
                             <p style="margin-top: 8px">3,900,000 <u>đ</u></p>
                             </div>
                         </div>
@@ -312,7 +318,7 @@
                             </div>
                             </div>
                             <div style="display: block; text-align: center">
-                            <p style="margin-bottom: 0"><b>ÁO DÀI AN NGUYỆT</b></p>
+                            <p style="margin-bottom: 0">ÁO DÀI AN NGUYỆT</p>
                             <p style="margin-top: 8px">3,300,000 <u>đ</u></p>
                             </div>
                         </div>
@@ -343,7 +349,7 @@
                             </div>
                             </div>
                             <div style="text-align: center">
-                            <p style="margin-bottom: 0"><b>ÁO DÀI AN VŨ</b></p>
+                            <p style="margin-bottom: 0">ÁO DÀI AN VŨ</p>
                             <p style="margin-top: 8px">3,300,000 <u>đ</u></p>
                             </div>
                         </div>
@@ -363,154 +369,108 @@
                 <h2 class="promotion">PROMOTION</h2>
             </div>
             <div class="box-slide right-block">
-                <h2 class="center-content">HOT ITEMS</h2>
+                <p class="center-content" style="font-size: 22px;">HOT ITEMS</p>
                 <img
-                src="pic/seperate-icon.png"
+                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004035/Image_OJT7T4_Project1/line_cmy5gt.png"
                 alt=""
                 style="object-fit: scale-down; margin: -15px; margin-left: 0"
                 />
                 <h5 class="center-content" style="font-size: 13px">Xem thêm</h5>
-                <div class="slideshow-container">
-                <div class="container-session3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="my-card">
-                            <img
-                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/pic1_qrqkab.jpg"
-                                class="img-card img-un-hover"
-                                alt="Hình ảnh 1"
-                            />
-                            <div>
-                                <img
-                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/pic4_e1gjzz.jpg"
-                                    alt="Hình Hover 1"
-                                    class="img-card img-hover"
-                                />
+                <div class="slideshow-container-session3">
+                    <div class="slideshow-session3">
+                        <div class="slide-session3">
+                        <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/1_nmxskm.jpg" class="imgUnhover" />
+                        <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004038/Image_OJT7T4_Project1/Session1_body/1.1_fveloq.jpg" class="imgHover" />
+                        <div class="hover-part-session3">
+                            <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
-                            <div class="card-body hover-part-session3">
-                                <div class="pumpup-item-session3" style="border-right: 1px solid white">
-                                    Xem nhanh
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
-                                <div class="pumpup-item-session3">
-                                    Mua ngay
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="dress-inf">
-                            <p style="font-size: 20px">JENNIE DRESS</p>
-                            <p>
-                                1,650,000 <span style="text-decoration: underline">đ</span>
-                            </p>
+                            <div class="pumpup-item-session1">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="my-card">
-                            <img
-                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/pic2_hbdrfv.jpg"
-                                class="img-card img-un-hover"
-                                alt="Hình ảnh 2"
-                            />
-                            <div>
-                                <img
-                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004049/Image_OJT7T4_Project1/Session3_body/pic5_dhb7u5.jpg"
-                                    alt="Hình Hover 2"
-                                    class="img-card img-hover"
-                                />
+                        <p>NINA DRESS</p>
+                        <p>1,550,000 <span style="text-decoration: underline">đ</span></p>
+                        </div>
+                        <div class="slide-session3">
+                        <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/2_oqakr0.jpg" class="imgUnhover" />
+                        <div>
+                            <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004038/Image_OJT7T4_Project1/Session1_body/2.1_e72mo3.jpg" class="imgHover" />
+                        </div>
+                        <div class="hover-part-session3">
+                            <div class="pumpup-item-session1" style="border-right: 1px solid white">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
-                            <div class="card-body hover-part-session3">
-                                <div class="pumpup-item-session3" style="border-right: 1px solid white">
-                                    Xem nhanh
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
-                                <div class="pumpup-item-session3">
-                                    Mua ngay
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="dress-inf">
-                            <p style="font-size: 20px">SHOPIE DRESS</p>
-                            <p>
-                                1,850,000 <span style="text-decoration: underline">đ</span>
-                            </p>
+                            <div class="pumpup-item-session1">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="my-card">
-                            <img
-                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/pic4_e1gjzz.jpg"
-                                class="img-card img-un-hover"
-                                alt="Hình ảnh 3"
-                            />
-                            <div>
-                                <img
-                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004049/Image_OJT7T4_Project1/Session3_body/pic6_s8zmnb.jpg"
-                                    alt="Hình Hover 1"
-                                    class="img-card img-hover"
-                                />
+                        <p>MONICA DRESS</p>
+                        <p>1,550,000 <span style="text-decoration: underline">đ</span></p>
+                        </div>
+                        <div class="slide-session3">
+                        <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004041/Image_OJT7T4_Project1/Session1_body/3_nkebzq.jpg" class="imgUnhover" />
+                        <div>
+                            <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004040/Image_OJT7T4_Project1/Session1_body/3.1_gplzeh.jpg" class="imgHover" />
+                        </div>
+                        <div class="hover-part-session3">
+                            <div class="pumpup-item-session3" style="border-right: 1px solid white">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
-                            <div class="card-body hover-part-session3">
-                                <div class="pumpup-item-session3" style="border-right: 1px solid white">
-                                    Xem nhanh
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
-                                <div class="pumpup-item-session3">
-                                    Mua ngay
-                                    <span>
-                                        <img
-                                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
-                                        style="margin-left:2px; display: inline; width: 10px; height: auto"
-                                        />
-                                    </span>
-                                </div>
+                            <div class="pumpup-item-session3">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
                             </div>
-                            </div>
-                            <div class="dress-inf">
-                            <p style="font-size: 20px">CRUSHIE DRESS</p>
-                            <p>
-                                1,850,000 <span style="text-decoration: underline">đ</span>
-                            </p>
-                            </div>
+                        </div>
+                        <p>SELINA DRESS</p>
+                        <p>1,880,000 <span style="text-decoration: underline">đ</span></p>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
 
-        <div style="position: relative; min-height: 190vh;">
-
+        <!-- This is FOOTER -->
+        <div style="position: relative; min-height: 100vh;">
             <div style="position: absolute; bottom: 0; width: 100%; right: 0;">
-            <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
-        </div>            
-    </div>
+                <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
+            </div>            
+        </div>
 
         <script type="text/javascript" src="js/header_home.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
