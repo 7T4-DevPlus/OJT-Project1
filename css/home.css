@@ -20,17 +20,17 @@ iframe{
 
 
 /* Luan-Session1-Home */
-.slideshow-container {
-    overflow: hidden;
+.slideshow-container{
     width: 100%;
+    overflow: hidden;
 }
 
-.slideshow {
+.slideshow{
     display: flex;
     transition: transform 1s;
 }
 
-.slide {
+.slide{
     flex: 0 0 25%;
     padding: 5px;
 }
@@ -51,13 +51,13 @@ iframe{
     height: 40px;
     width: 24.35%;
     position: absolute;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.6);
     border-bottom: 20px;
     opacity: 0;
 }
 
 .slide:hover .hover-part-session1 {
-    opacity: 0.6;
+    opacity: 1;
     transform: translateY(-40px);
     transition: all 0.2s ease-in-out;
 }
@@ -66,9 +66,11 @@ iframe{
     display: inline-block;
     color: white;
     width: 49%;
+    height: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
+    padding-top: 2px;
     font-size: small;
 }
 
@@ -83,6 +85,173 @@ iframe{
     margin-top: 10vh;
 }
 
+#look-button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    color: #fff;
+}
+
+.product-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+.product-details {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 15px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.left-block-modal {
+    width: 45%; 
+    height: 100%; 
+    margin-right: 25px;
+}
+
+.right-block-modal {
+    width: 55%; 
+    height: 100%;
+}
+
+.style-choice img {
+    border-radius: 50%; 
+    height: 30px; 
+    width: 30px; 
+    object-fit: cover; 
+    object-position: 100% 20%;
+}
+
+.style-choice:hover img{
+    border-radius: 50%; 
+    height: 40px; 
+    width: 40px; 
+    object-fit: cover; 
+    object-position: 100% 20%;
+    border: solid 2px #f48c42;
+    border-radius: 50%;
+}
+
+.style-chosen img{
+    border-radius: 50%; 
+    height: 40px; 
+    width: 40px; 
+    object-fit: cover; 
+    object-position: 100% 20%;
+    border: solid 2px #f48c42;
+    border-radius: 50%;
+}
+
+.size-choice {
+    width: 40px; 
+    height: 40px; 
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    margin: 5px; 
+    margin-left: 0;
+}
+
+.size-choice:hover {
+    width: 40px; 
+    height: 40px; 
+    border: 1px solid rgba(0, 0, 0);
+    margin: 5px; 
+    margin-left: 0;
+}
+
+
+.size-choice p {
+    font-size: 60%; 
+    text-align: center; 
+    margin-top: 20%;
+}
+
+.size-chosen {
+    width: 40px; 
+    height: 40px; 
+    color: white;
+    background-color: rgb(0,0,0);
+    border: 1px solid rgb(255, 255, 255);
+    margin: 5px; 
+    margin-left: 0;
+}
+
+.size-chosen p {
+    font-size: 60%; 
+    text-align: center; 
+    margin-top: 20%;
+}
+
+.size-chosen:hover {
+    width: 40px; 
+    height: 40px; 
+    color: white;
+    background-color: rgb(0,0,0);
+    border: 1px solid rgba(0, 0, 0);
+    box-shadow: black;
+    margin: 5px; 
+    margin-left: 0;
+}
+
+.add-cart-btn {
+    width: 100%;
+    height: 8vh;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.add-cart-btn:hover {
+    width: 100%;
+    height: 8vh;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+
+.product-pictures-container {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.product-pictures-container::-webkit-scrollbar{
+    display: none;
+}
+
+.product-pictures {
+    display: flex;
+    width: max-content;
+}
+
+.product-picture img{
+    height: 100px;
+    flex: 0 0 25%;
+    padding: 5px;
+}
 
 /* Thao-Session2-Home */
 .session2 {
@@ -368,7 +537,7 @@ iframe{
 
 /* Binh-Header */
 #main {
-    background-image: url("https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004034/Image_OJT7T4_Project1/Header_home/2_rjznt6.jpg");
+    background-image: url("https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699114991/Image_OJT7T4_Project1/Header_home/blue_miacfu.jpg");
     object-fit: cover;
     display: flex;
     align-items: center;
