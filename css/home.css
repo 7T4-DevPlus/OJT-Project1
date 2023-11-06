@@ -16,7 +16,6 @@ img {
 iframe{
     margin: 0;
     padding: 0;
-    height: 100vh;
 }
 
 
@@ -67,11 +66,10 @@ iframe{
     display: inline-block;
     color: white;
     width: 49%;
-    height: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
-    padding-top: 8px;
+    font-size: small;
 }
 
 .slide p {
@@ -346,17 +344,6 @@ iframe{
 .slide-session3 p {
     text-align: center;
 }
-
-.pumpup-item-session3 {
-    display: inline-block;
-    color: white;
-    width: 49%;
-    height: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    padding-top: 8px;
-}
 /*  */
 
 
@@ -366,44 +353,6 @@ iframe{
     font-size: 20px;
     margin-bottom: 0;
 }
-
-/* .my-card {
-    margin: 30px;
-    width: 300px;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-    border: none !important;
-} */
-
-
-/* .my-card:hover .hover-part-session3 {
-    transform: translateY(-40px);
-    transition: all 0.3s ease-in-out;
-}
-
-.my-card .img-hover {
-    display: none;
-}
-
-.my-card:hover .img-hover {
-    display: inline;
-}
-
-.my-card:hover .img-un-hover {
-    display: none;
-}
-
-.pumpup-item-session3 {
-    display: inline-block;
-    color: white;
-    width: 49%;
-    height: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    padding-top: 8px;
-} */
 
 .small-item {
     display: inline;
