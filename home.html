@@ -22,10 +22,12 @@
     </head>
     
     <body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <!-- Navbar -->
-        <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
-            <div style="position: absolute; width:100%; height: 70px;">
-                <iframe src="navbar.html" width="100%" scrolling="no"></iframe>
+        <div style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
+            <div style="position: absolute; width:100%;">
+                <iframe name="navbar" id="navbar" src="navbar.html" width="100%" scrolling="no"></iframe>
             </div>
         </div> 
 
@@ -41,26 +43,30 @@
             </div>
         </div>
 
+        <script type="text/javascript" src="js/header_home.js"></script>
+
         <!-- This is SESSION 1 -->
         <div class="session1_title">
             <h4 style="margin-bottom: 0">FALL'23 COLLECTION</h4>
             <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004035/Image_OJT7T4_Project1/line_cmy5gt.png" style="width: 8%; height: auto" />
             <p>xem thêm</p>
         </div>
-        <div class="slideshow-container" style="z-index: -1;">
+        <div class="slideshow-container">
             <div class="slideshow">
                 <div class="slide">
                 <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/1_nmxskm.jpg" class="imgUnhover" />
                 <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004038/Image_OJT7T4_Project1/Session1_body/1.1_fveloq.jpg" class="imgHover" />
                 <div class="hover-part-session1">
                     <div class="pumpup-item-session1" style="border-right: 1px solid white">
-                        Xem nhanh
-                        <span>
-                            <img
-                            src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
-                            style="display: inline; width: 10px; height: auto"
-                            />
-                        </span>
+                        <button id="look-button">
+                            Xem nhanh
+                            <span>
+                                <img
+                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                style="display: inline; width: 10px; height: auto"
+                                />
+                            </span>
+                        </button>
                     </div>
                     <div class="pumpup-item-session1">
                         Mua ngay
@@ -160,9 +166,9 @@
                 <p>1,090,000 <span style="text-decoration: underline">đ</span></p>
                 </div>
                 <div class="slide">
-                <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004040/Image_OJT7T4_Project1/Session1_body/4.1_gjrvvf.jpg" class="imgUnhover" />
+                <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004041/Image_OJT7T4_Project1/Session1_body/5_kkqojt.jpg" class="imgUnhover" />
                 <div>
-                    <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004040/Image_OJT7T4_Project1/Session1_body/4.1_gjrvvf.jpg" class="imgHover" />
+                    <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004040/Image_OJT7T4_Project1/Session1_body/5.1_fosnuz.jpg" class="imgHover" />
                 </div>
                 <div class="hover-part-session1">
                     <div class="pumpup-item-session1" style="border-right: 1px solid white">
@@ -217,6 +223,131 @@
                 </div>
             </div>
         </div>
+
+         <!-- Product details modal -->
+        <div id="product-modal" class="product-modal">
+            <div class="product-details">
+                <span class="close">&times;</span>
+                <div style="display: flex;">
+                    <div class="left-block-modal">
+                        <img id="displayImg" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/1_nmxskm.jpg"
+                        style="width: 100%; margin: 2%;"/>
+                        <div class="product-pictures-container">
+                            <div class="product-pictures">
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/1_nmxskm.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004038/Image_OJT7T4_Project1/Session1_body/1.1_fveloq.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699178027/Image_OJT7T4_Project1/Session1_body/1.3_jvbs9x.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245949/Image_OJT7T4_Project1/Session1_body/1.4_gerifi.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245948/Image_OJT7T4_Project1/Session1_body/1.5_lklra9.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245948/Image_OJT7T4_Project1/Session1_body/1.6_zzezmg.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245949/Image_OJT7T4_Project1/Session1_body/1.7_jyoxjw.jpg"/>
+                                </div>
+                                <div class="product-picture">
+                                    <img onclick="changeImage(this.src)"
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245953/Image_OJT7T4_Project1/Session1_body/1.8_qbzzhi.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-block-modal">
+                        <p style="margin-bottom: 0;">NINA DRESS</p>
+                        <p style="font-size: 2vh;">Mã sản phẩm: VN.PC.2305013</p>
+                        <hr>
+                        <p>1,550,000 <u>đ</u></p>
+                        <hr>
+                        <div style="display: flex;">
+                            <div id="style-choice1" class="style-choice">
+                                <img id="style1" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004039/Image_OJT7T4_Project1/Session1_body/1_nmxskm.jpg"/>
+                            </div>
+                            <div style="width: 10px;"></div>
+                            <div id="style-choice2" class="style-choice">
+                                <img id="style2" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699178027/Image_OJT7T4_Project1/Session1_body/1.3_jvbs9x.jpg"/>
+                            </div>
+                        </div>
+                        <hr>
+                        <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
+                        <div style="display: flex; margin-bottom: 5px;">
+                            <div id="sizeCustom" class="size-choice">
+                                <p style="font-size: 50%; margin-top: 5%;">Thông số riêng</p>
+                            </div>
+                            <div id="sizeLarge" class="size-choice">
+                                <p>L</p>
+                            </div>
+                            <div id="sizeMedium" class="size-choice">
+                                <p>M</p>
+                            </div>
+                            <div id="sizeSmall" class="size-choice">
+                                <p>S</p>
+                            </div>
+                        </div>
+                        <button class="add-cart-btn">
+                            Thêm vào giỏ
+                        </button>
+                        <div style="text-align: center;">
+                            <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                const slideshow = $(".slideshow");
+                const slides = $(".slide");
+
+                let currentSlide = 0;
+                const slideCount = slides.length;
+                const slideWidth = slides.first().outerWidth();
+                const slideInterval = 3000;
+
+                // slides.addEventListener("mouseover",function (){
+                //     pauseSlide();
+                // }) 
+                
+                // function pauseSlide() {
+                //     clearInterval(nextSlide, slideInterval)
+                // }
+
+                function updateSlideshow() {
+                    const offsetX = -currentSlide * slideWidth;
+                    slideshow.css("transform", `translateX(${offsetX}px)`);
+                }
+                
+                function nextSlide() {
+                    if (currentSlide < slideCount - 4) {
+                        currentSlide += 1;
+                    } else {
+                        currentSlide = 0;
+                    }
+                    updateSlideshow();
+                }
+                    
+                setInterval(nextSlide, slideInterval);
+                updateSlideshow();
+            });
+        </script>
+        <script type="text/javascript" src="js/product_modal.js"></script>
 
         <!-- This is SESSION 2 -->
         <div class="session2">
@@ -472,37 +603,5 @@
             </div>            
         </div>
 
-        <script type="text/javascript" src="js/header_home.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <script>
-            $(document).ready(function () {
-                const slideshow = $(".slideshow");
-                const slides = $(".slide");
-
-                let currentSlide = 0;
-                const slideCount = slides.length;
-                const slideWidth = slides.first().outerWidth();
-                const slideInterval = 3000;
-
-                function nextSlide() {
-                if (currentSlide < slideCount - 4) {
-                    currentSlide += 1;
-                } else {
-                    currentSlide = 0;
-                }
-                updateSlideshow();
-                }
-
-                function updateSlideshow() {
-                const offsetX = -currentSlide * slideWidth;
-                slideshow.css("transform", `translateX(${offsetX}px)`);
-                }
-
-                setInterval(nextSlide, slideInterval);
-
-                updateSlideshow();
-            });
-        </script>
     </body>
 </html>
