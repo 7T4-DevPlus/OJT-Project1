@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="css/navbar.css">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
@@ -16,8 +16,7 @@
 </head>
 
 <body>
-    <nav>
-
+    <div id="nav">
         <a class="navbar-brand" href="#">
             <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/logo_it6c0b.png" width="200" height="30" alt="Your Logo">
         </a>
@@ -36,39 +35,23 @@
         </div>
         <div class="icon-group">
             <div class="icon">
-                <img src="/icon-header-3.png" alt="Search" id="show-popup">
-                <div id="popup" class="popup">
-                    <div class="popup-content">
-                        <span id="close-popup" class="close-popup">X</span>
-                        <div class="header_search search_form active">
-                            <form class="input-group search-bar search_form" action="/search" method="get" role="search" style="
-                            width: 900px;
-                        ">
-                                <div class="searchbox">
-                                    <input type="search" name="query" value="" placeholder="Nhập từ khóa bạn muốn tìm kiếm ... "
-                                        class="input-group-field st-default-search-input search-text" autocomplete="off">
-                                    <div class="separator"></div>
-                                </div>
-                                <button class="search-button">Tìm kiếm</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="search-icon">
+                    <img style="margin: 5px;" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png" alt="Search" id="show-popup">
+                    <input type="text" placeholder="Product's name" />
                 </div>
-        <script src="search.js"></script>
             </div>
             <div class="icon">
-                <a href="login.html">
-                    <img src="/icon-header-1.png" alt="Login">
+                <a href="loginsignup.html" target="_blank">
+                    <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004036/Image_OJT7T4_Project1/Nav/icon-header-1_rwawak.png" alt="Login">
                 </a>
             </div>
             <div class="icon">
-                <img src="/icon-header-2.png" alt="Cart">
+                <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004036/Image_OJT7T4_Project1/Nav/icon-header-2_lzxsqa.png" alt="Cart">
             </div>
 
         </div>
         </div>
-
-    </nav>
-    <script src="navbar.js"></script>
+    </div>
+    <script src="js/navbar.js"></script>
 </body>
 </html>
