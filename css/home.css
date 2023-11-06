@@ -51,13 +51,13 @@ iframe{
     height: 40px;
     width: 24.35%;
     position: absolute;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.6);
     border-bottom: 20px;
     opacity: 0;
 }
 
 .slide:hover .hover-part-session1 {
-    opacity: 0.6;
+    opacity: 1;
     transform: translateY(-40px);
     transition: all 0.2s ease-in-out;
 }
@@ -86,7 +86,7 @@ iframe{
 }
 
 #look-button {
-    background-color: #333;
+    background-color: rgba(255, 255, 255, 0);
     border: 0;
     color: #fff;
 }
@@ -537,7 +537,7 @@ iframe{
 
 /* Binh-Header */
 #main {
-    background-image: url("https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004034/Image_OJT7T4_Project1/Header_home/2_rjznt6.jpg");
+    background-image: url("https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699114991/Image_OJT7T4_Project1/Header_home/blue_miacfu.jpg");
     object-fit: cover;
     display: flex;
     align-items: center;
