@@ -61,3 +61,38 @@ function toggleButtonColor(button) {
   });
   button.classList.add("black");
 }
+
+// Lấy các phần tử HTML cần thao tác
+const decrementButton = document.getElementById("decrement");
+const incrementButton = document.getElementById("increment");
+const quantityInput = document.querySelector(".counter");
+
+// Đặt sự kiện khi nút "Trừ" được nhấn
+decrementButton.addEventListener("click", () => {
+    let currentQuantity = parseInt(quantityInput.value);
+    if (currentQuantity > 1) {
+        currentQuantity--;
+        quantityInput.value = currentQuantity;
+    }
+});
+
+//quantyti
+incrementButton.addEventListener("click", () => {
+    let currentQuantity = parseInt(quantityInput.value);
+    currentQuantity++;
+    quantityInput.value = currentQuantity;
+});
+quantityInput.addEventListener("input", () => {
+    let inputQuantity = parseInt(quantityInput.value);
+    if (isNaN(inputQuantity) || inputQuantity < 1) {
+        inputQuantity = 1; 
+    }
+    quantityInput.value = inputQuantity;
+});
+
+
+
+
+
+
+

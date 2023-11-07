@@ -1,18 +1,29 @@
+#product-nav {
+    margin-left: 20px;
+}
+
 #nav-title {
     cursor: pointer;
     color: red;
+    margin-top: 20px;
+    
+ 
 }
 
 li {
     list-style: none;
+  
 }
 
 .list-product li {
+    margin-top: 20px;
     border: 1px solid hsl(0, 0%, 0%);
     max-width: 80px;
+   
 }
 
 #products-item {
+    margin-top: 20px;
     height: 100vh;
     overflow-y: scroll;
 }
@@ -20,10 +31,12 @@ li {
 #product-title {
 
     height: fit-content;
+    font-family: Oswald;
 }
 
 
 #product-title h1 {
+    margin-top: 20px;
     color: #252a2b;
     font-family: Roboto;
     font-size: 18px;
@@ -34,6 +47,7 @@ li {
 }
 
 #product-title h4 {
+    font-size: 18px;
     color: #a3a5a7;
     display: inline;
     font-size: 12px;
@@ -49,10 +63,28 @@ span {
     line-height: 25.2px;
 }
 
+/* .style-choice img {
+    border-radius: 50%; 
+    height: 30px; 
+    width: 30px; 
+    object-fit: cover; 
+    object-position: 100% 20%;
+}
+
+.style-choice:hover img{
+    border-radius: 50%; 
+    height: 40px; 
+    width: 40px; 
+    object-fit: cover; 
+    object-position: 100% 20%;
+    border: solid 2px #f48c42;
+    border-radius: 50%;
+} */
+
 
 
 .size-button {
-    padding: 10px 20px;
+    padding: 5px 20px;
     background-color: #ffffff;
     color: #000000;
     border: none;
@@ -67,11 +99,82 @@ span {
     color: #ffffff;
 }
 
-.size-button h6 {
+#select-size a {
+    font-size: 20%;
     color: #323030;
-    displayinline;
+    display: inline;
     font-family: Roboto;
     font-size: 12px;
     line-height: 40px;
     text-align: left;
+}
+
+#select-quantyti {
+    display: flex;
+    align-items: center;
+}
+
+#select-quantyti button {
+    width: 40px;
+    border: 1px solid black;
+
+    padding: 5px;
+    background-color: #fff;
+    cursor: pointer;
+
+}
+
+.counter {
+    border: 1px solid black;
+    padding: 5px;
+    width: 40px;
+    /* Điều chỉnh kích thước input field theo ý muốn */
+    text-align: center;
+    margin: 0 1px;
+    /* Khoảng cách giữa các phần tử là 1px */
+}
+
+#addtocart {
+    text-align: center;
+    margin-top: 20px;
+
+
+}
+
+#addtocart button {
+    align-items: center;
+    background-color: #060606;
+    display: inline-block;
+    color: #fff;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 25vw;
+    height: 6vh;
+}
+
+#addtocart button:hover {
+    background-color: #484444;
+
+}
+
+#at-store {
+    align-items: center;
+    display: inline-block;
+    font-size: 14px;
+    list-style: none;
+    color: #000000;
+    margin-top: 20px;
+    border: 1px solid #000000;
+    width: 25vw;
+    height: 6vh;
+}
+
+#at-store a {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    padding: 14px;
 }

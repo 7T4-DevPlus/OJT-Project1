@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  
   <div class="row w-100">
     <nav id='product-nav' class="col-md-2">
       <h4 id='nav-title' onclick="isShowNavSideBar()">Sản phẩm</h4>
@@ -47,13 +48,36 @@
         <h4>Mã sản phẩm: KN.PC.2307003-01</h4>
         <span style="display: block;"> 2.350.000 đ</span>
         <hr>
+        <!-- <div style="display: flex;">
+          <div id="style-choice1" class="style-choice">
+              <img id="style1" src="https://pos.nvncdn.net/27a4d8-122812/ps/20230920_rxXNVBCsfj.jpeg"/>
+          </div>
+          <div style="width: 10px;"></div>
+          <div id="style-choice2" class="style-choice">
+              <img id="style2" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699178027/Image_OJT7T4_Project1/Session1_body/1.3_jvbs9x.jpg"/>
+          </div>
+      </div> -->
+        
         <div id="select-size">
           <button class="size-button" onclick="toggleButtonColor(this)">S</button>
           <button class="size-button" onclick="toggleButtonColor(this)">M</button>
           <button class="size-button" onclick="toggleButtonColor(this)">L</button>
+          <br>
+          <a href="">Hướng dẩn chọn size</a>
         </div>
-        <h6>Hướng dẩn chọn size</h6>
         <hr>
+        <div id="select-quantyti">
+            <button id="decrement">-</button>
+            <input class="counter" type="text" id="${obj.itemid}" value="1" />
+            <button id="increment">+</button>
+         </div>
+         <div id="addtocart">
+          <button type="">BUY NOW</button>
+          <div id="at-store">
+            <a>TRIAL DIRECT AT STORE</a>
+          </div>
+         </div>
+        </div>
 
 
       </div>
