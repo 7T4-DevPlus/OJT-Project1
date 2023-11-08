@@ -1,0 +1,377 @@
+.breadcrumb-container {
+    padding: 25px;
+    margin-bottom: 0;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    background: #fff;
+    background-size: auto auto;
+    background-size: cover;
+    
+
+}
+.breadcrumb{
+    padding-left: 0px;
+}
+.breadcrumb-container .title-page {
+    z-index: 9;
+    text-transform: uppercase;
+    color: #111;
+    position: relative;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+
+.breadcrumb-container i {
+    
+    padding: 0 7px;
+}
+
+.breadcrumb li {
+    display: inline;
+    color: #111;
+}
+
+.arrow-icon {
+    width: 12px; 
+    height: auto; 
+    
+}
+
+.breadcrumb a[itemprop="url"] {
+    color: #000; 
+    font-weight: bold; 
+    text-decoration: none;
+}
+
+li strong span[itemprop="title"] {
+    color: rgb(161, 130, 135); 
+}
+
+.align-right-section {
+    float: right; /* Align to the right */
+    text-align: right; /* Make the text align to the right */
+    margin-right: 20px; /* Adjust margin as needed */
+}
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(32, 25, 25);
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background: rgb(255, 255, 255);
+    text-align: left; /* Align dropdown items to the left */
+    width: auto;
+}
+  
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+
+  
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+  
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+
+.sortPagiBar {
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    width: 25%;
+    height: 40%;
+    margin-left: 70%;
+    margin-top: 6px;
+}
+
+#dropdown label {
+    float: left;
+    line-height: 38px;
+    font-size: 14px;
+    margin-right: 6px;
+    margin-bottom: 0;
+}
+
+.aside-title h2 {
+    background: #cdc5b7;
+    padding: 8px 15px;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+}
+.aside-title h2 {
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ebebeb;
+    position: relative;
+    font-size: 17px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.title-head {
+    font-size: 1.14286em;
+    font-weight: 700;
+    color: #555;
+    text-decoration: none;
+    margin-top: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.collection-category {
+    width: 15%; 
+    padding: 20px;
+}
+
+.main-content {
+    width: 75%; 
+    padding: 20px;
+}
+
+.sort-dropdown-container {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+body
+{
+    margin: 0 auto; 
+    padding: 0;
+    width: 1200px;
+}
+
+.nav
+{
+    width: 75%; 
+    float: right; 
+    
+}
+ 
+.content
+{
+    width: 25%; 
+    float: left; 
+    
+}
+
+.aside-title {
+    width: 200px;
+    height: 35px;
+}
+.aside-filter .filter-container {
+    border: 1px solid #cdcdcd;
+    border-top: none;
+    padding: 10px;
+    width: 209px;
+    margin-bottom: 30px;
+}
+
+.categories-box {
+    border: 1px solid #cdcdcd;
+    border-top: none;
+    padding: 10px;
+    width: 209px;
+    margin-bottom: 30px;
+}
+
+
+.pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    width: 30px; /* Set the width and height for square buttons */
+    height: 30px;
+    line-height: 30px; /* Center text vertically */
+    text-align: center;
+    border: 1px solid #ccc; /* Add a border */
+    background-color: #fff; /* Set the background color */
+    color: #333; /* Set text color */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #ccc; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.page-item.disabled .page-link {
+    cursor: not-allowed;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #cdc5b7;
+    border-color: #cdc5b7;
+    color: #fff;
+    display: block;
+}
+
+.product-box {
+    width: 21vw
+}
+
+ul {
+    list-style: none outside;
+}
+ 
+.aside-item.collection-category .nav-item.active>a {
+    color: #cdc5b7;
+}
+.categories-box .lv1 li a {
+    font-size: 14px;
+    display: block;
+}
+
+.open-close {
+    cursor: pointer;
+}
+
+#product-list {
+    display: none;
+}
+
+.categories-box {
+    color: black; 
+}
+.categories-box a {
+    color: black; 
+    text-decoration: none;
+}
+
+
+.product-box a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.product-box a:hover {
+    color: #cdc5b7; 
+}
+
+
+.product-name,
+.price-box {
+    text-align: center;
+}
+.price-box{
+    color: #cdc5b7;
+    font-size: 18px;
+}
+
+.products-view-grid .product-box {
+    border: 1px solid #ddd;
+    
+}
+.products-view-grid .product-box {
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+.product-box {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+
+.product-box .product-thumbnail img {
+    
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    -o-object-fit: contain !important;
+    object-fit: contain !important;
+    max-height: initial !important;
+}
+
+.sort-Pagibar {
+    margin-bottom: 30px;
+    padding: 10px;
+    
+    border-radius: 5px;
+    width: 100%;
+    height: 70px;
+    border: 1px solid #e5e5e5;
+}
+
+#right-sort label {
+    float: left;
+    line-height: 38px;
+    font-size: 14px;
+    margin-right: 6px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+/* hover */
+
+.hover {
+    display: none;
+    /* position: absolute; */
+}
+
+.product-box:hover .original{
+    display: none;
+    /* animation: fadeout 0.7s; */
+}
+
+.product-box:hover .hover {
+    display: block;
+    /* animation: fadein 0.7s; */
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
