@@ -275,19 +275,18 @@ ul {
 }
 
 
-.product-box a {
+.product-box .product-info {
     text-decoration: none;
     color: black;
 }
 
 
-.product-box a:hover {
+.product-box .product-info:hover {
     color: #cdc5b7; 
 }
 
 
-.product-name,
-.price-box {
+.product-info {
     text-align: center;
 }
 .price-box{
