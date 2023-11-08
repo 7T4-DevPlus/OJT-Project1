@@ -22,6 +22,16 @@ const navSlide = () => {
     });
 
 }
-
-
 navSlide();
+
+function homePage(){
+    window.location.href = "home.html"
+}
+
+function loginPage(){
+    window.location.href = "loginsignup.html"
+}
+
+function productPage(){
+    window.location.href = "products.html"
+}

@@ -26,16 +26,38 @@ async function getApiData() {
 
         products.forEach(product => {
             document.getElementById('products').innerHTML += `
-            <div class="product-box " style="height: 69vh; width: 18vw;">
-            <div class="product-thumbnail">
-                    <img class="original" src="${product.imgUrl[0]}">
-                    <img class="hover" src="${product.imgUrl[1]}">
-            </div>
-            <div class="product-info a-left">
-                <p class="product-name text2line" style="margin:0;">
-                ${product.name}</p>
-                <span class="price product-price">${product.price}<u>đ</u></span>
-            </div>       
+            <div 
+            style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
+                <div class="product-box">
+                    <div class="product-thumbnail">
+                        <img class="original" src="${product.imgUrl[0]}">
+                        <img class="hover" src="${product.imgUrl[1]}">
+                        <div class="hover-part">
+                            <div class="pumpup-item" style="border-right: 1px solid white">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </div>
+                            <div class="pumpup-item">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="product-info a-left">
+                    <p style="margin:0;">${product.name}</p>
+                    <p style="margin:0;">${product.price}<u>đ</u></p>
+                </div> 
             </div>
             `;
         });

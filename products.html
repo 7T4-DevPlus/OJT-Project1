@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Products</title>
-    <link rel="stylesheet" href="css/sanpham.css">
+    <link rel="stylesheet" href="css/viewproducts.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <style>
         body {
@@ -15,6 +15,13 @@
 </head>
 
 <body>
+    <!-- Navbar -->
+    <div style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
+        <div style="width:100%; height: 70px;">
+            <iframe name="navbar" id="navbar" src="navbar.html" width="100%" scrolling="no" height="70px"></iframe>
+        </div>
+    </div> 
+    
     <section class="bread-crumb">
         <div class="breadcrumb-container">
             <div class="title-page">Tất cả sản phẩm</div>
@@ -33,130 +40,7 @@
             </ul>
         </div>
     </section>
-
-    <div class="nav">
-        <div class="category-products products">
-            <div class="sort-Pagibar">
-                <div id="right-sort">
-                    <label class="left" style="
-                    margin-left: 640px;
-                    margin-top: 15px;
-                ">Sắp xếp: </label>
-                </div>
-                <div class="sortPagiBar" style="
-                width: 130px;
-                margin-left: 700px;
-                margin-bottom: 30px;
-                margin-top: 1%;
-            ">
-                    <div class="row">
-                        <div class="col-xs-5 col-md-6 col-sm-6">
-                            <div class="hidden-xs">
-                                <a href="javascript:;" data-view="grid">
-                                    <span class="btn button-view-mode view-mode-grid active ">
-                                        <i class="fa fa-th" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                                <a href="javascript:;" data-view="list" onclick="switchView('list')">
-                                    <span class="btn button-view-mode view-mode-list ">
-                                        <i class="fa fa-th-list" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                                <div class="tt hidden">
-
-                                </div>
-                                <div>
-
-                                    <div class="dropdown">
-
-                                        <button onclick="myFunction()" class="dropbtn" style="
-                                        width: 124px;
-                                        padding-top: 8px;
-                                        padding-right: 8px;
-                                        padding-bottom: 8px;
-                                        padding-left: 8px;
-                                        ">Mặc định</button>
-                                        <div id="myDropdown" class="dropdown-content">
-                                            <a href="#">Mặc định</a>
-                                            <a href="#">A → Z</a>
-                                            <a href="#">Z → A</a>
-                                            <a href="#">Giá tăng dần</a>
-                                            <a href="#">Giá giảm dần</a>
-                                            <a href="#">Hàng mới nhất</a>
-                                            <a href="#">Hàng cũ nhất</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <script>
-                    function myFunction() {
-                        document.getElementById("myDropdown").classList.toggle("show");
-                    }
-
-                    window.onclick = function (event) {
-                        if (!event.target.matches('.dropbtn')) {
-                            var dropdowns = document.getElementsByClassName("dropdown-content");
-                            var i;
-                            for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (openDropdown.classList.contains('show')) {
-                                    openDropdown.classList.remove('show');
-                                }
-                            }
-                        }
-                    }
-                </script>
-            </div>
-        </div>
-        <div>
-            <section id="products" class="products-view products-view-grid" style="display: grid; grid-template-columns: auto auto auto;">
-                
-            </section>
-
-
-            <div class="shop-pag text-xs-right">
-                <nav>
-                    <ul class="pagination clearfix">
-
-                        <li class="page-item disabled"><a class="page-link hidden-xs" href="#">«</a></li>
-
-                        <li class="active page-item disabled"><a class="page-link" href="javascript:;">1</a></li>
-
-                        <li class="page-item"><a class="page-link" onclick="doSearch(2)" href="javascript:;">2</a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link" onclick="doSearch(3)" href="javascript:;">3</a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link" onclick="doSearch(4)" href="javascript:;">4</a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link" onclick="doSearch(5)" href="javascript:;">5</a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link" onclick="doSearch(6)" href="javascript:;">6</a>
-                        </li>
-
-                        <li class="page-item"><a class="page-link hidden-xs" onclick="doSearch(2)"
-                                href="javascript:;">»</a></li>
-
-                    </ul>
-                </nav>
-
-            </div>
-        </div>
-    </div>
-
-    <div>
+    <div class="body-products">
         <div class="content">
             <aside class="aside-item collection-category">
                 <div class="aside-title">
@@ -298,8 +182,118 @@
                     </div>
             </aside>
         </div>
+
+        <div class="nav">
+            <div class="category-products products">
+                <div class="sort-Pagibar">
+                    <div id="right-sort">
+                        <p>Sắp xếp:</p>
+                    </div>
+                    <div class="sortPagiBar">
+                        <div class="row">
+                            <div class="col-xs-5 col-md-6 col-sm-6">
+                                <div class="hidden-xs">
+                                    <a href="javascript:;" data-view="grid">
+                                        <span class="btn button-view-mode view-mode-grid active ">
+                                            <i class="fa fa-th" aria-hidden="true"></i>
+                                        </span>
+                                    </a>
+                                    <a href="javascript:;" data-view="list" onclick="switchView('list')">
+                                        <span class="btn button-view-mode view-mode-list ">
+                                            <i class="fa fa-th-list" aria-hidden="true"></i>
+                                        </span>
+                                    </a>
+                                    <div class="tt hidden">
+
+                                    </div>
+                                    <div>
+
+                                        <div class="dropdown">
+                                            <button onclick="myFunction()" class="dropbtn"><p>Mặc định</p></button>
+                                            <div id="myDropdown" class="dropdown-content">
+                                                <a href="#">Mặc định</a>
+                                                <a href="#">A → Z</a>
+                                                <a href="#">Z → A</a>
+                                                <a href="#">Giá tăng dần</a>
+                                                <a href="#">Giá giảm dần</a>
+                                                <a href="#">Hàng mới nhất</a>
+                                                <a href="#">Hàng cũ nhất</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                window.onclick = function (event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+                }
+            </script>
+
+            <div class="all-products">
+                <section id="products" class="products-view products-view-grid" style="display: grid; grid-template-columns: auto auto auto;">               
+                </section>
+            </div>
+        </div>   
+
+        <script src="js/viewproducts.js"></script>
     </div>
-    <script src="js/viewproducts.js"></script>
+
+    <div>
+        <div class="shop-pag text-xs-right">
+            <nav>
+                <ul class="pagination ">
+
+                    <li class="page-item disabled"><a class="page-link hidden-xs" href="#">«</a></li>
+
+                    <li class="active page-item disabled"><a class="page-link" href="javascript:;">1</a></li>
+
+                    <li class="page-item"><a class="page-link" onclick="doSearch(2)" href="javascript:;">2</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" onclick="doSearch(3)" href="javascript:;">3</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" onclick="doSearch(4)" href="javascript:;">4</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" onclick="doSearch(5)" href="javascript:;">5</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" onclick="doSearch(6)" href="javascript:;">6</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link hidden-xs" onclick="doSearch(2)"
+                            href="javascript:;">»</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- This is FOOTER -->
+    <div style="bottom: 0; width: 100vw; right: 0; margin-top: 10vh;">
+        <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
+    </div>            
 </body>
 
 </html>
