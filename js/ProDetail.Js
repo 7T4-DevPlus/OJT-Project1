@@ -13,7 +13,7 @@ const isShowNavSideBar = (status) => {
 };
 //add json data
 window.onload = function () {
-  fetch("db.json")
+  fetch("productDetail.json")
     .then((response) => response.json())
     .then((data) => {
       const products = data.products;
@@ -89,10 +89,3 @@ quantityInput.addEventListener("input", () => {
     }
     quantityInput.value = inputQuantity;
 });
-
-
-
-
-
-
-

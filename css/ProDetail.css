@@ -6,20 +6,20 @@
     cursor: pointer;
     color: red;
     margin-top: 20px;
-    
- 
+
+
 }
 
 li {
     list-style: none;
-  
+
 }
 
 .list-product li {
     margin-top: 20px;
     border: 1px solid hsl(0, 0%, 0%);
     max-width: 80px;
-   
+
 }
 
 #products-item {
@@ -177,4 +177,89 @@ span {
     height: auto;
     width: auto;
     padding: 14px;
+}
+
+#icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    /* Màu nền đen */
+}
+
+.service-box {
+    width: 5vw;
+    height: 15vw;
+    margin: 1vw;
+}
+
+#serviceRow {
+    display: flex;
+    width: 100%;
+    height: 15vw;
+    background-color: #fafafa;
+    margin-top: 50px;
+}
+
+.serviceItem {
+    width: 25%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#icon {
+    margin: 0 0 15px;
+    background-color: #000000;
+    display: inline-table;
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
+    align-items: center;
+    color: #818181;
+}
+
+#icon img {
+    width: 2vw;
+    height: 2vw;
+    margin: 1vw;
+}
+
+#icon:hover {
+    border-radius: 10%;
+    transition: all 0.5s ease;
+}
+
+#icon:hover img {
+    transform: rotate(360deg);
+    transition: all 0.5s ease;
+}
+
+
+.detail-sv h3 {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.8px;
+    margin: 0px 0px 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.detail-sv p {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
 }

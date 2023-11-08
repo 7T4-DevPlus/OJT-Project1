@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  
+
   <div class="row w-100">
     <nav id='product-nav' class="col-md-2">
       <h4 id='nav-title' onclick="isShowNavSideBar()">Sản phẩm</h4>
@@ -57,7 +57,7 @@
               <img id="style2" src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699178027/Image_OJT7T4_Project1/Session1_body/1.3_jvbs9x.jpg"/>
           </div>
       </div> -->
-        
+
         <div id="select-size">
           <button class="size-button" onclick="toggleButtonColor(this)">S</button>
           <button class="size-button" onclick="toggleButtonColor(this)">M</button>
@@ -67,30 +67,65 @@
         </div>
         <hr>
         <div id="select-quantyti">
-            <button id="decrement">-</button>
-            <input class="counter" type="text" id="${obj.itemid}" value="1" />
-            <button id="increment">+</button>
-         </div>
-         <div id="addtocart">
+          <button id="decrement">-</button>
+          <input class="counter" type="text" id="${obj.itemid}" value="1" />
+          <button id="increment">+</button>
+        </div>
+        <div id="addtocart">
           <button type="">BUY NOW</button>
           <div id="at-store">
             <a>TRIAL DIRECT AT STORE</a>
           </div>
-         </div>
         </div>
-
-
       </div>
+    </div>
+  </div>
+  </div>
+  <div id="serviceRow">
+    <div class="serviceItem" id="serviceBox1">
+        <div id="icon">
+        <img class="service-image" src="https://web.nvnstatic.net/tp/T0295/img/service-1.png?v=3" alt="">
+      </div>
+        <div class="detail-sv">
+          <h3>FREE SHIPPING</h3>
+          <p>All orders from 2.500.000vnd</p>
 
+        </div>
+    </div>
+    <div class="serviceItem" id="serviceBox2">
+      <div id="icon"> 
+        <img class="service-image" src="https://web.nvnstatic.net/tp/T0295/img/service-2.png?v=3" alt="">
+      </div>
+       <div class="detail-sv">
+          <h3>03 DAYS RETURN</h3>
+          <p>Free 3 days return</p>
 
+        </div>
+    </div>
+    <div class="serviceItem" id="serviceBox3">
+        <div id="icon">
+          <img class="service-image" src="https://web.nvnstatic.net/tp/T0295/img/service-3.png?v=3" alt="">
+        </div>
+        <div class="detail-sv">
+          <h3>HOTLINE</h3>
+          <p>0338.806.222</p>
 
+        </div>
+    </div>
+    <div class="serviceItem" id="serviceBox4">
+        <div id="icon">
+          <img class="service-image" style="filter: invert(85%);" src="https://web.nvnstatic.net/tp/T0295/img/service-4.png?v=3" alt="">
+        </div>
+        <div class="detail-sv">
+          <h3>STORE</h3>
+          <p>116 Mai Thuc Lan - Ngu Hanh Son - Da Nang</p>
 
-
+        </div>
 
     </div>
   </div>
-
   <script src="./js/ProDetail.Js"></script>
+  
 </body>
 
 </html>
