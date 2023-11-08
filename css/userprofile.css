@@ -1,0 +1,49 @@
+/* CSS for the layout */
+body {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Oswald';
+    font-size: 18px;
+}
+
+iframe{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.container {
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+}
+.sidebar {
+    width: 20%;
+    background-color: #F5F5F5;
+    padding: 25px;
+    margin-left: 20vw;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    margin-bottom: 10px;
+}
+.content {
+    width: 75%;
+    background-color: white;
+    padding: 20px;
+}
+.content-section {
+    width: 75%;
+    background-color: white;
+    padding: 20px;
+}
