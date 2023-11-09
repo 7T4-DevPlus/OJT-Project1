@@ -29,7 +29,7 @@
             <div style="position: absolute; width:100%; height: 70px;">
                 <iframe name="navbar" id="navbar" src="navbar.html" width="100%" scrolling="no" height="70px"></iframe>
             </div>
-        </div> 
+        </div>
 
         <!-- This is HEADER -->
         <div id="main" class="row">
@@ -323,8 +323,8 @@
 
                 // slides.addEventListener("mouseover",function (){
                 //     pauseSlide();
-                // }) 
-                
+                // })
+
                 // function pauseSlide() {
                 //     clearInterval(nextSlide, slideInterval)
                 // }
@@ -333,7 +333,7 @@
                     const offsetX = -currentSlide * slideWidth;
                     slideshow.css("transform", `translateX(${offsetX}px)`);
                 }
-                
+
                 function nextSlide() {
                     if (currentSlide < slideCount - 4) {
                         currentSlide += 1;
@@ -342,7 +342,7 @@
                     }
                     updateSlideshow();
                 }
-                    
+
                 setInterval(nextSlide, slideInterval);
                 updateSlideshow();
             });
@@ -596,7 +596,7 @@
         <div style="position: relative; min-height: 100vh;">
             <div style="position: absolute; bottom: 0; width: 100%; right: 0;">
                 <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
-            </div>            
+            </div>
         </div>
 
     </body>
