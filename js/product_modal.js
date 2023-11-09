@@ -17,36 +17,36 @@ window.onclick = function(event) {
 }
 
 // STYLE
-var styleChoice1 = document.getElementById("style-choice1");
-var styleChoice2 = document.getElementById("style-choice2");
-var style1 = document.getElementById("style1");
-var style2 = document.getElementById("style2");
+// var styleChoice1 = document.getElementById("style-choice1");
+// var styleChoice2 = document.getElementById("style-choice2");
+// var style1 = document.getElementById("style1");
+// var style2 = document.getElementById("style2");
 
-style1.addEventListener("click", () => {
-    if(styleChoice1.classList.contains("style-choice"))
-    {
-        styleChoice1.classList.remove("style-choice");
-        styleChoice1.classList.toggle("style-chosen");
-    }
-    if(styleChoice2.classList.contains("style-chosen"))
-    {
-        styleChoice2.classList.remove("style-chosen");
-        styleChoice2.classList.toggle("style-choice");
-    }
+// style1.addEventListener("click", () => {
+//     if(styleChoice1.classList.contains("style-choice"))
+//     {
+//         styleChoice1.classList.remove("style-choice");
+//         styleChoice1.classList.toggle("style-chosen");
+//     }
+//     if(styleChoice2.classList.contains("style-chosen"))
+//     {
+//         styleChoice2.classList.remove("style-chosen");
+//         styleChoice2.classList.toggle("style-choice");
+//     }
     
-});
-style2.addEventListener("click", () => {
-    if(styleChoice2.classList.contains("style-choice"))
-    {
-        styleChoice2.classList.remove("style-choice");
-        styleChoice2.classList.toggle("style-chosen");
-    }
-    if(styleChoice1.classList.contains("style-chosen"))
-    {
-        styleChoice1.classList.remove("style-chosen");
-        styleChoice1.classList.toggle("style-choice");
-    }
-});
+// });
+// style2.addEventListener("click", () => {
+//     if(styleChoice2.classList.contains("style-choice"))
+//     {
+//         styleChoice2.classList.remove("style-choice");
+//         styleChoice2.classList.toggle("style-chosen");
+//     }
+//     if(styleChoice1.classList.contains("style-chosen"))
+//     {
+//         styleChoice1.classList.remove("style-chosen");
+//         styleChoice1.classList.toggle("style-choice");
+//     }
+// });
 
 
 

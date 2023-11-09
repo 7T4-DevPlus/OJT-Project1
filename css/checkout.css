@@ -1,0 +1,385 @@
+body {
+  /* font-family: Arial; */
+  font-size: 16px;
+  padding: 8px;
+  font-family: 'Oswald';
+}
+
+iframe{
+  border: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+select.form-select {
+  font-family: 'Oswald';
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+input[type=text], input[type=email] {
+  font-family: 'Oswald';
+  border-radius: 3px;
+}
+
+.message {
+  display: block;
+  font-size: 16px;
+}
+
+.hide {
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.col-75 {
+  flex: 0 0 70%; /* Set main content width */
+  margin-bottom: 20px; /* Add space between main content and sidebar */
+}
+
+.sidebar {
+  flex: 0 0 30%; /* Set sidebar width */
+}
+
+/* Media query for smaller screens like phones */
+@media (max-width: 767px) {
+  .col-75, .sidebar {
+      flex: 100%; /* Full width for smaller screens */
+  }
+}
+
+#shippingFee {
+  display: none;
+}
+
+/* Hide the browser's default radio button */
+/* Customize the label (the container) */
+.radiobutton {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 260px;
+}
+
+/* Hide the browser's default radio button */
+.radiobutton input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  
+}
+
+/* On mouse-over, add a grey background color */
+.radiobutton:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radiobutton input:checked ~ .checkmark {
+  background-color: #000000;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radiobutton input:checked ~ .checkmark:after {
+  display: block;
+  top: 50%; /* Position the dot in the middle vertically */
+  left: 50%; /* Position the dot in the middle horizontally */
+  transform: translate(-50%, -50%); /* Center the dot */
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+}
+
+.shipping-details {
+  display: flex;
+  align-items: center;
+}
+
+.shipping-details img {
+  margin-right: 10px; /* Adjust the spacing between the image and the text */
+  margin-top: -2vh;
+}
+
+.price-field {
+  margin-left: 30px; /* Adjust margin as needed */
+  margin-bottom: 13px;
+  font-size: 14px;
+}
+
+.shipping-details {
+  display: flex;
+  align-items: center;
+}
+
+.price-field {
+  flex: 1; /* Allow price field to take remaining space */
+}
+
+button {
+  width: 40%;
+  height: 6vh;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+}
+
+button:hover {
+  width: 40%;
+  height: 6vh;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container a {
+  text-decoration: none;
+  /* Additional styles for the Cart link */
+}
+
+.product-thumbnail__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.product_image {
+  position: relative;
+  display: inline-block;
+}
+.product-img {
+  max-width: 7vw;
+  max-height: 7vh;
+}
+.quantity-circle {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #000000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+
+.quantity-number {
+  font-weight: bold;
+}
+
+.price-field-ship {
+  top: 0;
+  margin-left: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.product-img-container {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.product-img {
+  max-width: 7vw;
+  max-height: 7vh;
+  display: block;
+}
+
+.product-quantity-circle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #000;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.product-info {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-size {
+  margin-top: 5px;
+  color: #555;
+}
+
+.product-cart-price {
+  flex: 0 0 auto;
+  font-weight: bold;
+  color: #000000;
+}
+
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.shipimg{
+  max-width: 4vw;
+  max-height: 4vh;
+}
+
