@@ -1,10 +1,14 @@
+iframe{
+    margin: 0;
+}
+
 #product-nav {
     margin-left: 20px;
 }
 
 #nav-title {
     cursor: pointer;
-    color: red;
+    color: #484444;
     margin-top: 20px;
 
 
@@ -16,14 +20,14 @@ li {
 }
 
 .list-product li {
-    margin-top: 20px;
+   margin-top: 20px;
     border: 1px solid hsl(0, 0%, 0%);
     max-width: 80px;
 
 }
 
 #products-item {
-    margin-top: 20px;
+   
     height: 100vh;
     overflow-y: scroll;
 }
@@ -36,7 +40,7 @@ li {
 
 
 #product-title h1 {
-    margin-top: 20px;
+  
     color: #252a2b;
     font-family: Roboto;
     font-size: 18px;
