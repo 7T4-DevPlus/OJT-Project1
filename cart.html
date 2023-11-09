@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" href="css/cart.css" />
+</head>
+<body>
+    <!-- This is Navbar -->
+    <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
+        <div style="width:100%; height: 70px;">
+            <iframe src="navbar.html" width="100%" scrolling="no" height="70px"></iframe>
+        </div>
+    </div>
+
+    <div>
+        <h2 style="text-align: center; margin-top: 5vh; margin-bottom: -10px;">GIỎ HÀNG</h2>
+        <p style="text-align: center;"><a href="home.html" style="text-decoration: none; color: black;"><b>Trang chủ &nbsp;</b></a> > <b style="color: #CDC5B7;">&nbsp; Giỏ hàng</b></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699245948/Image_OJT7T4_Project1/Session1_body/1.6_zzezmg.jpg" alt="Product 1"></td>
+                    <td>
+                        <p class="product"><b>JOLIE DRESS</b></p>
+                        <p style="margin-top: -10px;">L</p>
+                    </td>
+                    <td class="price" style="color: #CDC5B7;"><b>10.00</b></td>
+                    <td>
+                        <button class="btn-dec">-</button>
+                        <input type="text" class="quantity" value="1" style="border: none" readonly>
+                        <button class="btn-inc">+</button>
+                    </td>
+                    <td class="total" style="font-weight: bold; color: #CDC5B7">10.00</td>
+                    <td><button class="btn-delete"><img src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699413048/trash-can-regular_t3adpq.png"></button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="width: 80%; margin-left: 10%;">
+
+            <div style="display: flex">
+                <div class="continue-purchase">
+                    <a href="products.html" style="text-decoration: none; color: white;">
+                        <button style="font-family: 'Oswald'; font-weight: bold">TIẾP TỤC MUA HÀNG</button>
+                    </a>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="total-box">
+                        <div class="left-box">
+                            <p style="margin: 1vh;">Tổng tiền thanh toán</p>
+                        </div>
+                        <div class="right-box">
+                            <p style="margin: 1vh; font-weight: bold; color: #CDC5B7">10.00</p>
+                        </div>
+                    </div>
+                    <a href="checkout.html" style="text-decoration: none; color: white;">
+                        <button style="font-family: 'Oswald'; font-weight: bold">TIẾN HÀNH THANH TOÁN</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is FOOTER -->
+    <div class="footer" style="margin-top: 10vh;">
+        <div style="bottom: 0; width: 100%; right: 0;">
+            <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
+        </div>            
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach((row) => {
+                const priceCell = row.querySelector(".price");
+                const quantityInput = row.querySelector(".quantity");
+                const totalCell = row.querySelector(".total");
+                const incButton = row.querySelector(".btn-inc");
+                const decButton = row.querySelector(".btn-dec");
+                const deleteButton = row.querySelector(".btn-delete");
+
+                incButton.addEventListener("click", function () {
+                    const currentQuantity = parseInt(quantityInput.value);
+                    quantityInput.value = currentQuantity + 1;
+                    updateTotal();
+                });
+
+                decButton.addEventListener("click", function () {
+                    const currentQuantity = parseInt(quantityInput.value);
+                    if (currentQuantity > 1) {
+                        quantityInput.value = currentQuantity - 1;
+                        updateTotal();
+                    }
+                });
+
+                deleteButton.addEventListener("click", function () {
+                    row.remove();
+                    updateTotal();
+                });
+
+                function updateTotal() {
+                    const price = parseFloat(priceCell.textContent);
+                    const quantity = parseInt(quantityInput.value);
+                    const total = (price * quantity).toFixed(2);
+                    totalCell.textContent = total;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

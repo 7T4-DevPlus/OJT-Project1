@@ -1,10 +1,11 @@
+
 /* CSS for the layout */
 body {
     justify-content: center;
     align-items: center;
     margin: 0;
     font-family: 'Oswald';
-    font-size: 18px;
+    font-size: 16px;
 }
 
 iframe{
