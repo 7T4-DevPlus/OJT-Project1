@@ -138,7 +138,7 @@ iframe{
     height: 100%;
 }
 
-.style-choice img {
+/* .style-choice img {
     border-radius: 50%; 
     height: 30px; 
     width: 30px; 
@@ -164,7 +164,7 @@ iframe{
     object-position: 100% 20%;
     border: solid 2px #f48c42;
     border-radius: 50%;
-}
+} */
 
 .size-choice {
     width: 40px; 

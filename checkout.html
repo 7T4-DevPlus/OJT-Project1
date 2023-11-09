@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="checkout.css">
+</head>
+
+<body>
+    <div style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1; ">
+        <div style= "width:100%; height: 70px;">
+            <iframe name="navbar" id="navbar" src="navbar.html" width="100%" scrolling="no" height="70px"></iframe>
+        </div>
+    </div> 
+    
+    <h2>Checkout </h2>
+    <form action="" method="post">
+        <main class="main">
+            <div class="col-75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <input type="text" id="fname" name="fullname" placeholder="Full name" required>
+                            <input type="email" id="email" name="email" placeholder="Email" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please enter a valid email address')">                   
+                            <input type="text" id="phone" name="phone" placeholder="Phone number" required
+                                pattern="[0-9]{10}">
+                            <!-- New label for city dropdown -->
+                            <select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm"
+                                required>
+                                <option value="" selected>Choose city</option>
+                            </select>
+                            <select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm"
+                                required>
+                                <option value="" selected>Choose district</option>
+                            </select>
+                            <select class="form-select form-select-sm" id="ward" aria-label=".form-select-sm" required>
+                                <option value="" selected>Choose ward</option>
+                            </select>
+                            <input type="text" id="house" name="house" placeholder="House address" required>
+                        </div>
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label class="radiobutton">Payment on arrival!
+                                <input type="checkbox" name="payment" checked disabled>
+                                <span class="checkmark"></span>
+                            </label>
+                            <h3>Shipping</h3>
+                            <div id="shippingFee">
+                                <div class="shipping-details">
+                                    <img class="shipimg" src="images/best.png" alt="Shipping Image 1">
+                                    <label class="radiobutton">
+                                        Best (1-3 days)
+                                        <input type="radio" name="shipping" value="45000">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="price-field-ship">45,000 ₫</div>
+                                </div>
+                                <div class="shipping-details">
+                                    <img class="shipimg" src="images/ghn.png" alt="Shipping Image 2">
+                                    <label class="radiobutton">
+                                        GHN (2-4 days)
+                                        <input type="radio" name="shipping" value="35000">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="price-field-ship">35,000 ₫</div>
+                                </div>
+                                <div class="shipping-details">
+                                    <img class="shipimg" src="images/j&t.png" alt="Shipping Image 3">
+                                    <label class="radiobutton">
+                                        J&T (2-3 days)
+                                        <input type="radio" name="shipping" value="34000">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="price-field-ship">34,000 ₫</div>
+                                </div>
+                                <div class="shipping-details">
+                                    <img class="shipimg" src="images/ninja.png" alt="Shipping Image 4">
+                                    <label class="radiobutton">
+                                        Ninja Van (2-3 days)
+                                        <input type="radio" name="shipping" value="22000">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="price-field-ship">22,000 ₫</div>
+                                </div>
+                                <div class="shipping-details">
+                                    <img class="shipimg" src="images/spx.png" alt="Shipping Image 5">
+                                    <label class="radiobutton">
+                                        Spx (1-3 days)
+                                        <input type="radio" name="shipping" value="50000">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="price-field-ship">50,000 ₫</div>
+                                </div>
+                            </div>
+                            <div id="message">Please choose a city!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar">
+                <div class="col-25">
+                    <div class="container">
+                        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span>
+                        </h4>
+                        <tr class="product">
+                            <div id="product-details">
+                                <div class="product-img-container">
+                                </div>
+                                <div class="product-info">
+                                </div>
+                                <div class="product-cart-price">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="total-section">
+                                <div>
+                                    <p>Product Total: </p>
+                                </div>
+                                <div class="align-right">
+                                    <span id="productsTotal" style="font-weight: bold;"></span>
+                                </div>
+                            </div>
+                            <div class="total-section">
+                                <div id="shippingCost" class="align-right" style="display: none;">
+                                    <p>Shipping Cost: </p>
+                                </div>
+                                <div id="shippingCost" class="align-right">
+                                    <span id="displayShippingCost" style="font-weight: bold;"></span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="total-section">
+                                <p>Total</p>
+                                <span id="total-checkout"><b></b></span>
+                            </div>                            
+                            <hr>
+                            <div class="button-container">
+                                <p><a href="cart.html">Back to cart</a></p>
+                                <button id="orderButton" style="font-weight: bold;" onclick="validateFieldsAndOrder()">Order</button>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </aside>
+        </main>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="checkout.js"></script>
+
+</body>
+
+</html>

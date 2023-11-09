@@ -2,8 +2,10 @@
     <meta charset="utf-8" />
     <title></title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="StyleSheet.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/footer.css">
+
 </head>
 
 <body>
@@ -17,8 +19,8 @@
         <p>Sign up for our newsletter to receive new products and promotional codes fastest</p>
         <form action="#" method="post" id="mc-embedded-subscribe-form" class="section-newsletter__form" name="mc-embedded-subscribe-form" target="_blank">
             <div class="wrapper">
-                <input type="text" placeholder="Enter your email" />
-                <button>
+                <input type="text" id="emailInput" placeholder="Enter your email" />
+                <button type="button" id="submitButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                          stroke-linejoin="round">
@@ -28,8 +30,11 @@
                         <path d="M13 6l6 6"></path>
                     </svg>
                 </button>
+
+
             </div>
         </form>
+        <div id="message"></div>
     </div>
 </div>
 <!-- footer -->
@@ -37,20 +42,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-xs-12">
-                    <div class="third">
-                        <h4> Contact</h4>
-                        <ul>
-                            <li>Hotline: (+84) 777 463 183 </li>
-                            <li> Support Email: hello@stunited.vn</li>
-                            <div class="address">
-                                <p> <span>
+                <div class="third">
+                    <h4> Contact</h4>
+                    <ul>
+                        <li>Hotline: (+84) 777 463 183 </li>
+                        <li> Support Email: hello@stunited.vn</li>
+                        <div class="address">
+                            <p> <span>
         <a href="https://www.google.com/maps/dir/15.8892032,108.2720256/116+Mai+Th%C3%BAc+L%C3%A2n,+B%E1%BA%AFc+M%E1%BB%B9+Ph%C3%BA,+Ng%C5%A9+H%C3%A0nh+S%C6%A1n,+%C4%90%C3%A0+N%E1%BA%B5ng+550000/@15.9691337,108.191623,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3142177cb45a6f95:0x5471bcc8d673a908!2m2!1d108.2424353!2d16.0510906?entry=ttu">
           <img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/map-marker_oukon4.png" alt="Bản đồ địa chỉ">
         </a>
         116 - 118 Mai Thuc Lan</span>Ngu Hanh Son, Da Nang City
-                                </p>
-                            </div>
-                        </ul>
+                            </p>
+                        </div>
+                    </ul>
                 </div>
             </div>
 
@@ -75,20 +80,20 @@
 
                     <h4> Connect with us</h4>
                     <div class="footer-icons">
-                      <p>  <a href="https://www.facebook.com/stunited.vn/"><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/fb_ggsind.png" alt="facebook"></a>
-                        <a href="http://example.com"><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699257629/Image_OJT7T4_Project1/Footer_home/tiktok_icon_vjhb7p.svg" alt="tiktok"></a>
-                        <a href="http://example.com"><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699257629/Image_OJT7T4_Project1/Footer_home/instagram_icon_qlgi6t.svg" alt="instagram"></a></p>
+                        <p>  <a href="https://www.facebook.com/stunited.vn/"><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/fb_ggsind.png" alt="facebook"></a>
+                            <a href="http://example.com"><img src="/tiktok_icon.svg" alt="tiktok"></a>
+                            <a href="http://example.com"><img src="/instagram_icon.svg" alt="instagram"></a></p>
                     </div>
                     <div style="margin-top: 50px">
 
 
-                    <h4> Payment methods</h4>
-                    <p>   <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/img_payment_1_rk6oss.webp" alt=""></a>
-                    <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_2_n1olnd.webp" alt=""></a>
-                    <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_3_lycrro.webp" alt=""></a>
-                    <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/img_payment_4_wleng6.webp" alt=""></a>
-                    <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_5_vmyyro.webp" alt=""></a>
-                    <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_6_b5rcsx.webp" alt=""></a><p>
+                        <h4> Payment methods</h4>
+                        <p>   <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/img_payment_1_rk6oss.webp" alt=""></a>
+                            <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_2_n1olnd.webp" alt=""></a>
+                            <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_3_lycrro.webp" alt=""></a>
+                            <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004031/Image_OJT7T4_Project1/Footer_home/img_payment_4_wleng6.webp" alt=""></a>
+                            <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_5_vmyyro.webp" alt=""></a>
+                            <a ><img src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004032/Image_OJT7T4_Project1/Footer_home/img_payment_6_b5rcsx.webp" alt=""></a><p>
                     </div>
                 </div>
 
@@ -97,4 +102,8 @@
     </div>
 
 </div>
+
+<script src="js/footer.js"></script>
+
+
 </body>
