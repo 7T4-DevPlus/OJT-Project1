@@ -56,7 +56,7 @@ async function getApiData() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price}<u>đ</u></p>
+                    <p style="margin:0;">${product.price} <u>đ</u></p>
                 </div> 
             </div>
             `;
