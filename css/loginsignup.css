@@ -53,7 +53,6 @@ a {
   input[type=text], input[type=password], input[type=tel] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #ccc;
     -webkit-transition: 0.5s;
@@ -102,7 +101,6 @@ input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
-    margin: 8px 0;
     width: 100%;
 }
 
@@ -111,7 +109,6 @@ input {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    border: 2px solid #555;
     position: relative;
     overflow: hidden;
     width: 63vw;
@@ -318,7 +315,7 @@ input {
 .eye-icon-register-password {
     position: absolute;
     right: 100px; /* Adjust as necessary */
-    top: 41.5%;
+    top: 41%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #737373; /* Adjust the color as needed */
@@ -327,7 +324,7 @@ input {
 .eye-icon-register-re-password {
     position: absolute;
     right: 100px; /* Adjust as necessary */
-    top: 56%;
+    top: 53%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #737373; /* Adjust the color as needed */
