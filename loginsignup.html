@@ -14,7 +14,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="" id="signup-form">
+            <form id="signup-form" class="signup-form">
                 <h1 style="padding-bottom: 7px">Create Account</h1>
 
                 <div class="input-with-error">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="form-container sign-in-container">
-            <form action="#" id="signin-form">
+            <form id="signin-form" class="signin-form">
                 <h1 style="padding-bottom: 15px">Login Now</h1>
 
                 <div class="input-with-error">
@@ -93,6 +93,22 @@
             </div>
         </div>
     </div>
-    <script src="js/loginsignup.js"></script>
+    <script type="module" src="js/loginsignup.js"></script>
+    <script>
+        function togglePasswordVisibility(inputFieldId, eyeIconId) {
+            const inputField = document.getElementById(inputFieldId);
+            const eyeIcon = document.getElementById(eyeIconId);
+
+            if (inputField.type === 'password') {
+                inputField.type = 'text';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                inputField.type = 'password';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
 </body>
 </html>

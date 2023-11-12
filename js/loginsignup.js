@@ -1,3 +1,8 @@
+import {  collection, doc, getDocs, addDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import db from "./database.js"
+
+const userDB = collection(db, "users");
+
 function toggleErrorMessageOnBlur(input, errorElement) {
     if (input.validity.valueMissing && input.value === "") {
         errorElement.classList.add('active');
@@ -5,21 +10,6 @@ function toggleErrorMessageOnBlur(input, errorElement) {
     } else {
         errorElement.classList.remove('active');
         errorElement.textContent = " ";
-    }
-}
-
-function togglePasswordVisibility(inputFieldId, eyeIconId) {
-    const inputField = document.getElementById(inputFieldId);
-    const eyeIcon = document.getElementById(eyeIconId);
-
-    if (inputField.type === 'password') {
-        inputField.type = 'text';
-        eyeIcon.classList.remove('fa-eye-slash');
-        eyeIcon.classList.add('fa-eye');
-    } else {
-        inputField.type = 'password';
-        eyeIcon.classList.remove('fa-eye');
-        eyeIcon.classList.add('fa-eye-slash');
     }
 }
 
@@ -47,9 +37,9 @@ signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
 
-const signupForm = document.getElementById('signup-form');
-
-signupForm.addEventListener('submit', function (event) {
+//sign-up
+const signupForm = document.querySelector('.signup-form');
+signupForm.addEventListener('submit', async (event) => {
     const emailInput = document.querySelector('input[name="email"]');
     const passwordInput = document.querySelector('input[name="password"]');
     const confirmPasswordInput = document.querySelector('input[name="confirmPassword"]');
@@ -92,11 +82,25 @@ signupForm.addEventListener('submit', function (event) {
         phoneInput.value = "";
         event.preventDefault();
     }
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = {}; 
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    console.log(data) 
+
+    const docRef = await addDoc(userDB, {"name":data.name,"email":data.email,"password":data.password, "phone":data.phone});
+    console.log("Document written with ID: ", docRef.id);
 });
 
-const signinForm = document.getElementById('signin-form');
 
-signinForm.addEventListener('submit', function (event) {
+//sign-in
+const signinForm = document.querySelector('.signin-form');
+signinForm.addEventListener('submit', async (event) => {
     const loginEmailInput = document.querySelector('#signin-form input[name="email"]');
     const loginPasswordInput = document.querySelector('#signin-form input[name="password"]');
 
@@ -116,4 +120,26 @@ signinForm.addEventListener('submit', function (event) {
         loginPasswordInput.value = "";
         event.preventDefault();
     }
+
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = {}; 
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    const querySnapshot = await getDocs(userDB);
+    querySnapshot.forEach((doc) => {
+        let userInfo = doc._document.data.value.mapValue.fields;
+        if(data.email === userInfo.email.stringValue){
+            if(data.password === userInfo.password.stringValue){
+                localStorage.setItem("userId", doc.id);
+                window.location.href = "home.html"
+            }else{
+                alert("wrong password!!!");
+            }
+        }
+    });
 });
