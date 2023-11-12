@@ -136,7 +136,7 @@ signinForm.addEventListener('submit', async (event) => {
         if(data.email === userInfo.email.stringValue){
             if(data.password === userInfo.password.stringValue){
                 localStorage.setItem("userId", doc.id);
-                window.location.href = "home.html"
+                window.location.href = "userProfile.html"
             }else{
                 alert("wrong password!!!");
             }

@@ -25,9 +25,9 @@
         <div class="sidebar" id="sidebar">
             <h2 style="color: #CDC5B7;">USER PROFILE</h2>
             <ul>
-                <li><a href="javascript:void(0)" onclick="loadContent('user-info')">User Information</a></li>
-                <li><a href="javascript:void(0)" onclick="loadContent('edit-info')">Edit Information</a></li>
-                <li><a href="javascript:void(0)" onclick="loadContent('order-history')">Order History</a></li>
+                <li><a href="javascript:void(0)" id="userInfo" >User Information</a></li>
+                <li><a href="javascript:void(0)" id="editInfo" >Edit Information</a></li>
+                <li><a href="javascript:void(0)" id="orderInfo" >Order History</a></li>
             </ul>
         </div>
         <div class="content" id="content">
@@ -57,10 +57,18 @@
             </section>                     
             
             <section id="order-history" class="content-section" style="line-height: 39px;">
-                <!-- Order History content will be populated by JavaScript -->
+                <h2 style="margin-top: 8px;">Order History</h2>
+                <ul id="order-list">
+                    <!-- Order History content will be populated by JavaScript -->
+                </ul>
             </section>
         </div>
     </div>
+
+    <!-- Order modal -->
+    <div id="order-modal" class="order-modal" >
+        
+    </div> 
 
     <!-- This is FOOTER -->
     <div class="footer" style="position: relative; min-height: 100vh;">
@@ -69,85 +77,7 @@
         </div>            
     </div>
 
-    <script>
-        loadContent('user-info');
-        function loadContent(pageName) {
-            var contentSections = document.querySelectorAll('.content-section');
-            var sidebar = document.getElementById('sidebar');
-            
-            contentSections.forEach(function (section) {
-                section.style.display = 'none';
-            });
-
-            if (pageName === 'user-info' || pageName === 'edit-info' || pageName === 'order-history') {
-                var selectedSection = document.getElementById(pageName);
-                selectedSection.style.display = 'block';
-
-                if (pageName === 'edit-info') {
-                    sidebar.style.width = '20%';
-                    // Retrieve the saved values from local storage
-                    var savedName = localStorage.getItem('name');
-                    var savedEmail = localStorage.getItem('email');
-                    var savedPhone = localStorage.getItem('phone');
-
-                    // Set the values in the form fields
-                    document.getElementById('name').value = savedName || ''; // Set the value or leave it empty if not found
-                    document.getElementById('email').value = savedEmail || '';
-                    document.getElementById('phone').value = savedPhone || '';
-
-                } else {
-                    sidebar.style.width = '20%';
-                }
-            }
-        }
-
-        function loadUserData() {
-            var name = localStorage.getItem('name') || 'John Doe';
-            var email = localStorage.getItem('email') || 'john.doe@example.com';
-            var phone = localStorage.getItem('phone') || '(123) 456-7890';
-
-            var userInfoSection = document.getElementById('user-info');
-            userInfoSection.innerHTML = '<h2 style="margin-top: 8px;">User Information</h2>' +
-                '<p>Name: ' + name + '</p>' +
-                '<p>Email: ' + email + '</p>' +
-                '<p>Phone: ' + phone + '</p>';
-        }
-
-        function loadOrderHistory() {
-            var order1 = localStorage.getItem('order1') || 'Order #1234 - Date: 2023-01-15 - Total: $100.00';
-            var order2 = localStorage.getItem('order2') || 'Order #5678 - Date: 2023-02-20 - Total: $75.50';
-            var order3 = localStorage.getItem('order3') || 'Order #9012 - Date: 2023-03-10 - Total: $50.25';
-
-            var orderHistorySection = document.getElementById('order-history');
-            orderHistorySection.innerHTML = '<h2 style="margin-top: 8px;">Order History</h2>' +
-                '<ul>' +
-                '<li>' + order1 + '</li>' +
-                '<li>' + order2 + '</li>' +
-                '<li>' + order3 + '</li>' +
-                '</ul>';
-        }
-
-        loadUserData();
-        loadOrderHistory();
-
-        // Add an event listener for the "Save" button
-        var editForm = document.getElementById('edit-form');
-        editForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-
-            localStorage.setItem('name', name);
-            localStorage.setItem('email', email);
-            localStorage.setItem('phone', phone);
-
-            alert('User information saved.');
-
-            loadUserData();
-            loadContent('user-info');
-        });
-    </script>
+    <script type="module" src="js/userProfile.js"></script>
+    <!-- <script src="js/userProfile.js"></script> -->
 </body>
 </html>

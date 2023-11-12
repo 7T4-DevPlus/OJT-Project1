@@ -24,14 +24,23 @@ const navSlide = () => {
 }
 navSlide();
 
-function homePage(){
-    window.location.href = "home.html"
-}
+const homePage = document.getElementById("homePage");
+const productPage = document.getElementById("productPage");
+const contactPage = document.getElementById("contactPage");
 
-function loginPage(){
-    window.location.href = "loginsignup.html"
-}
+homePage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/home.html`;
+});
 
-function productPage(){
-    window.location.href = "products.html"
-}
+productPage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/products.html`;
+});
+
+contactPage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/contact.html`;
+});
+
+const userBtn = document.getElementById('userBtn');
+userBtn.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
+})
