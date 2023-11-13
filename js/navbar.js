@@ -24,14 +24,33 @@ const navSlide = () => {
 }
 navSlide();
 
-function homePage(){
-    window.location.href = "home.html"
-}
+const homePage = document.getElementById("homePage");
+const productPage = document.getElementById("productPage");
+const contactPage = document.getElementById("contactPage");
+const userBtn = document.getElementById('userBtn');
+const cartBtn = document.getElementById('cartBtn');
 
-function loginPage(){
-    window.location.href = "loginsignup.html"
-}
+homePage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/home.html`;
+});
 
-function productPage(){
-    window.location.href = "products.html"
-}
+productPage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/products.html`;
+});
+
+contactPage.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/contact.html`;
+});
+
+userBtn.addEventListener("click", () => {
+    window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
+})
+
+cartBtn.addEventListener("click", () => {
+    if(!localStorage.getItem("userId")){
+        window.top.location.href = "http://127.0.0.1:5500/loginsignup.html";
+        alert("please login to have your own cart!")
+    }else{
+        window.top.location.href = `http://127.0.0.1:5500/cart.html`;
+    }
+})

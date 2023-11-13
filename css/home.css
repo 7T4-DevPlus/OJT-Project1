@@ -172,6 +172,7 @@ iframe{
     border: 1px solid rgba(0, 0, 0, 0.26);
     margin: 5px; 
     margin-left: 0;
+    background-color: white;
 }
 
 .size-choice:hover {
