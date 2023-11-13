@@ -110,9 +110,11 @@ function loadOrderHistory() {
         var orderInfo = doc._document.data.value.mapValue.fields
         if(orderInfo.userId.stringValue === userId){
             var orderHistorySection = document.getElementById('order-list');
+            var parts = orderInfo.date.timestampValue.split("T")[0].split("-");
+            var formattedDate = `${parts[0]}/${parts[1]}/${parts[2]}`;
             orderHistorySection.innerHTML += 
             `
-            <li id=${doc.id} class="order-details">Order ${doc.id} - Date: ${orderInfo.date.timestampValue} - Total: ${orderInfo.total.integerValue}VNĐ</li>
+            <li id=${doc.id} class="order-details">Order ${doc.id} - Date: ${formattedDate} - Total: ${orderInfo.total.integerValue}VNĐ</li>
             `
         }
     })
@@ -194,4 +196,10 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+const logoutBtn = document.getElementById("logout");
+logoutBtn.onclick = function() {
+    localStorage.removeItem("userId");
+    window.location.href = "http://127.0.0.1:5500/userProfile.html";
 }

@@ -5,6 +5,7 @@ const toggleIcon = document.getElementById('toggle-icon');
 import {  collection, doc, getDocs, addDoc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import db from "./database.js"
 const productDB = collection(db, "products");
+const cartitemDB = collection(db, "cartItems");
 
 productLink.onclick = function() {
     if (productList.style.display === 'none') {
@@ -19,6 +20,8 @@ const products = await getDocs(productDB);
 async function getProducts() {
     products.forEach((doc) => {
         let product = doc._document.data.value.mapValue.fields;
+        var price = product.price.integerValue
+        console.log(price.toLocaleString());
         if (product.imgUrl.arrayValue.values.length > 1) {
             document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
@@ -150,11 +153,11 @@ function productDetails(id){
                         <hr>
                         <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
                         <div style="display: flex; margin-bottom: 5px;">
-                            <button id="sizeLarge" class="size-choice">L</button>
-                            <button id="sizeMedium" class="size-choice">M</button>
-                            <button id="sizeSmall" class="size-choice">S</button>
+                            <button id="sizeLarge" class="size-choice sizeLarge">L</button>
+                            <button id="sizeMedium" class="size-choice sizeMedium">M</button>
+                            <button id="sizeSmall" class="size-choice sizeSmall">S</button>
                         </div>
-                        <button class="add-cart-btn">
+                        <button id="id-${id}" class="add-cart-btn">
                             Thêm vào giỏ
                         </button>
                         <div style="text-align: center;">
@@ -176,6 +179,22 @@ function productDetails(id){
     })
 }
 
+let size 
+var addCartBtns = document.querySelectorAll(".add-cart-btn");
+addCartBtns.forEach((addBtn) => {
+    addBtn.onclick = function() {
+        var addToCartId = addBtn.id; 
+        console.log("add to cart", addToCartId)
+        if(!localStorage.getItem("userId")){
+            alert("Please login to buy product")
+        }else{
+            // const docRef = await addDoc(cartitemDB, {"userId":data.name,"productId":addToCartId,"size":size, "quantity":1});
+            // console.log(docRef);
+            console.log("test")
+        }
+    }
+})
+
 // SIZE
 var sizeL = document.getElementById("sizeLarge");
 var sizeM = document.getElementById("sizeMedium");
@@ -186,6 +205,7 @@ sizeL.onclick = function() {
     {
         sizeL.classList.remove("size-choice");
         sizeL.classList.toggle("size-chosen");
+        size = "L";
     }
     
     if(sizeM.classList.contains("size-chosen"))
@@ -204,6 +224,7 @@ sizeM.onclick = function() {
     {
         sizeM.classList.remove("size-choice");
         sizeM.classList.toggle("size-chosen");
+        size = "M";
     }
     
     if(sizeL.classList.contains("size-chosen"))
@@ -222,6 +243,7 @@ sizeS.onclick = function() {
     {
         sizeS.classList.remove("size-choice");
         sizeS.classList.toggle("size-chosen");
+        size = "S";
     }
     
     if(sizeL.classList.contains("size-chosen"))

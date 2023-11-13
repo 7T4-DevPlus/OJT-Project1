@@ -27,6 +27,8 @@ navSlide();
 const homePage = document.getElementById("homePage");
 const productPage = document.getElementById("productPage");
 const contactPage = document.getElementById("contactPage");
+const userBtn = document.getElementById('userBtn');
+const cartBtn = document.getElementById('cartBtn');
 
 homePage.addEventListener("click", () => {
     window.top.location.href = `http://127.0.0.1:5500/home.html`;
@@ -40,7 +42,15 @@ contactPage.addEventListener("click", () => {
     window.top.location.href = `http://127.0.0.1:5500/contact.html`;
 });
 
-const userBtn = document.getElementById('userBtn');
 userBtn.addEventListener("click", () => {
     window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
+})
+
+cartBtn.addEventListener("click", () => {
+    if(!localStorage.getItem("userId")){
+        window.top.location.href = "http://127.0.0.1:5500/loginsignup.html";
+        alert("please login to have your own cart!")
+    }else{
+        window.top.location.href = `http://127.0.0.1:5500/cart.html`;
+    }
 })
