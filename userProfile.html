@@ -39,18 +39,20 @@
             <section id="edit-info" class="content-section">
                 <h2 style="margin-top: 8px;">Edit Information</h2>
                 <form id="edit-form" style="max-width: 400px; margin: 0 auto;">
+
                     <div style="margin-bottom: 10px;">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" style="width: 100%; padding: 5px;">
+                        <input type="text" id="name" name="name" placeholder="" style="width: 100%; padding: 5px;">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" style="width: 100%; padding: 5px;" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please enter a valid email address')">
+                        <input type="email" id="email" name="email" placeholder="" style="width: 100%; padding: 5px;" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please enter a valid email address')">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone" style="width: 100%; padding: 5px;" required pattern="\d{10}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Phone number must be exactly 10 digits')">
+                        <input type="tel" id="phone" name="phone" placeholder="" style="width: 100%; padding: 5px;" required pattern="\d{10}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Phone number must be exactly 10 digits')">
                     </div>
+
                     <div style="text-align: center;">
                         <input type="submit" value="Save" style="background-color: black; color: white; margin-top: 20px; margin-left: 2vw; width: 10vw; height: 6vh; border: none; cursor: pointer;">
                     </div>
@@ -79,6 +81,5 @@
     </div>
 
     <script type="module" src="js/userProfile.js"></script>
-    <!-- <script src="js/userProfile.js"></script> -->
 </body>
 </html>

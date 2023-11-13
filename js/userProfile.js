@@ -73,7 +73,7 @@ function loadContent(pageName) {
 function loadUserData() {
     users.forEach((doc) => {
         if(doc.id === userId){
-            var userInfo = doc._document.data.value.mapValue.fields
+            var userInfo = doc._document.data.value.mapValue.fields;
     
             var name = userInfo.name.stringValue;
             var email = userInfo.email.stringValue;
@@ -89,6 +89,25 @@ function loadUserData() {
 }
 
 var editForm = document.getElementById('edit-form');
+
+users.forEach((doc) => {
+    if(doc.id === userId){
+        var emailInput = document.getElementById('email');
+        var nameInput = document.getElementById('name');
+        var phoneInput = document.getElementById('phone');
+
+        var userInfomation = doc._document.data.value.mapValue.fields;
+
+        nameInput.placeholder = `${userInfomation.name.stringValue}`
+        emailInput.placeholder = `${userInfomation.email.stringValue}`
+        phoneInput.placeholder = `${userInfomation.phone.stringValue}`
+
+        nameInput.defaultValue = `${userInfomation.name.stringValue}`
+        emailInput.defaultValue = `${userInfomation.email.stringValue}`
+        phoneInput.defaultValue = `${userInfomation.phone.stringValue}`
+    }
+})
+
 editForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -100,6 +119,7 @@ editForm.addEventListener('submit', async (event) => {
     await updateDoc(docRef, {"name":name, "email":email, "phone":phone});
 
     alert('User information saved.');
+    window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
 
     loadUserData();
     loadContent('user-info');

@@ -20,8 +20,6 @@ const products = await getDocs(productDB);
 async function getProducts() {
     products.forEach((doc) => {
         let product = doc._document.data.value.mapValue.fields;
-        var price = product.price.integerValue
-        console.log(price.toLocaleString());
         if (product.imgUrl.arrayValue.values.length > 1) {
             document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
@@ -137,7 +135,7 @@ function productDetails(id){
             `<div class="product-details" id="${productDetails.productId.stringValue}" >
                 <div style="display: flex;">
                     <div class="left-block-modal">
-                        <img id="displayImg" src="${productDetails.imgUrl.arrayValue.values[0].stringValue}"
+                        <img id="displayImg" class="displayImg" src="${productDetails.imgUrl.arrayValue.values[0].stringValue}"
                         style="width: 100%; margin: 2%;"/>
                         <div class="product-pictures-container">
                             <div id="product-pictures" class="product-pictures">
@@ -152,114 +150,81 @@ function productDetails(id){
                         <p>${productDetails.price.integerValue} <u>đ</u></p>
                         <hr>
                         <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
-                        <div style="display: flex; margin-bottom: 5px;">
-                            <button id="sizeLarge" class="size-choice sizeLarge">L</button>
-                            <button id="sizeMedium" class="size-choice sizeMedium">M</button>
-                            <button id="sizeSmall" class="size-choice sizeSmall">S</button>
-                        </div>
-                        <button id="id-${id}" class="add-cart-btn">
-                            Thêm vào giỏ
-                        </button>
+                        <form id="add-to-cart-form" class="${id}" onsubmit="return false">
+                            <div>
+                                <input type="radio" id="sizeL" name="size" value="L">
+                                <label for="sizeL">L</label>
+                                <input type="radio" id="sizeM" name="size" value="M" style="margin-left: 10%">
+                                <label for="sizeM">M</label>
+                                <input type="radio" id="sizeS" name="size" value="S" style="margin-left: 10%">
+                                <label for="sizeS">S</label>
+                            </div>
+                            <button type="submit" class="add-cart-btn">
+                                Thêm vào giỏ
+                            </button>
+                        </form>
                         <div style="text-align: center;">
                             <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
                         </div>
                     </div>
                 </div>
-            </div>`    
+            </div>
+            <script>
+                var displayImg = document.getElementsByClassName("displayImg");
+                var addForm = document.getElementById('add-to-cart-form');
+                    addForm.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+                        var size = document.querySelector('input[name="size"]:checked').value;
+
+                        var productId = addForm.className; 
+                        console.log("product id:", productId);
+                        console.log("userId:", localStorage.getItem("userId"))
+                        console.log("size:", size);
+
+                        if(!localStorage.getItem("userId")){
+                            alert("Please login to buy product")
+                        }else{
+                            const docRef = await addDoc(cartitemDB, {
+                                "userId": localStorage.getItem("userId"), 
+                                "productId": productId, 
+                                "size": size, 
+                                "quantity": 1
+                            });
+                            console.log(docRef.id);
+                        }
+                    });
+            </script>`    
             let imgUrlSlide = productDetails.imgUrl.arrayValue.values;
             imgUrlSlide.forEach(img => {
-                console.log(img.stringValue)
                 document.getElementById("product-pictures").innerHTML += 
                 `<div class="product-picture">
-                    <img onclick="changeImage(this.src)
-                    src="${img.stringValue}"/>
+                    <img onclick="changeImg(this.src)" class="slideImg" src="${img.stringValue}"/>
                 </div>`
             });
         }
     })
 }
 
-let size 
-var addCartBtns = document.querySelectorAll(".add-cart-btn");
-addCartBtns.forEach((addBtn) => {
-    addBtn.onclick = function() {
-        var addToCartId = addBtn.id; 
-        console.log("add to cart", addToCartId)
-        if(!localStorage.getItem("userId")){
-            alert("Please login to buy product")
-        }else{
-            // const docRef = await addDoc(cartitemDB, {"userId":data.name,"productId":addToCartId,"size":size, "quantity":1});
-            // console.log(docRef);
-            console.log("test")
-        }
-    }
-})
+//Add to cart
+// var addForm = document.getElementById('add-to-cart-form');
+// addForm.addEventListener('submit', async (event) => {
+//     event.preventDefault();
+//     var size = document.querySelector('input[name="size"]:checked').value;
 
-// SIZE
-var sizeL = document.getElementById("sizeLarge");
-var sizeM = document.getElementById("sizeMedium");
-var sizeS = document.getElementById("sizeSmall");
+//     var productId = addForm.className; 
+//     console.log("product id:", productId);
+//     console.log("userId:", localStorage.getItem("userId"))
+//     console.log("size:", size);
 
-sizeL.onclick = function() {
-    if(sizeL.classList.contains("size-choice"))
-    {
-        sizeL.classList.remove("size-choice");
-        sizeL.classList.toggle("size-chosen");
-        size = "L";
-    }
-    
-    if(sizeM.classList.contains("size-chosen"))
-    {
-        sizeM.classList.remove("size-chosen");
-        sizeM.classList.toggle("size-choice");
-    } else if(sizeS.classList.contains("size-chosen"))
-    {
-        sizeS.classList.remove("size-chosen");
-        sizeS.classList.toggle("size-choice");
-    } 
-}
-
-sizeM.onclick = function() {
-    if(sizeM.classList.contains("size-choice"))
-    {
-        sizeM.classList.remove("size-choice");
-        sizeM.classList.toggle("size-chosen");
-        size = "M";
-    }
-    
-    if(sizeL.classList.contains("size-chosen"))
-    {
-        sizeL.classList.remove("size-chosen");
-        sizeL.classList.toggle("size-choice");
-    } else if(sizeS.classList.contains("size-chosen"))
-    {
-        sizeS.classList.remove("size-chosen");
-        sizeS.classList.toggle("size-choice");
-    } 
-}
-
-sizeS.onclick = function() {
-    if(sizeS.classList.contains("size-choice"))
-    {
-        sizeS.classList.remove("size-choice");
-        sizeS.classList.toggle("size-chosen");
-        size = "S";
-    }
-    
-    if(sizeL.classList.contains("size-chosen"))
-    {
-        sizeL.classList.remove("size-chosen");
-        sizeL.classList.toggle("size-choice");
-    } else if(sizeS.classList.contains("size-chosen"))
-    {
-        sizeS.classList.remove("size-chosen");
-        sizeS.classList.toggle("size-choice");
-    } 
-}
-
-// SLIDE
-var displayImg = document.getElementById("displayImg");
-
-function changeImage(imgUrl) {
-    displayImg.src = imgUrl;
-}
+//     if(!localStorage.getItem("userId")){
+//         alert("Please login to buy product")
+//     }else{
+//         const docRef = await addDoc(cartitemDB, {
+//             "userId": localStorage.getItem("userId"), 
+//             "productId": productId, 
+//             "size": size, 
+//             "quantity": 1
+//         });
+//         console.log(docRef.id);
+//     }
+// });
