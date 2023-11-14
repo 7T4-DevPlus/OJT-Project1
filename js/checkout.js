@@ -154,14 +154,14 @@ function displayCart() {
 
         const productCartPrice = document.createElement('div');
         productCartPrice.classList.add('product-cart-price');
-        productCartPrice.textContent = `$${totalProductPrice.toFixed(2)}`;
+        productCartPrice.textContent = `$${totalProductPrice}`;
 
         productDiv.appendChild(productCartPrice);
         productContainer.appendChild(productDiv);
     });
 
     const totalCheckout = document.getElementById('total-checkout');
-    totalCheckout.querySelector('b').textContent = `$${totalCartPrice.toFixed(2)}`;
+    totalCheckout.querySelector('b').textContent = `$${totalCartPrice}`;
 }
 
 displayCart();
@@ -248,29 +248,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-function validateFieldsAndOrder() {
-    const fullname = document.getElementById('fname').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const city = document.getElementById('city').value;
-    const district = document.getElementById('district').value;
-    const ward = document.getElementById('ward').value;
-    const house = document.getElementById('house').value;
-
-    if (fullname && email && phone && city && district && ward && house) {
-        Success();
-    } else {
-
+function handleOrderButtonClick() {
+    if (!document.forms[0].checkValidity()) {
+        return false;
     }
-}
 
-function Success() {
-    alert('Order placed.');
-    setTimeout(function() {
+    alert('Order placed!');
+    setTimeout(function () {
         window.location.href = 'home.html';
     }, 5000);
+    return false;
 }
+
 
 
 

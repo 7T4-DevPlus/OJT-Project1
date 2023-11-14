@@ -9,13 +9,13 @@
 
 <body>
     <div style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1; ">
-        <div style= "width:100%; height: 70px;">
+        <div style="width:100%; height: 70px;">
             <iframe name="navbar" id="navbar" src="navbar.html" width="100%" scrolling="no" height="70px"></iframe>
         </div>
-    </div> 
-    
+    </div>
+
     <h2>Checkout </h2>
-    <form action="" method="post">
+    <form action="" onsubmit="return handleOrderButtonClick()">
         <main class="main">
             <div class="col-75">
                 <div class="container">
@@ -23,7 +23,7 @@
                         <div class="col-50">
                             <h3>Billing Address</h3>
                             <input type="text" id="fname" name="fullname" placeholder="Full name" required>
-                            <input type="email" id="email" name="email" placeholder="Email" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please enter a valid email address')">                   
+                            <input type="email" id="email" name="email" placeholder="Email" required>
                             <input type="text" id="phone" name="phone" placeholder="Phone number" required
                                 pattern="[0-9]{10}">
                             <!-- New label for city dropdown -->
@@ -49,7 +49,9 @@
                             <h3>Shipping</h3>
                             <div id="shippingFee">
                                 <div class="shipping-details">
-                                    <img class="shipimg" src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/best_pyabq2.png" alt="Shipping Image 1">
+                                    <img class="shipimg"
+                                        src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/best_pyabq2.png"
+                                        alt="Shipping Image 1">
                                     <label class="radiobutton">
                                         Best (1-3 days)
                                         <input type="radio" name="shipping" value="45000">
@@ -58,7 +60,9 @@
                                     <div class="price-field-ship">45,000 ₫</div>
                                 </div>
                                 <div class="shipping-details">
-                                    <img class="shipimg" src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/ghn_k4srzu.png" alt="Shipping Image 2">
+                                    <img class="shipimg"
+                                        src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/ghn_k4srzu.png"
+                                        alt="Shipping Image 2">
                                     <label class="radiobutton">
                                         GHN (2-4 days)
                                         <input type="radio" name="shipping" value="35000">
@@ -67,7 +71,9 @@
                                     <div class="price-field-ship">35,000 ₫</div>
                                 </div>
                                 <div class="shipping-details">
-                                    <img class="shipimg" src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517040/j_t_qrx1r3.png" alt="Shipping Image 3">
+                                    <img class="shipimg"
+                                        src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517040/j_t_qrx1r3.png"
+                                        alt="Shipping Image 3">
                                     <label class="radiobutton">
                                         J&T (2-3 days)
                                         <input type="radio" name="shipping" value="34000">
@@ -76,7 +82,9 @@
                                     <div class="price-field-ship">34,000 ₫</div>
                                 </div>
                                 <div class="shipping-details">
-                                    <img class="shipimg" src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/ninja_vkrrup.png" alt="Shipping Image 4">
+                                    <img class="shipimg"
+                                        src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517039/ninja_vkrrup.png"
+                                        alt="Shipping Image 4">
                                     <label class="radiobutton">
                                         Ninja Van (2-3 days)
                                         <input type="radio" name="shipping" value="22000">
@@ -85,7 +93,9 @@
                                     <div class="price-field-ship">22,000 ₫</div>
                                 </div>
                                 <div class="shipping-details">
-                                    <img class="shipimg" src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517040/spx_wnsuld.png" alt="Shipping Image 5">
+                                    <img class="shipimg"
+                                        src="https://res.cloudinary.com/dokzmffiv/image/upload/v1699517040/spx_wnsuld.png"
+                                        alt="Shipping Image 5">
                                     <label class="radiobutton">
                                         Spx (1-3 days)
                                         <input type="radio" name="shipping" value="50000">
@@ -135,11 +145,11 @@
                             <div class="total-section">
                                 <p>Total</p>
                                 <span id="total-checkout"><b></b></span>
-                            </div>                            
+                            </div>
                             <hr>
                             <div class="button-container">
                                 <p><a href="cart.html">Back to cart</a></p>
-                                <button id="orderButton" style="font-weight: bold;" onclick="validateFieldsAndOrder()">Order</button>
+                                <button type="submit" id="orderButton" style="font-weight: bold;">Order</button>
                             </div>
                     </div>
                 </div>
