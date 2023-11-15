@@ -40,7 +40,7 @@ async function getProducts() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId.stringValue}">
+                            <button class="details-button" id="${product?.id.stringValue ?? product.productId.stringValue}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -107,7 +107,7 @@ var modal = document.getElementById("product-modal");
 var detailsButtons = document.querySelectorAll(".details-button");
 detailsButtons.forEach((detailsBtn) => {
     detailsBtn.addEventListener("click", () => {
-        window.location.href = `http://127.0.0.1:5500/productDetail.html?id=${detailsBtn.id}`;
+        window.location.href = `http://127.0.0.1:5500/OJT-Project1/productDetail.html?id=${detailsBtn.id}`;
     });
 })
 
