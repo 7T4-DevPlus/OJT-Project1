@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="css/checkout.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 </head>
 
 <body>
@@ -15,7 +17,7 @@
     </div>
 
     <h2>Checkout </h2>
-    <form action="" onsubmit="return handleOrderButtonClick()">
+    <form action="" id="checkout-order" onsubmit="return handleOrderButtonClick()">
         <main class="main">
             <div class="col-75">
                 <div class="container">
@@ -157,6 +159,31 @@
             </aside>
         </main>
     </form>
+    <script>
+
+        emailjs.init("vksyCyvH0Lqz2FSYE");
+
+        document.getElementById('checkout-order').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+            var serviceID = "service_323m41u";
+            var templateID = "template_gjfr09f";
+
+            var params = {
+                senderemail : document.getElementById("email").value,
+
+            };
+
+            emailjs.send(serviceID, templateID, params)
+                .then(function(response) {
+                    alert('Email sent successfully!');
+                })
+                .catch(function(error) {
+                    console.error('Email send failed: ', error);
+                });
+        });
+
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="js/checkout.js"></script>
 
