@@ -81,7 +81,7 @@ li strong span[itemprop="title"] {
 }
 .searchProducts{
     width: 3vw;
-    margin-left: 5vw;
+    margin-left: 2vw;
     margin-top: 2vh;
 }
 
@@ -114,7 +114,7 @@ li strong span[itemprop="title"] {
     outline: none;
     margin: 2px;
     font-family: 'Oswald';
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .box input{

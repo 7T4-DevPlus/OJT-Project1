@@ -160,17 +160,13 @@
                             <h2 class="title-head margin-top-0"><span>Bộ lọc</span></h2>
                         </div>
                         <div class="filter-container">
-                            <div class="filter-container__selected-filter" style="display: none;">
-                                <div class="filter-container__selected-filter-header clearfix">
-                                    <span class="filter-container__selected-filter-header-title"><i
-                                            class="fa fa-arrow-left hidden-sm-up"></i> Bạn chọn</span>
-                                    <a href="javascript:void(0)" onclick="clearAllFiltered()"
-                                        class="filter-container__clear-all">Bỏ hết <i class="fa fa-angle-right"></i></a>
-                                </div>
-                                <div class="filter-container__selected-filter-list">
-                                    <ul></ul>
-                                </div>
+                            <div class="filter-container__selected-filter">
+                                <label for="price-range">Giá:</label>
+                                <input type="number" id="min-price" placeholder="Từ" />
+                                <input type="number" id="max-price" placeholder="Đến" />
+                                <button id="filter-btn">Lọc</button>
                             </div>
+                            
                         </div>
                     </div>
                     <div>
@@ -196,9 +192,12 @@
             <div class="category-products products">
                 <div class="sort-Pagibar">
                     <div class="searchProducts">
-                        <div class="box" style="background-color: rgb(249,245,242);" >
+                        <div class="box" style="background-color: rgb(249,245,242); height: 30px;" >
                             
-                                <img style="margin: 5px;" 
+                                <img style="margin-top: 7px;
+                                width: 17px;
+                                height: 17px;
+                                margin-left: 0.8vw;" 
                                 src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png" alt="Search" id="show-popup">
                                 
                             
