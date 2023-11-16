@@ -22,11 +22,15 @@ async function getCartDetails() {
     // Clear existing rows
     tbody.innerHTML = "";
 
+    let totalPrice = 0;
+
     cartItems.forEach(ci => {
         if(userID === ci.userId) {
             products.forEach(p => {
                 if(ci.productId === p.id) {
                     let subTotalProduct = p.price * ci.productQuantity;
+                    totalPrice += subTotalProduct;
+
                     const row = document.createElement("tr");
                     row.innerHTML = `
                     <td>
@@ -60,6 +64,10 @@ async function getCartDetails() {
             })
         }
     });
+
+    document.getElementById("totalPrice").innerHTML = `
+        <p style="margin: 1vh; font-weight: bold; color: #CDC5B7">${totalPrice.toLocaleString()} VND</p>
+    `
 }
 getCartDetails();
 
@@ -86,7 +94,7 @@ async function incQuantity(cartItemId) {
     const currentQuantity = parseInt(quantityInput.value);
     const newQuantity = currentQuantity + 1;
 
-    const subtotal = document.querySelector(`subtotal-${cartItemId}`);
+    const subtotal = document.getElementById(`subtotal-${cartItemId}`);
     const subtotalValue = parseInt((subtotal.value * newQuantity));
 
     updateQuantityInFirebase(cartItemId, newQuantity, subtotalValue);
@@ -97,7 +105,7 @@ async function decQuantity(cartItemId) {
     const quantityInput = document.querySelector(`#quantity-${cartItemId}`);
     const currentQuantity = parseInt(quantityInput.value);
 
-    const subtotal = document.querySelector(`subtotal-${cartItemId}`);
+    const subtotal = document.getElementById(`subtotal-${cartItemId}`);
 
     if (currentQuantity > 1) {
         const newQuantity = currentQuantity - 1;
