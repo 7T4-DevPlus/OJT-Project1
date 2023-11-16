@@ -7,6 +7,7 @@ const toggleIcon = document.getElementById('toggle-icon');
 // const productDB = collection(db, "products");
 // const cartitemDB = collection(db, "cartItems");
 getProducts();
+
 productLink.onclick = function () {
     if (productList.style.display === 'none') {
         productList.style.display = 'block'; // Hiển thị danh sách con
@@ -109,7 +110,6 @@ async function getProducts() {
         };
     });
 
-
     //Modal
     var modal = document.getElementById("product-modal");
     var detailsButtons = document.querySelectorAll(".details-button");
@@ -135,18 +135,18 @@ async function getProducts() {
         }
     }
 
-    function productDetails(id) {
-        products.forEach((product) => {
-            if (product.productId === id) {
-                modal.innerHTML =
-                    `<div class="product-details" id="${product.productId}" >
+
+function productDetails(id){
+    products.forEach((product) => {
+        if(product.productId === id){
+            modal.innerHTML =
+            `<div class="product-details" id="${product.productId}" >
                 <div style="display: flex;">
                     <div class="left-block-modal">
                         <img id="displayImg" class="displayImg" src="${product.imgUrl[0]}"
                         style="width: 100%; margin: 2%;"/>
                         <div class="product-pictures-container">
-                            <div id="product-pictures" class="product-pictures">
-                                
+                            <div id="product-pictures" class="product-pictures">              
                             </div>
                         </div>
                     </div>
@@ -200,11 +200,11 @@ async function getProducts() {
                             console.log(docRef.id);
                         }
                     });
-            </script>`
-                let imgUrlSlide = product.imgUrl;
-                imgUrlSlide.forEach(img => {
-                    document.getElementById("product-pictures").innerHTML +=
-                        `<div class="product-picture">
+            </script>`    
+            let imgUrlSlide = product.imgUrl;
+            imgUrlSlide.forEach(img => {
+                document.getElementById("product-pictures").innerHTML += 
+                `<div class="product-picture">
                     <img onclick="changeImg(this.src)" class="slideImg" src="${img}"/>
                 </div>`
                 });
@@ -485,48 +485,206 @@ async function getProducts() {
         document.getElementById("sortOrder").dispatchEvent(new Event("change"));
     });
 
-    // Add this function call to get the initial products
+
+//Add to cart
+// var addForm = document.getElementById('add-to-cart-form');
+// addForm.addEventListener('submit', async (event) => {
+//     event.preventDefault();
+//     var size = document.querySelector('input[name="size"]:checked').value;
+
+//     var productId = addForm.className; 
+//     console.log("product id:", productId);
+//     console.log("userId:", localStorage.getItem("userId"))
+//     console.log("size:", size);
+
+//     if(!localStorage.getItem("userId")){
+//         alert("Please login to buy product")
+//     }else{
+//         const docRef = await addDoc(cartitemDB, {
+//             "userId": localStorage.getItem("userId"), 
+//             "productId": productId, 
+//             "size": size, 
+//             "quantity": 1
+//         });
+//         console.log(docRef.id);
+//     }
+// });
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keypress', function (event) {
+    // Check if the key pressed is the Enter key (key code 13)
+    if (event.key === 'Enter') {
+        // Call the searchByName function when Enter key is pressed
+        searchByName();
+    }
+});
+
+// Function to handle search by name
+function searchByName() {
+    const searchTerm = searchInput.value.toLowerCase(); // Lấy giá trị từ ô tìm kiếm và chuyển thành chữ thường
+    
+    const filteredProducts = []; // Mảng để lưu sản phẩm được tìm thấy
+
+    // Xóa danh sách hiện tại trước khi hiển thị kết quả tìm kiếm mới
+    document.getElementById('products').innerHTML = '';
+
+    products.forEach((product) => {
+        if (product.name.toLowerCase().includes(searchTerm)) {
+            filteredProducts.push(product); // Nếu tên sản phẩm chứa từ khóa tìm kiếm, thêm vào mảng kết quả
+        }
+    });
+
+    // Hiển thị kết quả tìm kiếm
+    filteredProducts.forEach((product) => {
+        // Tạo HTML để hiển thị sản phẩm, tương tự như cách bạn đã làm trong hàm getProducts()
+        // Lưu ý: Bạn có thể thêm mã HTML tương ứng ở đây để hiển thị kết quả tìm kiếm
+        
+        if (product.imgUrl.length > 1) {
+            document.getElementById('products').innerHTML += `
+            <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
+                <div class="product-box">
+                    <div class="product-thumbnail">
+                        <img class="original" src="${product.imgUrl[0]}">
+                        <img class="hover" src="${product.imgUrl[1]}">
+                        <div class="hover-part">
+                            <div class="pumpup-item" style="border-right: 1px solid white">
+                            <button class="look-button" id="${product.productId}">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                            <div class="pumpup-item">
+                            <button class="details-button" id="${product.productId}">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="product-info a-left">
+                    <p style="margin:0;">${product.name}</p>
+                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                </div> 
+            </div>
+            `;
+        }else{
+            document.getElementById('products').innerHTML += `
+            <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
+                <div class="product-box">
+                    <div class="product-thumbnail">
+                        <img src="${product.imgUrl[0]}">
+                        <div class="hover-part">
+                            <div class="pumpup-item" style="border-right: 1px solid white">
+                            <button class="look-button" id="${product.productId}">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                            <div class="pumpup-item">
+                            <button class="details-button" id="${product.productId}">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="product-info a-left">
+                    <p style="margin:0;">${product.name}</p>
+                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                </div> 
+            </div>
+            `;
+        };
+    });
+}
+
+// Sử dụng sự kiện 'input' để tìm kiếm ngay khi người dùng nhập thông tin
 
 
-    // // Function for sorting products
-    // function sortProducts(orderBy) {
-    //     const allProducts = Array.from(document.querySelectorAll('.product-box'));
 
-    //     allProducts.sort((a, b) => {
-    //         const productA = a.querySelector('.product-info p:first-child').innerText.toLowerCase();
-    //         const productB = b.querySelector('.product-info p:first-child').innerText.toLowerCase();
+// Update your existing filter button event listener
+document.getElementById('filter-btn').addEventListener('click', function () {
+    // Call the filterByPrice function when the filter button is clicked
+    filterByPrice();
+});
 
-    //         if (orderBy === 'az') {
-    //             return productA.localeCompare(productB);
-    //         } else if (orderBy === 'za') {
-    //             return productB.localeCompare(productA);
-    //         } else if (orderBy === 'ascending') {
-    //             const priceA = +a.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-    //             const priceB = +b.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-    //             return priceA - priceB;
-    //         } else if (orderBy === 'descending') {
-    //             const priceA = +a.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-    //             const priceB = +b.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-    //             return priceB - priceA;
-    //         }
-    //         // For default or undefined case
-    //         return 0;
-    //     });
+// Function to handle filtering by price
+function filterByPrice() {
+    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+    const maxPrice = parseInt(document.getElementById('max-price').value) || 1000000;
 
-    //     const productsContainer = document.getElementById('products');
-    //     productsContainer.innerHTML = '';
-    //     allProducts.forEach(product => {
-    //         productsContainer.appendChild(product);
-    //     });
-    // }
+    // Clear the existing products
+    document.getElementById('products').innerHTML = '';
 
-    // // Event listener for sorting when selecting an option
-    // const dropdownOptions = document.querySelectorAll('.dropdown-content a');
-    // dropdownOptions.forEach(option => {
-    //     option.addEventListener('click', () => {
-    //         document.querySelector('.dropbtn p').innerText = option.innerText;
-    //         const sortType = option.getAttribute('data-sort');
-    //         sortProducts(sortType);
-    //     });
-    // });
+    // Filter products based on the price range
+    products.forEach((product) => {
+        const productPrice = product.price;
+
+        if (productPrice >= minPrice && productPrice <= maxPrice) {
+            // Add the product to the filtered list
+            // This is similar to how you display products in your getProducts function
+            // Modify it according to your HTML structure
+            document.getElementById('products').innerHTML += `
+            <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
+                <div class="product-box">
+                    <div class="product-thumbnail">
+                        <img class="original" src="${product.imgUrl[0]}">
+                        <img class="hover" src="${product.imgUrl[1]}">
+                        <div class="hover-part">
+                            <div class="pumpup-item" style="border-right: 1px solid white">
+                            <button class="look-button" id="${product.productId}">
+                                Xem nhanh
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                            <div class="pumpup-item">
+                            <button class="details-button" id="${product.productId}">
+                                Mua ngay
+                                <span>
+                                    <img
+                                    src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
+                                    style="display: inline; width: 10px; height: auto"
+                                    />
+                                </span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="product-info a-left">
+                    <p style="margin:0;">${product.name}</p>
+                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                </div> 
+            </div>
+            `;
+        }
+    });
+}
+
 }
