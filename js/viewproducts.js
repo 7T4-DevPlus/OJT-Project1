@@ -40,7 +40,7 @@ async function getProducts() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product?.id.stringValue ?? product.productId.stringValue}">
+                            <button class="details-button" id="${doc.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -78,7 +78,7 @@ async function getProducts() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId.stringValue}">
+                            <button class="details-button" id="${doc.id}">
                                 Mua ngay
                                 <span>
                                     <img

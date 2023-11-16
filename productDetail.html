@@ -72,20 +72,20 @@
       </div> -->
 
         <div id="select-size">
-          <button class="size-button" onclick="toggleButtonColor(this)">S</button>
-          <button class="size-button" onclick="toggleButtonColor(this)">M</button>
-          <button class="size-button" onclick="toggleButtonColor(this)">L</button>
+          <button class="size-button S" onclick="toggleButtonColor(this)" value="S">S</button>
+          <button class="size-button M" onclick="toggleButtonColor(this)" value="M">M</button>
+          <button class="size-button L" onclick="toggleButtonColor(this)" value="L">L</button>
           <br>
           <a href="" style="font-family: 'Oswald';">Hướng dẩn chọn size</a>
         </div>
         <hr>
         <div id="select-quantyti">
           <button id="decrement">-</button>
-          <input class="counter" type="text" id="${obj.itemid}" value="1" />
+          <input class="counter" type="text" value="1" />
           <button id="increment">+</button>
         </div>
         <div id="addtocart">
-          <button style="font-family: 'Oswald'">BUY NOW</button>
+          <button class="add-btn" style="font-family: 'Oswald'">BUY NOW</button>
           <div id="at-store">
             <a>TRIAL DIRECT AT STORE</a>
           </div>
