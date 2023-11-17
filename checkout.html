@@ -171,7 +171,9 @@
 
             var params = {
                 senderemail : document.getElementById("email").value,
-
+                senderfullname : document.getElementById("fname").value,
+                senderphone : document.getElementById("phone").value,
+                senderaddress : document.getElementById("house").value,
             };
 
             emailjs.send(serviceID, templateID, params)
