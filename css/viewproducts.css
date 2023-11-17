@@ -79,10 +79,51 @@ li strong span[itemprop="title"] {
     display: flex;
     margin-bottom: 5vh;
 }
+.searchProducts{
+    width: 3vw;
+    margin-left: 2vw;
+    margin-top: 2vh;
+}
+
+/* Search box */
+.box {
+    display: flex;
+    margin: 5px;
+    width: 40px;
+    height: 30px;
+    background-color: #ffffff00;
+    border: solid 1px #00000000;
+    border-radius: 10px;
+}
+
+.box {
+    width: 20vw;
+    height: 35px;
+    background-color: #ffffff00;
+    border: solid 2px #e5e5e5;
+    border-radius: 10px;
+    transition: width 0.5s ;
+    overflow: hidden;
+    /* animation: search-animation 0.5s; */
+}
+
+.box input{
+    display: none;
+    background-color: #00000000;
+    border: 0;
+    outline: none;
+    margin: 2px;
+    font-family: 'Oswald';
+    font-size: 15px;
+}
+
+.box input{
+    display: block;
+}
 
 #right-sort  {
     width: 5vw;
-    margin-left: 55vw;
+    margin-left: 50vw;
     margin-top: 3vh;
 }
 
@@ -91,7 +132,6 @@ li strong span[itemprop="title"] {
 }
 
 .sortPagiBar {
-    border: 1px solid #e5e5e5;
     border-radius: 5px;
     width: 8vw;
     height: 4vh;
@@ -132,7 +172,7 @@ li strong span[itemprop="title"] {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1
+    background-color: rgb(249,245,242);
 }
 
 .dropdown:hover .dropdown-content {
@@ -555,4 +595,72 @@ ul {
     height: 100px;
     /* flex: 0 0 25%; */
     padding: 5px;
+}
+
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the select element */
+#sortOrder {
+    padding: 10px;
+    font-size: 17px;
+    font-family: 'Oswald';
+    appearance: none;
+	border: none;
+	outline: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+/* Style the options */
+#sortOrder option {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Style the options on hover */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.filter-container__selected-filter div {
+    margin-right: 10px;
+}
+
+/* input price field sort */
+#min-price,
+#max-price {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#filter-btn {
+    padding: 8px 12px;
+    background-color: #cdc5b7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 8vw;
+    margin-top: 2vh;
+    margin-left: 5vh;
+}
+
+input[type=number] {
+    margin-top: 2vh;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
