@@ -133,10 +133,10 @@ editForm.addEventListener('submit', async (event) => {
 
 function loadOrderHistory() {
     orders.forEach((order) => {
-        if(orderInfo.userId.stringValue === userId){
+        if(order.userId == userId){
             var orderHistorySection = document.getElementById('order-list');
             var parts = order.date.split("T")[0].split("-");
-            var formattedDate = `${parts[0]}/${parts[1]}/${parts[2]}`;
+            var formattedDate = `${parts[0]}`;
             orderHistorySection.innerHTML += 
             `
             <li id=${order.id} class="order-details">Order ${order.id} - Date: ${formattedDate} - Total: ${order.total.toLocaleString()}VNĐ</li>
@@ -180,13 +180,12 @@ function getOrderDetails(id){
                     </div>
                 </div> 
             </div> `
-            var orderItemIds = orderInfo.orderDetails;    //2
-            orderItemIds.forEach((orderItemid) => {                         //lấy tất cả orderDetails trong order
-                orderDetails.forEach((orderDetailsDoc) =>{     //3
-                    if(orderDetailsDoc.id === orderItemid){    //check orderDetails trong db
-                        products.forEach((productInfo) => {                                  //4
-                            if(productInfo.id === orderDetailsDoc.productId){   //check product trong orderDetails
-                                console.log(orderDetailsDoc);
+            var orderItemIds = orderInfo.orderDetails;    
+            orderItemIds.forEach((orderItemid) => {                      
+                orderDetails.forEach((orderDetailsDoc) =>{    
+                    if(orderDetailsDoc.id == orderItemid){   
+                        products.forEach((productInfo) => {                                  
+                            if(productInfo.id == orderDetailsDoc.productId){   
                                 document.getElementById("order-details-modal").innerHTML += 
                                 `<div style="border: solid 1px black; display: flex; height: 20vh; width: 100%">
                                     <div style="width: 30%">
@@ -196,13 +195,13 @@ function getOrderDetails(id){
                                         <p>${productInfo.name}</p>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${orderDetailsInfo.size}</p>
+                                        <p>${orderDetailsDoc.size}</p>
                                     </div>
                                     <div style="width: 20%">
                                         <p>${productInfo.price.toLocaleString()} VNĐ</p>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${orderDetailsInfo.quantity}</p>
+                                        <p>${orderDetailsDoc.quantity}</p>
                                     </div>
                                 </div>`
                             }                                                                         

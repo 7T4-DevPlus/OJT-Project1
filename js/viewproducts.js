@@ -52,7 +52,7 @@ async function getProducts() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
@@ -90,15 +90,13 @@ async function getProducts() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
         };
     });
 
-//Modal
-var modal = document.getElementById("product-modal");
 var detailsButtons = document.querySelectorAll(".details-button");
 detailsButtons.forEach((detailsBtn) => {
     detailsBtn.addEventListener("click", () => {
@@ -106,6 +104,8 @@ detailsButtons.forEach((detailsBtn) => {
     });
 })
 
+//Modal
+var modal = document.getElementById("product-modal");
 var lookButtons = document.querySelectorAll(".look-button");
 lookButtons.forEach((lookBtn) => {
     lookBtn.onclick = function() {
@@ -116,16 +116,17 @@ lookButtons.forEach((lookBtn) => {
     }
 })
 
-    window.onclick = function (event) {
+window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+}
 
 
-function productDetails(id){
+function productDetails(proId){
     products.forEach((product) => {
-        if(product.productId === id){
+        if(product.productId === proId){
+            console.log(product.id)
             modal.innerHTML =
             `<div class="product-details" id="${product.productId}" >
                 <div style="display: flex;">
@@ -141,10 +142,10 @@ function productDetails(id){
                         <p style="margin-bottom: 0;">${product.name}</p>
                         <p style="font-size: 2vh;">${product.productId}</p>
                         <hr>
-                        <p>${product.price.toLocaleString()} <u>đ</u></p>
+                        <p>${product.price.toLocaleString()} VND</p>
                         <hr>
                         <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
-                        <form id="add-to-cart-form" class="${id}" onsubmit="return false">
+                        <form id="add-to-cart-form" class="${proId}" onsubmit="return false">
                             <div>
                                 <input type="radio" id="sizeL" name="size" value="L">
                                 <label for="sizeL">L</label>
@@ -153,7 +154,7 @@ function productDetails(id){
                                 <input type="radio" id="sizeS" name="size" value="S" style="margin-left: 10%">
                                 <label for="sizeS">S</label>
                             </div>
-                            <button type="submit" class="add-cart-btn">
+                            <button type="submit" class="add-cart-btn" onclick="window.location.href = 'http://127.0.0.1:5500/productDetail.html?id=${product.id}'">
                                 Thêm vào giỏ
                             </button>
                         </form>
@@ -197,15 +198,15 @@ function productDetails(id){
                 });
             }
         })
-    }
+}
 
-    // Search feature
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            searchByName();
-        }
-    });
+// Search feature
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        searchByName();
+    }
+});
 
     function searchByName() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -255,7 +256,7 @@ function productDetails(id){
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
@@ -293,7 +294,7 @@ function productDetails(id){
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
@@ -350,7 +351,7 @@ function productDetails(id){
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
@@ -400,7 +401,7 @@ function productDetails(id){
 
     function getProductData(productElement) {
         return {
-            price: parseInt(productElement.querySelector('.product-info p:last-child').textContent.replace('đ', '').trim()),
+            price: parseInt(productElement.querySelector('.product-info p:last-child').textContent.replace('VND', '').trim()),
             name: productElement.querySelector('.product-info p:first-child').textContent.trim()
         };
     }
