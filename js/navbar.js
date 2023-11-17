@@ -31,11 +31,11 @@ const userBtn = document.getElementById('userBtn');
 const cartBtn = document.getElementById('cartBtn');
 
 homePage.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5501/b/OJT-Project1/home.html`;
+    window.top.location.href = `http://127.0.0.1:5500/home.html`;
 });
 
 productPage.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5501/b/OJT-Project1/products.html`;
+    window.top.location.href = `http://127.0.0.1:5500/products.html`;
 });
 
 contactPage.addEventListener("click", () => {
@@ -70,7 +70,7 @@ cartBtn.addEventListener("click", () => {
 
     searchButton.addEventListener('click', function () {
         // Redirect to the product page
-        window.location.href = 'http://127.0.0.1:5501/b/OJT-Project1/products.html';
+        window.location.href = 'http://127.0.0.1:5500/products.html';
 
         // Set a timeout to ensure the redirect happens before focusing on the search input
         setTimeout(function () {

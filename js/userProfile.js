@@ -5,20 +5,23 @@ function checkUser() {
 }
 checkUser();
 
-import {  collection, doc, getDocs, updateDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-import db from "./database.js"
-const userDB = collection(db, "users");
 const userId = localStorage.getItem("userId");
-const users = await getDocs(userDB);
 
-const orderDB = collection(db, "orders");
-const orders = await getDocs(orderDB);
+const userApi = 'https://fourt7.onrender.com/api/users';
+const usersResponse = await fetch(userApi);
+const users = await usersResponse.json();
 
-const orderDetailsDB = collection(db, "orderDetails");
-const orderDetails = await getDocs(orderDetailsDB);
+const orderApi = 'https://fourt7.onrender.com/api/orders';
+const ordersResponse = await fetch(orderApi);
+const orders = await ordersResponse.json();
 
-const productDB = collection(db, "products");
-const products = await getDocs(productDB);
+const orderDetailsApi = 'https://fourt7.onrender.com/api/orderDetails';
+const orderDetailsResponse = await fetch(orderDetailsApi);
+const orderDetails = await orderDetailsResponse.json();
+
+const productsApi = 'https://fourt7.onrender.com/api/products';
+const productsResponse = await fetch(productsApi);
+const products = await productsResponse.json();
 
 loadContent('user-info');
 loadUserData();
@@ -51,33 +54,17 @@ function loadContent(pageName) {
     if (pageName === 'user-info' || pageName === 'edit-info' || pageName === 'order-history') {
         var selectedSection = document.getElementById(pageName);
         selectedSection.style.display = 'block';
-
-        if (pageName === 'edit-info') {
-            sidebar.style.width = '20%';
-            // Retrieve the saved values from local storage
-            var savedName = localStorage.getItem('name');
-            var savedEmail = localStorage.getItem('email');
-            var savedPhone = localStorage.getItem('phone');
-
-            // Set the values in the form fields
-            document.getElementById('name').value = savedName || ''; // Set the value or leave it empty if not found
-            document.getElementById('email').value = savedEmail || '';
-            document.getElementById('phone').value = savedPhone || '';
-
-        } else {
-            sidebar.style.width = '20%';
-        }
+        sidebar.style.width = '20%';  
     }
 }       
 
 function loadUserData() {
-    users.forEach((doc) => {
-        if(doc.id === userId){
-            var userInfo = doc._document.data.value.mapValue.fields;
+    users.forEach((userInfo) => {
+        if(userInfo.id === userId){
     
-            var name = userInfo.name.stringValue;
-            var email = userInfo.email.stringValue;
-            var phone = userInfo.phone.stringValue;
+            var name = userInfo.name;
+            var email = userInfo.email;
+            var phone = userInfo.phone;
     
             var userInfoSection = document.getElementById('user-info');
             userInfoSection.innerHTML = '<h2 style="margin-top: 8px;">User Information</h2>' +
@@ -90,21 +77,19 @@ function loadUserData() {
 
 var editForm = document.getElementById('edit-form');
 
-users.forEach((doc) => {
-    if(doc.id === userId){
+users.forEach((userInfo) => {
+    if(userInfo.id === userId){
         var emailInput = document.getElementById('email');
         var nameInput = document.getElementById('name');
         var phoneInput = document.getElementById('phone');
 
-        var userInfomation = doc._document.data.value.mapValue.fields;
+        nameInput.placeholder = `${userInfo.name}`
+        emailInput.placeholder = `${userInfo.email}`
+        phoneInput.placeholder = `${userInfo.phone}`
 
-        nameInput.placeholder = `${userInfomation.name.stringValue}`
-        emailInput.placeholder = `${userInfomation.email.stringValue}`
-        phoneInput.placeholder = `${userInfomation.phone.stringValue}`
-
-        nameInput.defaultValue = `${userInfomation.name.stringValue}`
-        emailInput.defaultValue = `${userInfomation.email.stringValue}`
-        phoneInput.defaultValue = `${userInfomation.phone.stringValue}`
+        nameInput.defaultValue = `${userInfo.name}`
+        emailInput.defaultValue = `${userInfo.email}`
+        phoneInput.defaultValue = `${userInfo.phone}`
     }
 })
 
@@ -115,8 +100,29 @@ editForm.addEventListener('submit', async (event) => {
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
 
-    const docRef = doc(db, "users", userId);
-    await updateDoc(docRef, {"name":name, "email":email, "phone":phone});
+    var editUser = {
+        name:  name,
+        email: email,
+        phone: phone,
+      }
+
+    const patchUrl = `https://fourt7.onrender.com/api/users/${userId}`;
+
+    console.log(JSON.stringify(editUser))
+    fetch(patchUrl, {
+        method: 'PATCH',
+        body: JSON.stringify(editUser),
+        headers: {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(a => {
+            console.log('Dữ liệu đã được gửi thành công:', a);
+        })
+        .catch(error => {
+            // console.error('Lỗi cho có', error);
+        });
 
     alert('User information saved.');
     window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
@@ -126,15 +132,14 @@ editForm.addEventListener('submit', async (event) => {
 });
 
 function loadOrderHistory() {
-    orders.forEach((doc) => {
-        var orderInfo = doc._document.data.value.mapValue.fields
+    orders.forEach((order) => {
         if(orderInfo.userId.stringValue === userId){
             var orderHistorySection = document.getElementById('order-list');
-            var parts = orderInfo.date.timestampValue.split("T")[0].split("-");
+            var parts = order.date.split("T")[0].split("-");
             var formattedDate = `${parts[0]}/${parts[1]}/${parts[2]}`;
             orderHistorySection.innerHTML += 
             `
-            <li id=${doc.id} class="order-details">Order ${doc.id} - Date: ${formattedDate} - Total: ${orderInfo.total.integerValue}VNĐ</li>
+            <li id=${order.id} class="order-details">Order ${order.id} - Date: ${formattedDate} - Total: ${order.total.toLocaleString()}VNĐ</li>
             `
         }
     })
@@ -151,13 +156,12 @@ detailsButtons.forEach((detailsBtn) => {
 })
 
 function getOrderDetails(id){
-    orders.forEach((orderDoc) => {
-        let orderInfo = orderDoc._document.data.value.mapValue.fields;
-        if(orderDoc.id === id){   
+    orders.forEach((orderInfo) => {
+        if(orderInfo.id === id){   
             modal.innerHTML = `
             <div id="order-details-modal" class="order-details-modal" >
                 <h2 style="margin: 0;">ORDER DETAILS</h2>
-                <p style="text-align: left;">Total: ${orderInfo.total.integerValue} VNĐ</p>
+                <p style="text-align: left;">Total: ${orderInfo.total.toLocaleString()} VNĐ</p>
                 <div style="display: flex; width: 100%">
                     <div style="width: 30%">
                         <p style="text-align: left;">Image</p>
@@ -176,31 +180,29 @@ function getOrderDetails(id){
                     </div>
                 </div> 
             </div> `
-            var orderItemIds = orderInfo.orderDetails.arrayValue.values;    //2
+            var orderItemIds = orderInfo.orderDetails;    //2
             orderItemIds.forEach((orderItemid) => {                         //lấy tất cả orderDetails trong order
                 orderDetails.forEach((orderDetailsDoc) =>{     //3
-                    let orderDetailsInfo = orderDetailsDoc._document.data.value.mapValue.fields
-                    if(orderDetailsDoc.id === orderItemid.stringValue){    //check orderDetails trong db
-                        products.forEach((productDoc) => {                                  //4
-                            let productInfo = productDoc._document.data.value.mapValue.fields;
-                            if(productDoc.id === orderDetailsInfo.productId.stringValue){   //check product trong orderDetails
-                                console.log(orderDetailsInfo);
+                    if(orderDetailsDoc.id === orderItemid){    //check orderDetails trong db
+                        products.forEach((productInfo) => {                                  //4
+                            if(productInfo.id === orderDetailsDoc.productId){   //check product trong orderDetails
+                                console.log(orderDetailsDoc);
                                 document.getElementById("order-details-modal").innerHTML += 
                                 `<div style="border: solid 1px black; display: flex; height: 20vh; width: 100%">
                                     <div style="width: 30%">
-                                        <img style="height: 100%; width: auto;" src="${productInfo.imgUrl.arrayValue.values[0].stringValue}"/>
+                                        <img style="height: 100%; width: auto;" src="${productInfo.imgUrl[0]}"/>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${productInfo.name.stringValue}</p>
+                                        <p>${productInfo.name}</p>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${orderDetailsInfo.size.stringValue}</p>
+                                        <p>${orderDetailsInfo.size}</p>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${productInfo.price.integerValue} VNĐ</p>
+                                        <p>${productInfo.price.toLocaleString()} VNĐ</p>
                                     </div>
                                     <div style="width: 20%">
-                                        <p>${orderDetailsInfo.quantity.integerValue}</p>
+                                        <p>${orderDetailsInfo.quantity}</p>
                                     </div>
                                 </div>`
                             }                                                                         

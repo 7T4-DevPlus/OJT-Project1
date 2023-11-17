@@ -28,6 +28,7 @@ async function getCartDetails() {
         if(userID === ci.userId) {
             products.forEach(p => {
                 if(ci.productId === p.id) {
+                    console.log(p)
                     let subTotalProduct = p.price * ci.productQuantity;
                     totalPrice += subTotalProduct;
 
@@ -127,7 +128,7 @@ async function updateQuantityInFirebase(cartItemId, newQuantity, subtotalValue) 
         },
         body: JSON.stringify({
             productQuantity: newQuantity,
-            subtotal: subtotalValue,
+            subTotal: subtotalValue,
         }),
     });
 

@@ -1,7 +1,7 @@
-import {  collection, doc, getDocs, addDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-import db from "./database.js"
+// import {  collection, doc, getDocs, addDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+// import db from "./database.js"
 
-const userDB = collection(db, "users");
+// const userDB = collection(db, "users");
 
 function toggleErrorMessageOnBlur(input, errorElement) {
     if (input.validity.valueMissing && input.value === "") {
@@ -93,8 +93,32 @@ signupForm.addEventListener('submit', async (event) => {
 
     console.log(data) 
 
-    const docRef = await addDoc(userDB, {"name":data.name,"email":data.email,"password":data.password, "phone":data.phone});
-    console.log("Document written with ID: ", docRef.id);
+    var postUser = {
+        name:  data.name,
+        email: data.email,
+        password: data.password,
+        phone: data.phone,
+    }
+
+    const postUrl = `https://fourt7.onrender.com/api/users`;
+
+    console.log(JSON.stringify(postUser))
+    fetch(postUrl, {
+        method: 'POSt',
+        body: JSON.stringify(postUser),
+        headers: {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(a => {
+            console.log('Dữ liệu đã được gửi thành công:', a);
+            localStorage.setItem("userId", userInfo.id);
+            window.location.href = "home.html"
+        })
+        .catch(error => {
+            // console.error('Lỗi cho có', error);
+        });
 });
 
 
@@ -123,6 +147,10 @@ signinForm.addEventListener('submit', async (event) => {
 
     event.preventDefault();
 
+    const url = 'https://fourt7.onrender.com/api/users';
+    const usersResponse = await fetch(url);
+    const users = await usersResponse.json();
+
     const formData = new FormData(event.target);
     const data = {}; 
 
@@ -130,16 +158,18 @@ signinForm.addEventListener('submit', async (event) => {
         data[key] = value;
     });
 
-    const querySnapshot = await getDocs(userDB);
-    querySnapshot.forEach((doc) => {
-        let userInfo = doc._document.data.value.mapValue.fields;
-        if(data.email === userInfo.email.stringValue){
-            if(data.password === userInfo.password.stringValue){
-                localStorage.setItem("userId", doc.id);
-                window.location.href = "userProfile.html"
+    console.log(data)
+    users.forEach((userInfo) => {
+        console.log(userInfo)
+        if(data.email === userInfo.email){
+            if(data.password === userInfo.password){
+                localStorage.setItem("userId", userInfo.id);
+                window.location.href = "home.html"
             }else{
                 alert("wrong password!!!");
             }
         }
     });
+
+    // alert("User doesn't exits!");
 });
