@@ -15,7 +15,7 @@
     </div>
 
     <h2>Checkout </h2>
-    <form action="" onsubmit="return handleOrderButtonClick()">
+    <form  id="form" onsubmit="console.log('test')">
         <main class="main">
             <div class="col-75">
                 <div class="container">
@@ -144,12 +144,14 @@
                             <hr>
                             <div class="total-section">
                                 <p>Total</p>
-                                <span id="total-checkout"><b></b></span>
+                                <span id="total-checkout">
+                                    <b></b>
+                                </span>
                             </div>
                             <hr>
                             <div class="button-container">
                                 <p><a href="cart.html">Back to cart</a></p>
-                                <button type="submit" id="orderButton" style="font-weight: bold;">Order</button>
+                                <button type="submit"id="orderButton" style="font-weight: bold;">Order</button>
                             </div>
                     </div>
                 </div>
