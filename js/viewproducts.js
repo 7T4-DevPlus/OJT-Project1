@@ -110,24 +110,24 @@ async function getProducts() {
         };
     });
 
-    //Modal
-    var modal = document.getElementById("product-modal");
-    var detailsButtons = document.querySelectorAll(".details-button");
-    detailsButtons.forEach((detailsBtn) => {
-        detailsBtn.addEventListener("click", () => {
-            window.location.href = `http://127.0.0.1:5500/productDetail.html?id=${detailsBtn.id}`;
-        });
-    })
+//Modal
+var modal = document.getElementById("product-modal");
+var detailsButtons = document.querySelectorAll(".details-button");
+detailsButtons.forEach((detailsBtn) => {
+    detailsBtn.addEventListener("click", () => {
+        window.location.href = `http://127.0.0.1:5500/OJT-Project1/productDetail.html?id=${detailsBtn.id}`;
+    });
+})
 
-    var lookButtons = document.querySelectorAll(".look-button");
-    lookButtons.forEach((lookBtn) => {
-        lookBtn.onclick = function () {
-            modal.style.display = "block";
-            var productId = lookBtn.id;
-            console.log(productId)
-            productDetails(productId)
-        }
-    })
+var lookButtons = document.querySelectorAll(".look-button");
+lookButtons.forEach((lookBtn) => {
+    lookBtn.onclick = function() {
+        modal.style.display = "block";
+        var productId = lookBtn.id; 
+        console.log(productId)
+        productDetails(productId)
+    }
+})
 
     window.onclick = function (event) {
         if (event.target == modal) {
