@@ -1,337 +1,349 @@
-var citis = document.getElementById("city");
-var districts = document.getElementById("district");
-var wards = document.getElementById("ward");
-var Parameter = {
-    url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-    method: "GET",
-    responseType: "application/json",
-};
+// localStorage.setItem("userid");
+const currentuserID = 1;
+displayCart();
+var cartItemsData = []
+var totalPriceWithShippingAll = 0
+var address = "";
+var totalCartPrice = 0;
+var orderDetailsList = [];
 
-var promise = axios(Parameter);
-promise.then(function (result) {
-    renderCity(result.data);
-});
 
-function renderCity(data) {
-    for (const x of data) {
-        citis.options[citis.options.length] = new Option(x.Name, x.Id);
-    }
-    citis.onchange = function () {
-        districts.length = 1;
-        wards.length = 1;
-        if (this.value !== "") {
-            const result = data.filter(n => n.Id === this.value);
+async function displayCart() {
+   var citis = document.getElementById("city");
+   var districts = document.getElementById("district");
+   var wards = document.getElementById("ward");
+
+   var Parameter = {
+      url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+      method: "GET",
+      responseType: "application/json",
+   };
+
+   // Code lấy thông tin thành phố, quận, huyện
+   try {
+      const result = await axios(Parameter);
+      renderCity(result.data);
+   } catch (error) {
+      console.error('Error fetching data:', error);
+   }
+   // renderCity(data);
+
+   
+   function renderCity(data) {
+      for (const x of data) {
+         citis.options[citis.options.length] = new Option(x.Name, x.Id);
+      }
+      citis.onchange = function () {
+         districts.length = 1;
+         wards.length = 1;
+         if (this.value !== "") {
+            const result = data.filter((n) => n.Id === this.value);
 
             for (const k of result[0].Districts) {
-                districts.options[districts.options.length] = new Option(k.Name, k.Id);
+               districts.options[districts.options.length] = new Option(k.Name, k.Id);
             }
-        }
-    };
-    districts.onchange = function () {
-        wards.length = 1;
-        const dataCity = data.filter((n) => n.Id === citis.value);
-        if (this.value !== "") {
-            const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+         }
+      };
+      districts.onchange = function () {
+         wards.length = 1;
+         const dataCity = data.filter((n) => n.Id === citis.value);
+         if (this.value !== "") {
+            const dataWards = dataCity[0].Districts.filter((n) => n.Id === this.value)[0]
+               .Wards;
 
             for (const w of dataWards) {
-                wards.options[wards.options.length] = new Option(w.Name, w.Id);
+               wards.options[wards.options.length] = new Option(w.Name, w.Id);
             }
-        }
-    };
-}
+         }
+      };
+   }
+   //display shipping method when change address value
+   document.getElementById("city").addEventListener("change", function () {
+      const shippingRadios = document.querySelectorAll('input[name="shipping"]');
 
-function validatePayment() {
-    const checkbox = document.getElementById("payment");
-    if (!checkbox.checked) {
-        alert("Please select Payment method!");
-        return false;
-    }
-    return true;
-}
+      // Check if a city is selected
+      if (this.value !== "") {
+         // Automatically select the first shipping method
+         shippingRadios[0].checked = true;
 
-document.getElementById('city').addEventListener('change', function () {
-    var citySelect = document.getElementById('city');
-    var shippingFeeDiv = document.getElementById('shippingFee');
-    var messageDiv = document.getElementById('message');
-
-    if (citySelect.value !== "") {
-        shippingFeeDiv.style.display = 'block';
-        messageDiv.style.display = 'none';
-    } else {
-        shippingFeeDiv.style.display = 'none';
-        messageDiv.style.display = 'block';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const productCartPrices = document.querySelectorAll('.product-cart-price');
-    
-    productCartPrices.forEach(priceDiv => {
-        const priceText = priceDiv.textContent.trim();
-        const extractedPrice = Number(priceText.replace(/[^0-9.-]+/g,""));
-        
-        if (!isNaN(extractedPrice) && extractedPrice !== 0) {
-            priceDiv.textContent = `${extractedPrice.toLocaleString()} ₫`;
-        } else {
-            priceDiv.textContent = '';
-        }
-    });
-});
-
-document.getElementById('city').addEventListener('change', function() {
-    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-
-    // Check if a city is selected
-    if (this.value !== "") {
-        // Automatically select the first shipping method
-        shippingRadios[0].checked = true;
-
-        // Manually trigger the change event for the selected shipping radio button
-        const event = new Event('change');
-        shippingRadios[0].dispatchEvent(event);
-    }
-});
+         // Manually trigger the change event for the selected shipping radio button
+         const event = new Event("change");
+         shippingRadios[0].dispatchEvent(event);
+      }
+   });
 
 
-const cart = [
-    {
-        "image": "images/1.png",
-        "quantity": 4,
-        "price": 20000,
-        "name": "Product A",
-        "size": "M"
-    },
-    {
-        "image": "images/1.png",
-        "quantity": 1,
-        "price": 19000,
-        "name": "Product B",
-        "size": "L"
-    }
-    // Add more products as needed
-];
+   const productContainer = document.getElementById("product-details");
 
-function displayCart() {
-    const productContainer = document.getElementById('product-details');
-    let totalCartPrice = 0;
+   const cartAPI = "https://fourt7.onrender.com/api/cartItems";
+   const cartResponse = await fetch(cartAPI);
+   const cartItems = await cartResponse.json();
+   console.log(cartItems);
 
-    cart.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.classList.add('product-details');
+   const productAPI = "https://fourt7.onrender.com/api/products";
+   const productResponse = await fetch(productAPI);
+   const products = await productResponse.json();
 
-        const productImgContainer = document.createElement('div');
-        productImgContainer.classList.add('product-img-container');
+   // const orderDetailsAPI = "https://fourt7.onrender.com/api/orderDetails";
+   // const orderDetailsResponse = await fetch(orderDetailsAPI);
+   // const orderDetails = await orderDetailsResponse.json();
 
-        const productImg = document.createElement('img');
-        productImg.classList.add('product-img');
-        productImg.src = product.image;
+   let totalPriceWithShipping = 0;
 
-        const quantityCircle = document.createElement('div');
-        quantityCircle.classList.add('product-quantity-circle');
-        quantityCircle.textContent = product.quantity;
+   cartItems.forEach((ci) => {
+      if (ci.userId == currentuserID) {
+         [...cartItemsData,ci];
+         const productDiv = document.createElement("div");
+         productDiv.classList.add("product-details");
 
-        const productInfo = document.createElement('div');
-        productInfo.classList.add('product-info');
+         const productImgContainer = document.createElement("div");
+         productImgContainer.classList.add("product-img-container");
 
-        const productName = document.createElement('div');
-        productName.classList.add('product-name');
-        productName.textContent = product.name;
+         const quantityCircle = document.createElement("div");
+         quantityCircle.classList.add("product-quantity-circle");
+         quantityCircle.textContent = ci.productQuantity;
 
-        const productSize = document.createElement('div');
-        productSize.classList.add('product-size');
-        productSize.textContent = `Size: ${product.size}`;
+         const productInfo = document.createElement("div");
+         productInfo.classList.add("product-info");
 
-        productImgContainer.appendChild(productImg);
-        productImgContainer.appendChild(quantityCircle);
-        productDiv.appendChild(productImgContainer);
+         products.forEach((item) => {
+            if (item.id == ci.productId) {
+               cartItemsData = [...cartItemsData,ci];
+               console.log(ci.productId);
+               const productImg = document.createElement("img");
+               productImg.classList.add("product-img");
+               productImg.src = item.imgUrl[0];
+               const productName = document.createElement("div");
+               productName.classList.add("product-name");
+               productName.textContent = item.name;
+               productImgContainer.appendChild(productImg);
+               productInfo.appendChild(productName);
+            }
+         });
 
-        productInfo.appendChild(productName);
-        productInfo.appendChild(productSize);
-        productDiv.appendChild(productInfo);
+         const productSize = document.createElement("div");
+         productSize.classList.add("product-size");
+         productSize.textContent = `Size: ${ci.productSize}`;
 
-        const totalProductPrice = product.price * product.quantity;
-        totalCartPrice += totalProductPrice;
+         productImgContainer.appendChild(quantityCircle);
+         productDiv.appendChild(productImgContainer);
 
-        const productCartPrice = document.createElement('div');
-        productCartPrice.classList.add('product-cart-price');
-        productCartPrice.textContent = `$${totalProductPrice}`;
+         productInfo.appendChild(productSize);
+         productDiv.appendChild(productInfo);
 
-        productDiv.appendChild(productCartPrice);
-        productContainer.appendChild(productDiv);
-    });
+         let totalProductPrice = ci.subTotal;
+         totalCartPrice += totalProductPrice;
 
-    const totalCheckout = document.getElementById('total-checkout');
-    totalCheckout.querySelector('b').textContent = `$${totalCartPrice}`;
-}
+         const productCartPrice = document.createElement("div");
+         productCartPrice.classList.add("product-cart-price");
+         productCartPrice.textContent = `${totalProductPrice}`;
 
-displayCart();
+         productDiv.appendChild(productCartPrice);
+         productContainer.appendChild(productDiv);
+      }
+   });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-    const totalCheckout = document.getElementById('total-checkout');
-    const productsTotal = document.querySelectorAll('.product-cart-price');
-    let totalCartPrice = 0;
+   const totalCheckout = document.getElementById("total-checkout");
+   totalCheckout.querySelector("b").textContent = `${totalCartPrice.toLocaleString()}`;
 
-    productsTotal.forEach(priceDiv => {
-        const priceText = priceDiv.textContent.trim();
-        const extractedPrice = Number(priceText.replace(/[^0-9.-]+/g,""));
+   const orderButton = document.getElementById("orderButton");
 
-        if (!isNaN(extractedPrice)) {
-            totalCartPrice += extractedPrice;
-        }
-    });
+   document.getElementById("city").addEventListener("change", function () {
+      const shippingRadios = document.querySelectorAll('input[name="shipping"]');
 
-    totalCheckout.querySelector('b').textContent = `${totalCartPrice.toLocaleString()} ₫`;
+      // Check if a city is selected
+      if (this.value !== "") {
+         // Automatically select the first shipping method
+         shippingRadios[0].checked = true;
+      }
+   });
 
-    shippingRadios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            const selectedShipping = parseFloat(this.value.replace(',', ''));
-            const totalPriceWithShipping = totalCartPrice + selectedShipping;
-            totalCheckout.querySelector('b').textContent = `${(totalPriceWithShipping).toLocaleString()} ₫`;
+   //display shipping method when change city address
+   document.getElementById("city").addEventListener("change", function () {
+      // console.log("change address");
+      var citySelect = document.getElementById("city");
+      var shippingFeeDiv = document.getElementById("shippingFee");
+      var messageDiv = document.getElementById("message");
+
+      if (citySelect.value !== "") {
+         shippingFeeDiv.style.display = "block";
+         messageDiv.style.display = "none";
+      } else {
+         shippingFeeDiv.style.display = "none";
+         messageDiv.style.display = "block";
+      }
+   });
+   
+
+   //Add shipping fee when change shipping method
+   document.addEventListener("DOMContentLoaded", function () {
+      const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+      const totalCheckout = document.getElementById("total-checkout");
+      const productsTotal = document.querySelectorAll(".product-cart-price");
+        productsTotal.forEach((priceDiv) => {
+           const priceText = priceDiv.textContent.trim();
+           const extractedPrice = Number(priceText.replace(/[^0-9.-]+/g, ""));
+
+           if (!isNaN(extractedPrice)) {
+              totalCartPrice += extractedPrice;
+           }
+
         });
-    });
-});
 
-const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-const orderButton = document.getElementById('orderBtn');
+      totalCheckout.querySelector(
+         "b"
+      ).textContent = `${totalCartPrice.toLocaleString()} ₫`;
 
-shippingRadios.forEach(radio => {
-    radio.addEventListener('change', function () {
-        orderButton.disabled = false;
-    });
-});
+      shippingRadios.forEach((radio) => {
+         radio.addEventListener("change", function () {
+            const selectedShipping = parseFloat(this.value.replace(",", ""));
+            var totalPriceWithShipping = totalCartPrice + selectedShipping;
+            orderTotal = totalPriceWithShipping;
+            totalCheckout.querySelector(
+               "b"
+            ).textContent = `${totalPriceWithShipping.toLocaleString()} ₫`;
+            totalPriceWithShippingAll += totalPriceWithShipping
+            console.log(totalPriceWithShippingAll);
+         });
+      });
+   });
+   // cartItemsData.forEach(cartItem => {
+   //    creatOrderDetails({...cartItem, totalPriceWithShippingAll })
+   // })
+   console.log(totalCartPrice);
+   document.getElementById("productsTotal").textContent = `${totalCartPrice.toLocaleString()} ₫`;
 
-document.getElementById('city').addEventListener('change', function() {
-    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-    
-    // Check if a city is selected
-    if (this.value !== "") {
-        // Automatically select the first shipping method
-        shippingRadios[0].checked = true;
-    }
-});
+   const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+   const shippingCost = document.getElementById("shippingCost");
+   const displayShippingCost = document.getElementById("displayShippingCost");
+   let selectedShippingCost = 0;
 
-document.addEventListener('DOMContentLoaded', function () {
-    const productCartPrices = document.querySelectorAll('.product-cart-price');
-    const productsTotal = document.getElementById('productsTotal');
-    let totalCartPrice = 0;
+   shippingRadios.forEach((radio) => {
+      radio.addEventListener("change", function () {
+         orderButton.disabled = false;
+      });
+   });
 
-    productCartPrices.forEach(priceDiv => {
-        const priceText = priceDiv.textContent.trim();
-        const extractedPrice = Number(priceText.replace(/[^0-9.-]+/g,""));
+   //Calculation Total with shipping fee when change shipping method
+   shippingRadios.forEach((radio) => {
+      radio.addEventListener("change", function () {
+         selectedShippingCost = parseFloat(this.value.replace(",", ""));
+         totalPriceWithShipping = totalCartPrice + selectedShippingCost;
+         console.log("total", totalPriceWithShipping)
+         const shippingCostText = `${selectedShippingCost.toLocaleString()} ₫`;
 
-        if (!isNaN(extractedPrice)) {
-            totalCartPrice += extractedPrice;
-        }
-    });
+         displayShippingCost.textContent = shippingCostText;
+         const totalPriceText = `${totalPriceWithShipping.toLocaleString()} ₫`;
+         document.getElementById("total-checkout").textContent =
+            totalPriceText.toLocaleString();
 
-    productsTotal.textContent = `${totalCartPrice.toLocaleString()} ₫`;
+         // Show the shipping cost field only when a shipping method is chosen
+         shippingCost.style.display = "block";
+      });
+   });
 
-    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-    const shippingCost = document.getElementById('shippingCost');
-    const displayShippingCost = document.getElementById('displayShippingCost');
-    let selectedShippingCost = 0;
+   //get address value 
+   const homeaddress = document.querySelector("#house");
+   homeaddress.addEventListener("change", function () {
+      address = homeaddress.value
+      console.log(address)
+   });
 
-    shippingRadios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            selectedShippingCost = parseFloat(this.value.replace(',', ''));
-            const totalPriceWithShipping = totalCartPrice + selectedShippingCost;
-            const shippingCostText = `${selectedShippingCost.toLocaleString()} ₫`;
+  
+}
 
-            displayShippingCost.textContent = shippingCostText;
-            const totalPriceText = `${totalPriceWithShipping.toLocaleString()} ₫`;
-            document.getElementById('total-checkout').querySelector('b').textContent = totalPriceText;
+async function creatOrderDetails(ci) {
+   const postOrder = `https://fourt7.onrender.com/api/orderDetails`;
+   const postResponse = await fetch(postOrder, {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+         productId: ci.productId,
+         quantity: ci.productQuantity,
+         size: ci.productSize,
+         subtotal: ci.subTotal,
+      })
+   })
+      .then(postResponse => postResponse.json())
+      .then(data => {
+         totalCartPrice += data.subtotal;
+         var newObjectId = data.id;
+         console.log(data.id);
+         orderDetailsList.push(newObjectId);
+         // [...orderDetailsList,newObjectId];
+         console.log('OrderDetails Id: ', newObjectId);
+         console.log(orderDetailsList)
+         console.log(totalCartPrice);
+      })
+      .catch(error => console.error('Error:', error));
+};
+async function deleteCartItems(id) {
+   const postOrder = `https://fourt7.onrender.com/api/cartItems/${id}`;
+   const postResponse = await fetch(postOrder, {
+      method: 'DELETE',
+      headers: {
+         'Content-Type': 'application/json',
+      },
+   })
+      .then(postResponse => postResponse.json())
+      .then(data =>console.log(data.json()))
+      .catch(error => console.error('Error:', error));
+};
+function getDateTime(){
+   var ngayGioHienTai = new Date();
+   var ngay = ngayGioHienTai.getDate();
+   var thang = ngayGioHienTai.getMonth() + 1; // Tháng bắt đầu từ 0
+   var nam = ngayGioHienTai.getFullYear();
 
-            // Show the shipping cost field only when a shipping method is chosen
-            shippingCost.style.display = 'block';
-        });
-    });
-});
+   var gio = ngayGioHienTai.getHours();
+   var phut = ngayGioHienTai.getMinutes();
+   var giay = ngayGioHienTai.getSeconds();
 
-function handleOrderButtonClick() {
-    if (!document.forms[0].checkValidity()) {
-        return false;
-    }
+   let dateTime = `${ngay}/${thang}/${nam}` + ` ${gio}:${phut}:${giay}`;
+   console.log(dateTime.toLocaleString());
+   return dateTime;
+}
+async function creatOrder(postData) {
+   console.log(postData.orderDetails)
+      console.log(JSON.stringify(postData))
+      const postOrder = `https://fourt7.onrender.com/api/orders`;
+      const postResponse = await fetch(postOrder, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(postData),
+      });
+      if (postResponse.ok) {
+         console.log("Checkout successful");
+      }
+      else {
+         console.error("Something error...");
+      }
+      console.log(postResponse);
+   }
+const form = document.querySelector("#form")
+form.addEventListener("submit", async function (event) {
+   event.preventDefault();
+   console.log(cartItemsData)
+   for (const cartItem of cartItemsData) {
+      await creatOrderDetails(cartItem);
+      console.log(cartItem.id)
+      await deleteCartItems(cartItem.id); 
+   }
+   const formValue = {
+      userId: currentuserID,
+      total: totalCartPrice,
+      address: address,
+      date: getDateTime(),
+      orderDetails: orderDetailsList,
+   }
+   await creatOrder(formValue);
 
-    alert('Order placed!');
     setTimeout(function () {
-        window.location.href = 'home.html';
-    }, 5000);
-    return false;
-}
+      window.location.href = "userProfile.html";
+   }, 3000);
+})
 
-
-
-
-// Sample code that save data to database!
-// document.addEventListener('DOMContentLoaded', function () {
-//     const form = document.querySelector('form');
-
-//     form.addEventListener('submit', function (event) {
-//         event.preventDefault(); // Prevents default form submission
-
-//         const fullName = document.getElementById('fname').value;
-//         const email = document.getElementById('email').value;
-//         const phone = document.getElementById('phone').value;
-//         const city = getSelectedName('city');
-//         const district = getSelectedName('district');
-//         const ward = getSelectedName('ward');
-//         const payment = getSelectedPayment();
-//         const shipping = getSelectedShipping();
-//         const total = document.getElementById('total-checkout').textContent;
-
-//         const formData = {
-//             fullname: fullName,
-//             email,
-//             phone,
-//             city,
-//             district,
-//             ward,
-//             payment,
-//             shipping,
-//             total,
-//             // Add the rest of the form field values here...
-//         };
-
-//         localStorage.setItem('formData', JSON.stringify(formData));
-//         console.log('Form data saved to local storage:', formData);
-//         alert('Form data has been saved locally.');
-//     });
-// });
-
-
-
-
-// function getSelectedName(elementId) {
-//     const selectElement = document.getElementById(elementId);
-//     return selectElement.options[selectElement.selectedIndex].text;
-// }
-
-// function getSelectedPayment() {
-//     const paymentCheckbox = document.querySelector('input[type="checkbox"][name="payment"]');
-//     return paymentCheckbox.checked ? paymentCheckbox.parentElement.textContent.trim() : 'Payment method not selected';
-// }
-
-// function getSelectedShipping() {
-//     const shippingRadios = document.querySelectorAll('input[type="radio"][name="shipping"]');
-//     for (const radio of shippingRadios) {
-//         if (radio.checked) {
-//             return radio.parentElement.textContent.trim();
-//         }
-//     }
-//     return 'Shipping method not selected';
-// }
-
-
-// function getSelectedName(elementId) {
-//     const selectElement = document.getElementById(elementId);
-//     const selectedId = selectElement.value;
-//     const options = selectElement.options;
-    
-//     for (let i = 0; i < options.length; i++) {
-//         if (options[i].value === selectedId) {
-//             return options[i].textContent;
-//         }
-//     }
-//     return '';
-// }
