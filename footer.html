@@ -4,7 +4,7 @@
     <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/footer.css">
-
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -33,6 +33,31 @@
 
             </div>
         </form>
+        <script>
+            // Khởi tạo EmailJS với Service ID của bạn
+            emailjs.init("vksyCyvH0Lqz2FSYE");
+
+            // Bắt sự kiện khi form submit
+            document.getElementById('mc-embedded-subscribe-form').addEventListener('click', function(event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+                var serviceID = "service_323m41u";
+                var templateID = "template_chauvan";
+                // Tạo đối tượng params chứa thông tin thu thập được
+                var params = {
+                    senderemail : document.getElementById("emailInput").value,
+                };
+
+                // Gửi email thông qua EmailJS
+                emailjs.send(serviceID, templateID, params)
+                    .then(function(response) {
+                        alert('Email sent successfully!');
+                    })
+                    .catch(function(error) {
+                        console.error('Email send failed: ', error);
+                    });
+            });
+        </script>
         <div id="message"></div>
     </div>
 </div>
