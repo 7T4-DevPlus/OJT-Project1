@@ -23,7 +23,7 @@
     </div>
 
     <script>
-        $(function() {
+        $(function () {
             $("#navbar").load("navbar.html");
         });
     </script>
@@ -161,12 +161,11 @@
                         </div>
                         <div class="filter-container">
                             <div class="filter-container__selected-filter">
-                                <label for="price-range">Giá:</label>
-                                <input type="number" id="min-price" placeholder="Từ" />
-                                <input type="number" id="max-price" placeholder="Đến" />
-                                <button id="filter-btn">Lọc</button>
+                                <input type="number" style="width: 5.25vw" id="min-price" placeholder="Từ" />
+                                <a>-</a>
+                                <input type="number" style="width: 5.25vw" id="max-price" placeholder="Đến" />
+                                <button id="filter-btn">Áp dụng</button>
                             </div>
-                            
                         </div>
                     </div>
                     <div>
@@ -192,21 +191,17 @@
             <div class="category-products products">
                 <div class="sort-Pagibar">
                     <div class="searchProducts">
-                        <div class="box" style="background-color: rgb(249,245,242); height: 30px;" >
-                            
-                                <img style="margin-top: 7px;
+                        <div class="box" style="background-color: rgb(249,245,242); height: 30px;"
+                            <img style="margin-top: 7px;
                                 width: 17px;
                                 height: 17px;
-                                margin-left: 0.8vw;" 
-                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png" alt="Search" id="show-popup">
-                                
-                            
+                                margin-left: 0.8vw;"
+                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png"
+                                alt="Search" id="show-popup">
                             <input type="text" id="searchInput" placeholder="Search box " />
-
                         </div>
                     </div>
                     <div id="right-sort">
-                        <p>Sắp xếp:</p>
                     </div>
                     <div class="sortPagiBar">
                         <div class="row">
@@ -225,21 +220,14 @@
                                     <div class="tt hidden">
 
                                     </div>
-                                    <div>
-
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropbtn">
-                                                <p>Mặc định</p>
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a  data-sort="default">Mặc định</a>
-                                                <a data-sort="az">A → Z</a>
-                                                <a  data-sort="za">Z → A</a>
-                                                <a  data-sort="ascending">Giá tăng dần</a>
-                                                <a  data-sort="descending">Giá giảm dần</a>
-                                            </div>
-                                        </div>
-                                        
+                                    <div class="dropdown">
+                                        <select id="sortOrder" class="sort-by custom-dropdown__select">
+                                            <option selected hidden>Tùy chọn ▼</option>
+                                            <option value="lowToHigh">Giá tăng dần</option>
+                                            <option value="highToLow">Giá giảm dần</option>
+                                            <option value="nameAZ">Tên: A-Z</option>
+                                            <option value="nameZA">Tên: Z-A</option>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -276,14 +264,13 @@
 
             <div class="all-products">
                 <div id="products" class="products-view products-view-grid"
-                    style="display: grid; grid-template-columns: auto auto auto;">
+                    style="display: grid; grid-template-columns: 33.3% 33.3% 33.4%;">
                     <!-- All products from js          -->
                 </div>
             </div>
             <div id="product-modal" class="product-modal">
 
             </div>
-
             <script type="module" src="js/viewproducts.js"></script>
         </div>
     </div>

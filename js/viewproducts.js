@@ -2,32 +2,20 @@ const productLink = document.getElementById('product-link');
 const productList = document.getElementById('product-list');
 const toggleIcon = document.getElementById('toggle-icon');
 
-// import {  collection, doc, getDocs, addDoc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-// import db from "./database.js"
-// const productDB = collection(db, "products");
-// const cartitemDB = collection(db, "cartItems");
 getProducts();
-productLink.onclick = function() {
+
+productLink.onclick = function () {
     if (productList.style.display === 'none') {
-        productList.style.display = 'block'; // Hiển thị danh sách con
+        productList.style.display = 'block'; 
     } else {
-        productList.style.display = 'none'; // Ẩn danh sách con
+        productList.style.display = 'none'; 
     }
 }
 
-// if (localStorage.getItem("searchName")) {
-//     var searchName = localStorage.getItem("searchName");
-//     searchByName(searchName)
-//     localStorage.removeItem("searchName");
-// }
-//Products
-// const products = await getDocs(productDB);
-// const products = []
 async function getProducts() {
     const url = 'https://fourt7.onrender.com/api/products';
     const productsResponse = await fetch(url);
     const products = await productsResponse.json();
-    console.log(products);
     products.forEach((product) => {
         if (product.imgUrl.length > 1) {
             document.getElementById('products').innerHTML += `
@@ -49,7 +37,7 @@ async function getProducts() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId}">
+                            <button class="details-button" id="${product.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -64,11 +52,11 @@ async function getProducts() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
-        }else{
+        } else {
             document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
                 <div class="product-box">
@@ -87,7 +75,7 @@ async function getProducts() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId}">
+                            <button class="details-button" id="${product.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -102,16 +90,13 @@ async function getProducts() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
         };
     });
 
-
-//Modal
-var modal = document.getElementById("product-modal");
 var detailsButtons = document.querySelectorAll(".details-button");
 detailsButtons.forEach((detailsBtn) => {
     detailsBtn.addEventListener("click", () => {
@@ -119,6 +104,8 @@ detailsButtons.forEach((detailsBtn) => {
     });
 })
 
+//Modal
+var modal = document.getElementById("product-modal");
 var lookButtons = document.querySelectorAll(".look-button");
 lookButtons.forEach((lookBtn) => {
     lookBtn.onclick = function() {
@@ -129,15 +116,17 @@ lookButtons.forEach((lookBtn) => {
     }
 })
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
 }
 
-function productDetails(id){
+
+function productDetails(proId){
     products.forEach((product) => {
-        if(product.productId === id){
+        if(product.productId === proId){
+            console.log(product.id)
             modal.innerHTML =
             `<div class="product-details" id="${product.productId}" >
                 <div style="display: flex;">
@@ -145,8 +134,7 @@ function productDetails(id){
                         <img id="displayImg" class="displayImg" src="${product.imgUrl[0]}"
                         style="width: 100%; margin: 2%;"/>
                         <div class="product-pictures-container">
-                            <div id="product-pictures" class="product-pictures">
-                                
+                            <div id="product-pictures" class="product-pictures">              
                             </div>
                         </div>
                     </div>
@@ -154,10 +142,10 @@ function productDetails(id){
                         <p style="margin-bottom: 0;">${product.name}</p>
                         <p style="font-size: 2vh;">${product.productId}</p>
                         <hr>
-                        <p>${product.price.toLocaleString()} <u>đ</u></p>
+                        <p>${product.price.toLocaleString()} VND</p>
                         <hr>
                         <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
-                        <form id="add-to-cart-form" class="${id}" onsubmit="return false">
+                        <form id="add-to-cart-form" class="${proId}" onsubmit="return false">
                             <div>
                                 <input type="radio" id="sizeL" name="size" value="L">
                                 <label for="sizeL">L</label>
@@ -166,7 +154,7 @@ function productDetails(id){
                                 <input type="radio" id="sizeS" name="size" value="S" style="margin-left: 10%">
                                 <label for="sizeS">S</label>
                             </div>
-                            <button type="submit" class="add-cart-btn">
+                            <button type="submit" class="add-cart-btn" onclick="window.location.href = 'http://127.0.0.1:5500/productDetail.html?id=${product.id}'">
                                 Thêm vào giỏ
                             </button>
                         </form>
@@ -207,66 +195,34 @@ function productDetails(id){
                 `<div class="product-picture">
                     <img onclick="changeImg(this.src)" class="slideImg" src="${img}"/>
                 </div>`
-            });
-        }
-    })
+                });
+            }
+        })
 }
 
-
-//Add to cart
-// var addForm = document.getElementById('add-to-cart-form');
-// addForm.addEventListener('submit', async (event) => {
-//     event.preventDefault();
-//     var size = document.querySelector('input[name="size"]:checked').value;
-
-//     var productId = addForm.className; 
-//     console.log("product id:", productId);
-//     console.log("userId:", localStorage.getItem("userId"))
-//     console.log("size:", size);
-
-//     if(!localStorage.getItem("userId")){
-//         alert("Please login to buy product")
-//     }else{
-//         const docRef = await addDoc(cartitemDB, {
-//             "userId": localStorage.getItem("userId"), 
-//             "productId": productId, 
-//             "size": size, 
-//             "quantity": 1
-//         });
-//         console.log(docRef.id);
-//     }
-// });
+// Search feature
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('keypress', function (event) {
-    // Check if the key pressed is the Enter key (key code 13)
     if (event.key === 'Enter') {
-        // Call the searchByName function when Enter key is pressed
         searchByName();
     }
 });
 
-// Function to handle search by name
-function searchByName() {
-    const searchTerm = searchInput.value.toLowerCase(); // Lấy giá trị từ ô tìm kiếm và chuyển thành chữ thường
-    
-    const filteredProducts = []; // Mảng để lưu sản phẩm được tìm thấy
+    function searchByName() {
+        const searchTerm = searchInput.value.toLowerCase();
 
-    // Xóa danh sách hiện tại trước khi hiển thị kết quả tìm kiếm mới
-    document.getElementById('products').innerHTML = '';
+        const filteredProducts = [];
+        document.getElementById('products').innerHTML = '';
 
-    products.forEach((product) => {
-        if (product.name.toLowerCase().includes(searchTerm)) {
-            filteredProducts.push(product); // Nếu tên sản phẩm chứa từ khóa tìm kiếm, thêm vào mảng kết quả
-        }
-    });
+        products.forEach((product) => {
+            if (product.name.toLowerCase().includes(searchTerm)) {
+                filteredProducts.push(product);
+            }
+        });
 
-    // Hiển thị kết quả tìm kiếm
-    filteredProducts.forEach((product) => {
-        // Tạo HTML để hiển thị sản phẩm, tương tự như cách bạn đã làm trong hàm getProducts()
-        // Lưu ý: Bạn có thể thêm mã HTML tương ứng ở đây để hiển thị kết quả tìm kiếm
-        
-        if (product.imgUrl.length > 1) {
-            document.getElementById('products').innerHTML += `
+        filteredProducts.forEach((product) => {
+            if (product.imgUrl.length > 1) {
+                document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
                 <div class="product-box">
                     <div class="product-thumbnail">
@@ -285,7 +241,7 @@ function searchByName() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId}">
+                            <button class="details-button" id="${product.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -300,12 +256,12 @@ function searchByName() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
-        }else{
-            document.getElementById('products').innerHTML += `
+            } else {
+                document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
                 <div class="product-box">
                     <div class="product-thumbnail">
@@ -323,7 +279,7 @@ function searchByName() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId}">
+                            <button class="details-button" id="${product.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -338,41 +294,30 @@ function searchByName() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
-        };
+            };
+        });
+    }
+
+    // Sort feature
+    document.getElementById('filter-btn').addEventListener('click', function () {
+        filterByPrice();
     });
-}
 
-// Sử dụng sự kiện 'input' để tìm kiếm ngay khi người dùng nhập thông tin
+    function filterByPrice() {
+        const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+        const maxPrice = parseInt(document.getElementById('max-price').value) || 1000000;
 
+        document.getElementById('products').innerHTML = '';
 
+        products.forEach((product) => {
+            const productPrice = product.price;
 
-// Update your existing filter button event listener
-document.getElementById('filter-btn').addEventListener('click', function () {
-    // Call the filterByPrice function when the filter button is clicked
-    filterByPrice();
-});
-
-// Function to handle filtering by price
-function filterByPrice() {
-    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-    const maxPrice = parseInt(document.getElementById('max-price').value) || 1000000;
-
-    // Clear the existing products
-    document.getElementById('products').innerHTML = '';
-
-    // Filter products based on the price range
-    products.forEach((product) => {
-        const productPrice = product.price;
-
-        if (productPrice >= minPrice && productPrice <= maxPrice) {
-            // Add the product to the filtered list
-            // This is similar to how you display products in your getProducts function
-            // Modify it according to your HTML structure
-            document.getElementById('products').innerHTML += `
+            if (productPrice >= minPrice && productPrice <= maxPrice) {
+                document.getElementById('products').innerHTML += `
             <div style="border: 1px solid #ddd; width: 84%; margin-bottom: 5vh; margin-left: 2vw;">
                 <div class="product-box">
                     <div class="product-thumbnail">
@@ -391,7 +336,7 @@ function filterByPrice() {
                             </button>
                             </div>
                             <div class="pumpup-item">
-                            <button class="details-button" id="${product.productId}">
+                            <button class="details-button" id="${product.id}">
                                 Mua ngay
                                 <span>
                                     <img
@@ -406,56 +351,79 @@ function filterByPrice() {
                 </div>
                 <div class="product-info a-left">
                     <p style="margin:0;">${product.name}</p>
-                    <p style="margin:0;">${product.price.toLocaleString()} <u>đ</u></p>
+                    <p style="margin:0;">${product.price.toLocaleString()} VND</p>
                 </div> 
             </div>
             `;
+            }
+        });
+    }
+
+    function sortProducts() {
+        const sortOrder = document.getElementById("sortOrder").value;
+        const productsContainer = document.getElementById("products");
+
+        const filteredProducts = Array.from(productsContainer.children);
+        productsContainer.filteredProducts = filteredProducts;
+
+        let sortedProducts;
+
+        if (sortOrder === "default") {
+            sortedProducts = filteredProducts.slice();
+        } else {
+            sortedProducts = getSortedProducts(filteredProducts, sortOrder);
         }
+
+        productsContainer.innerHTML = '';
+
+        sortedProducts.forEach(product => productsContainer.appendChild(product));
+    }
+
+    function getSortedProducts(products, order) {
+        return products.slice().sort((a, b) => {
+            const productA = getProductData(a);
+            const productB = getProductData(b);
+
+            switch (order) {
+                case "lowToHigh":
+                    return productA.price - productB.price;
+                case "highToLow":
+                    return productB.price - productA.price;
+                case "nameAZ":
+                    return productA.name.localeCompare(productB.name);
+                case "nameZA":
+                    return productB.name.localeCompare(productA.name);
+                default:
+                    return 0;
+            }
+        });
+    }
+
+    function getProductData(productElement) {
+        return {
+            price: parseInt(productElement.querySelector('.product-info p:last-child').textContent.replace('VND', '').trim()),
+            name: productElement.querySelector('.product-info p:first-child').textContent.trim()
+        };
+    }
+
+    const dropdownOptions = document.querySelectorAll('.dropdown-content a');
+    dropdownOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            document.querySelector('.dropbtn p').innerText = option.innerText;
+            const sortType = option.getAttribute('data-sort');
+            const productsContainer = document.getElementById('products');
+            const products = Array.from(productsContainer.children);
+            const sortedProducts = sortProducts(sortType, products);
+            productsContainer.innerHTML = '';
+            sortedProducts.forEach(product => {
+                productsContainer.appendChild(product);
+            });
+        });
     });
-}
 
-// Add this function call to get the initial products
+    document.getElementById("sortOrder").addEventListener("change", sortProducts);
 
-
-// // Function for sorting products
-// function sortProducts(orderBy) {
-//     const allProducts = Array.from(document.querySelectorAll('.product-box'));
-
-//     allProducts.sort((a, b) => {
-//         const productA = a.querySelector('.product-info p:first-child').innerText.toLowerCase();
-//         const productB = b.querySelector('.product-info p:first-child').innerText.toLowerCase();
-
-//         if (orderBy === 'az') {
-//             return productA.localeCompare(productB);
-//         } else if (orderBy === 'za') {
-//             return productB.localeCompare(productA);
-//         } else if (orderBy === 'ascending') {
-//             const priceA = +a.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-//             const priceB = +b.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-//             return priceA - priceB;
-//         } else if (orderBy === 'descending') {
-//             const priceA = +a.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-//             const priceB = +b.querySelector('.product-info p:last-child').innerText.replace('đ', '');
-//             return priceB - priceA;
-//         }
-//         // For default or undefined case
-//         return 0;
-//     });
-
-//     const productsContainer = document.getElementById('products');
-//     productsContainer.innerHTML = '';
-//     allProducts.forEach(product => {
-//         productsContainer.appendChild(product);
-//     });
-// }
-
-// // Event listener for sorting when selecting an option
-// const dropdownOptions = document.querySelectorAll('.dropdown-content a');
-// dropdownOptions.forEach(option => {
-//     option.addEventListener('click', () => {
-//         document.querySelector('.dropbtn p').innerText = option.innerText;
-//         const sortType = option.getAttribute('data-sort');
-//         sortProducts(sortType);
-//     });
-// });
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("sortOrder").dispatchEvent(new Event("change"));
+    });
 }

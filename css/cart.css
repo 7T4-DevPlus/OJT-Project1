@@ -114,6 +114,12 @@ button:hover {
     margin-top: 20px;
     margin-left: 20vw;
 }
+
+.btn-delete{
+    height: 25px;
+    width: 20px;
+}
+ 
 /* .total-box {
     display: flex;
     justify-content: space-between;

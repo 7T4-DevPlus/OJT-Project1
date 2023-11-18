@@ -132,7 +132,6 @@ li strong span[itemprop="title"] {
 }
 
 .sortPagiBar {
-    border: 1px solid #e5e5e5;
     border-radius: 5px;
     width: 8vw;
     height: 4vh;
@@ -596,4 +595,72 @@ ul {
     height: 100px;
     /* flex: 0 0 25%; */
     padding: 5px;
+}
+
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the select element */
+#sortOrder {
+    padding: 10px;
+    font-size: 17px;
+    font-family: 'Oswald';
+    appearance: none;
+	border: none;
+	outline: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+/* Style the options */
+#sortOrder option {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Style the options on hover */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.filter-container__selected-filter div {
+    margin-right: 10px;
+}
+
+/* input price field sort */
+#min-price,
+#max-price {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#filter-btn {
+    padding: 8px 12px;
+    background-color: #cdc5b7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 8vw;
+    margin-top: 2vh;
+    margin-left: 5vh;
+}
+
+input[type=number] {
+    margin-top: 2vh;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

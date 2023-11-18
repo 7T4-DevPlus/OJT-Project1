@@ -1,5 +1,25 @@
 const productsEl = document.getElementById("products");
 const productDetailEl = document.getElementById("products-item");
+const productDetailInforEl = document.getElementById("product-info");
+const http = 'https://fourt7.onrender.com/api' //add to servive
+
+const params = new URLSearchParams(document.location.search);
+const idProduct = params.get('id');
+
+getProductDetails()
+
+async function getProductDetails () {
+  const url = `https://fourt7.onrender.com/api/products/${idProduct}`;
+  const productResponse = await fetch(url);
+  const data = await productResponse.json();
+  actionsRenderData(data);     
+}
+
+const actionsRenderData = (data) => {
+  renderProducts(productsEl, data.imgUrl, false);
+  renderProducts(productDetailEl, data.imgUrl, true);
+  renderProductInfo(productDetailInforEl, data)
+}
 
 const isShowNavSideBar = (status) => {
   const element = document.getElementById("menu-sidebar");
@@ -11,39 +31,33 @@ const isShowNavSideBar = (status) => {
     }
   }
 };
-//add json data
-window.onload = function () {
-  fetch("productDetail.json")
-    .then((response) => response.json())
-    .then((data) => {
-      const products = data.products;
 
-      renderProducts(productsEl, products, false);
-      renderProducts(productDetailEl, products, true);
-    })
-    .catch((error) => {
-      console.error("Error fetching JSON data: ", error);
-    });
-};
-//scroll 
+// processing DOM
 const renderProducts = (elRender, data, assignId) => {
   return (elRender.innerHTML = data
-    .map((product, index) => {
+    .map((item, index) => {
       if (assignId) {
-        return `<li class="${index >= 1 ? "mt-2" : ""}" id="${product.id}">
-            <img width="100%" src="${product.image}"/>
+        return `<li class="${index >= 1 ? "mt-2" : ""}" id="${item}">
+            <img width="100%" src="${item}"/>
         </li>`;
       } else {
-        return `<li class="${index >= 1 ? "mt-2" : ""}" onclick={scrollImg("${
-          product.id
-        }")}>
-                <img width="100%" src="${product.image}"/>
+        return `<li class="${index >= 1 ? "mt-2" : ""}" onclick={scrollImg("${item}")}>
+                <img width="100%" src="${item}"/>
             </li>`;
       }
     })
     .join(""));
 };
 
+const renderProductInfo = (elRender, data) => {
+  return (elRender.innerHTML = `
+    <h1 style="font-family: 'Oswald'">${data?.name ?? ''}</h1>
+    <h4>Mã sản phẩm: ${data?.productId ?? ''}</h4>
+    <span style="display: block;"> ${data?.price.toLocaleString() ?? ''}vnđ</span>
+  `)
+}
+
+// scroll
 const scrollImg = (idElment) => {
   const element = document.getElementById(idElment);
   element.scrollIntoView({
@@ -62,30 +76,80 @@ function toggleButtonColor(button) {
   button.classList.add("black");
 }
 
-// Lấy các phần tử HTML cần thao tác
+// get các phần tử HTML cần thao tác
 const decrementButton = document.getElementById("decrement");
 const incrementButton = document.getElementById("increment");
 const quantityInput = document.querySelector(".counter");
+let currentQuantity = 1;
 
-// Đặt sự kiện khi nút "Trừ" được nhấn
+// even khi nút "Trừ" được nhấn
 decrementButton.addEventListener("click", () => {
-    let currentQuantity = parseInt(quantityInput.value);
-    if (currentQuantity > 1) {
-        currentQuantity--;
-        quantityInput.value = currentQuantity;
+  currentQuantity = parseInt(quantityInput.value);
+  if (currentQuantity > 1) {
+      currentQuantity--;
+    quantityInput.value = currentQuantity;
     }
 });
 
 //quantyti
 incrementButton.addEventListener("click", () => {
-    let currentQuantity = parseInt(quantityInput.value);
-    currentQuantity++;
-    quantityInput.value = currentQuantity;
+  currentQuantity++;
+  quantityInput.value = currentQuantity;
 });
-quantityInput.addEventListener("input", () => {
-    let inputQuantity = parseInt(quantityInput.value);
-    if (isNaN(inputQuantity) || inputQuantity < 1) {
-        inputQuantity = 1; 
+
+let size = "";
+document.getElementById("select-size").addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target.classList.contains('S')) {
+    size = "S"
+  } else if (target.classList.contains('M')) {
+    size = "M"
+  } else if (target.classList.contains('L')) {
+    size = "L"
+  }
+})
+
+const addBtn = document.querySelector(".add-btn");
+addBtn.addEventListener("click", async function () {
+  const url = `https://fourt7.onrender.com/api/products/${idProduct}`;
+  const productResponse = await fetch(url);
+  const data = await productResponse.json();
+
+  console.log(data)
+  
+  const subTotal = data.price * currentQuantity;
+
+  if(localStorage.getItem("userId")){
+    
+    var postCartItem = {
+      userId:  localStorage.getItem("userId"),
+      productId: idProduct,
+      productQuantity: currentQuantity,
+      productSize: size,
+      subTotal : subTotal,
     }
-    quantityInput.value = inputQuantity;
-});
+  } else {
+    alert("Please login to buy product!")
+  }
+
+  const postUrl = "https://fourt7.onrender.com/api/cartItems" 
+
+  console.log(JSON.stringify(postCartItem))
+  fetch(postUrl, {
+    method: 'POST',
+    body: JSON.stringify(postCartItem),
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(a => {
+        console.log('Dữ liệu đã được gửi thành công:', a);
+        alert("Add product to cart successfully!");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+})
