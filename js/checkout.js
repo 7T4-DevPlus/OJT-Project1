@@ -1,5 +1,4 @@
-// localStorage.setItem("userid");
-const currentuserID = 1;
+const currentuserID = localStorage.getItem("userId");
 displayCart();
 var cartItemsData = []
 var totalPriceWithShippingAll = 0
@@ -136,7 +135,7 @@ async function displayCart() {
 
          const productCartPrice = document.createElement("div");
          productCartPrice.classList.add("product-cart-price");
-         productCartPrice.textContent = `${totalProductPrice}`;
+         productCartPrice.textContent = `${totalProductPrice.toLocaleString()}`;
 
          productDiv.appendChild(productCartPrice);
          productContainer.appendChild(productDiv);
@@ -192,7 +191,7 @@ async function displayCart() {
 
       totalCheckout.querySelector(
          "b"
-      ).textContent = `${totalCartPrice.toLocaleString()} ₫`;
+      ).textContent = `${totalCartPrice.toLocaleString()} VND`;
 
       shippingRadios.forEach((radio) => {
          radio.addEventListener("change", function () {
@@ -201,7 +200,7 @@ async function displayCart() {
             orderTotal = totalPriceWithShipping;
             totalCheckout.querySelector(
                "b"
-            ).textContent = `${totalPriceWithShipping.toLocaleString()} ₫`;
+            ).textContent = `${totalPriceWithShipping.toLocaleString()} VND`;
             totalPriceWithShippingAll += totalPriceWithShipping
             console.log(totalPriceWithShippingAll);
          });
@@ -211,7 +210,7 @@ async function displayCart() {
    //    creatOrderDetails({...cartItem, totalPriceWithShippingAll })
    // })
    console.log(totalCartPrice);
-   document.getElementById("productsTotal").textContent = `${totalCartPrice.toLocaleString()} ₫`;
+   document.getElementById("productsTotal").textContent = `${totalCartPrice.toLocaleString()} VND`;
 
    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
    const shippingCost = document.getElementById("shippingCost");
@@ -230,10 +229,10 @@ async function displayCart() {
          selectedShippingCost = parseFloat(this.value.replace(",", ""));
          totalPriceWithShipping = totalCartPrice + selectedShippingCost;
          console.log("total", totalPriceWithShipping)
-         const shippingCostText = `${selectedShippingCost.toLocaleString()} ₫`;
+         const shippingCostText = `${selectedShippingCost.toLocaleString()} VND`;
 
          displayShippingCost.textContent = shippingCostText;
-         const totalPriceText = `${totalPriceWithShipping.toLocaleString()} ₫`;
+         const totalPriceText = `${totalPriceWithShipping.toLocaleString()} VND`;
          document.getElementById("total-checkout").textContent =
             totalPriceText.toLocaleString();
 
@@ -318,6 +317,7 @@ async function creatOrder(postData) {
       });
       if (postResponse.ok) {
          console.log("Checkout successful");
+         window.location.href = "home.html"
       }
       else {
          console.error("Something error...");

@@ -61,7 +61,7 @@ function loadContent(pageName) {
 function loadUserData() {
     users.forEach((userInfo) => {
         if(userInfo.id === userId){
-    
+            
             var name = userInfo.name;
             var email = userInfo.email;
             var phone = userInfo.phone;
@@ -79,16 +79,16 @@ var editForm = document.getElementById('edit-form');
 
 users.forEach((userInfo) => {
     if(userInfo.id === userId){
-        var emailInput = document.getElementById('email');
         var nameInput = document.getElementById('name');
         var phoneInput = document.getElementById('phone');
+        var passwordInput = document.getElementById('password');
 
         nameInput.placeholder = `${userInfo.name}`
-        emailInput.placeholder = `${userInfo.email}`
+        passwordInput.placeholder = `${userInfo.password}`
         phoneInput.placeholder = `${userInfo.phone}`
 
         nameInput.defaultValue = `${userInfo.name}`
-        emailInput.defaultValue = `${userInfo.email}`
+        passwordInput.defaultValue = `${userInfo.password}`
         phoneInput.defaultValue = `${userInfo.phone}`
     }
 })
@@ -97,12 +97,12 @@ editForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
     var phone = document.getElementById('phone').value;
 
     var editUser = {
         name:  name,
-        email: email,
+        password: password,
         phone: phone,
       }
 

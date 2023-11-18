@@ -44,13 +44,17 @@
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" placeholder="" style="width: 100%; padding: 5px;">
                     </div>
-                    <div style="margin-bottom: 10px;">
+                    <!-- <div style="margin-bottom: 10px;">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" placeholder="" style="width: 100%; padding: 5px;" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please enter a valid email address')">
-                    </div>
+                    </div> -->
                     <div style="margin-bottom: 10px;">
                         <label for="phone">Phone:</label>
                         <input type="tel" id="phone" name="phone" placeholder="" style="width: 100%; padding: 5px;" required pattern="\d{10}" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Phone number must be exactly 10 digits')">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="" style="width: 100%; padding: 5px;" required >
                     </div>
 
                     <div style="text-align: center;">

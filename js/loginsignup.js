@@ -1,7 +1,6 @@
-// import {  collection, doc, getDocs, addDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-// import db from "./database.js"
-
-// const userDB = collection(db, "users");
+const url = 'https://fourt7.onrender.com/api/users';
+    const usersResponse = await fetch(url);
+    const users = await usersResponse.json();
 
 function toggleErrorMessageOnBlur(input, errorElement) {
     if (input.validity.valueMissing && input.value === "") {
@@ -102,23 +101,32 @@ signupForm.addEventListener('submit', async (event) => {
 
     const postUrl = `https://fourt7.onrender.com/api/users`;
 
-    console.log(JSON.stringify(postUser))
-    fetch(postUrl, {
-        method: 'POSt',
-        body: JSON.stringify(postUser),
-        headers: {
-            'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(a => {
-            console.log('Dữ liệu đã được gửi thành công:', a);
-            localStorage.setItem("userId", userInfo.id);
-            window.location.href = "home.html"
-        })
-        .catch(error => {
-            // console.error('Lỗi cho có', error);
-        });
+    console.log(JSON.stringify(postUser));
+
+    let userEmails = [];
+    users.forEach((userInfo) => {
+        userEmails.push(userInfo.email);
+    });
+    if (userEmails.includes(postUser.email)) {
+        alert("Email have already exits")
+    } else {
+        fetch(postUrl, {
+            method: 'POSt',
+            body: JSON.stringify(postUser),
+            headers: {
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(dataPost => {
+                console.log('Dữ liệu đã được gửi thành công:', dataPost);
+                localStorage.setItem("userId", dataPost.id);
+                window.location.href = "home.html";
+            })
+            .catch(error => {
+                // console.error('Lỗi cho có', error);
+            });
+    }
 });
 
 
@@ -146,10 +154,6 @@ signinForm.addEventListener('submit', async (event) => {
     }
 
     event.preventDefault();
-
-    const url = 'https://fourt7.onrender.com/api/users';
-    const usersResponse = await fetch(url);
-    const users = await usersResponse.json();
 
     const formData = new FormData(event.target);
     const data = {}; 

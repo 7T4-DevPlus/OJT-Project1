@@ -146,8 +146,10 @@ addBtn.addEventListener("click", async function () {
     .then(response => response.json())
     .then(a => {
         console.log('Dữ liệu đã được gửi thành công:', a);
+        alert("Add product to cart successfully!");
     })
     .catch(error => {
+      console.log(error);
     });
 
 })
