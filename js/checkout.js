@@ -5,7 +5,7 @@ var totalPriceWithShippingAll = 0
 var address = "";
 var totalCartPrice = 0;
 var orderDetailsList = [];
-
+let productsInOrder = [];
 
 async function displayCart() {
    var citis = document.getElementById("city");
@@ -77,7 +77,6 @@ async function displayCart() {
    const cartAPI = "https://fourt7.onrender.com/api/cartItems";
    const cartResponse = await fetch(cartAPI);
    const cartItems = await cartResponse.json();
-   console.log(cartItems);
 
    const productAPI = "https://fourt7.onrender.com/api/products";
    const productResponse = await fetch(productAPI);
@@ -91,7 +90,8 @@ async function displayCart() {
 
    cartItems.forEach((ci) => {
       if (ci.userId == currentuserID) {
-         [...cartItemsData,ci];
+         // cartItemsData.push(ci);
+         // [...cartItemsData,ci];
          const productDiv = document.createElement("div");
          productDiv.classList.add("product-details");
 
@@ -108,7 +108,6 @@ async function displayCart() {
          products.forEach((item) => {
             if (item.id == ci.productId) {
                cartItemsData = [...cartItemsData,ci];
-               console.log(ci.productId);
                const productImg = document.createElement("img");
                productImg.classList.add("product-img");
                productImg.src = item.imgUrl[0];
@@ -159,7 +158,6 @@ async function displayCart() {
 
    //display shipping method when change city address
    document.getElementById("city").addEventListener("change", function () {
-      // console.log("change address");
       var citySelect = document.getElementById("city");
       var shippingFeeDiv = document.getElementById("shippingFee");
       var messageDiv = document.getElementById("message");
@@ -202,14 +200,10 @@ async function displayCart() {
                "b"
             ).textContent = `${totalPriceWithShipping.toLocaleString()} VND`;
             totalPriceWithShippingAll += totalPriceWithShipping
-            console.log(totalPriceWithShippingAll);
          });
       });
    });
-   // cartItemsData.forEach(cartItem => {
-   //    creatOrderDetails({...cartItem, totalPriceWithShippingAll })
-   // })
-   console.log(totalCartPrice);
+
    document.getElementById("productsTotal").textContent = `${totalCartPrice.toLocaleString()} VND`;
 
    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
@@ -269,27 +263,25 @@ async function creatOrderDetails(ci) {
       .then(data => {
          totalCartPrice += data.subtotal;
          var newObjectId = data.id;
-         console.log(data.id);
          orderDetailsList.push(newObjectId);
-         // [...orderDetailsList,newObjectId];
-         console.log('OrderDetails Id: ', newObjectId);
-         console.log(orderDetailsList)
-         console.log(totalCartPrice);
+         productsInOrder.push(data);
       })
       .catch(error => console.error('Error:', error));
 };
+
 async function deleteCartItems(id) {
-   const postOrder = `https://fourt7.onrender.com/api/cartItems/${id}`;
-   const postResponse = await fetch(postOrder, {
+   const delCartItemsUrl = `https://fourt7.onrender.com/api/cartItems/${id}`;
+   const postResponse = await fetch(delCartItemsUrl, {
       method: 'DELETE',
       headers: {
          'Content-Type': 'application/json',
       },
    })
-      .then(postResponse => postResponse.json())
-      .then(data =>console.log(data.json()))
-      .catch(error => console.error('Error:', error));
+   .then(postResponse => postResponse.json())
+   .then(data =>console.log(data.json()))
+   .catch(error => console.error('Error:', error));
 };
+
 function getDateTime(){
    var ngayGioHienTai = new Date();
    var ngay = ngayGioHienTai.getDate();
@@ -301,38 +293,39 @@ function getDateTime(){
    var giay = ngayGioHienTai.getSeconds();
 
    let dateTime = `${ngay}/${thang}/${nam}` + ` ${gio}:${phut}:${giay}`;
-   console.log(dateTime.toLocaleString());
    return dateTime;
 }
-async function creatOrder(postData) {
-   console.log(postData.orderDetails)
-      console.log(JSON.stringify(postData))
-      const postOrder = `https://fourt7.onrender.com/api/orders`;
-      const postResponse = await fetch(postOrder, {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(postData),
-      });
-      if (postResponse.ok) {
-         console.log("Checkout successful");
-         window.location.href = "home.html"
-      }
-      else {
-         console.error("Something error...");
-      }
-      console.log(postResponse);
-   }
-const form = document.querySelector("#form")
+
+async function creatOrder(postData) { 
+   const postOrder = `https://fourt7.onrender.com/api/orders`;
+   fetch(postOrder, {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postData),
+   })
+   .then(response => response.json())
+   .then(dataPost => {
+      console.log("Checkout successful");
+      console.log(dataPost);
+   })
+   .catch(error => {
+      console.error("Something error...");
+   });
+}
+
+const form = document.querySelector("#checkout-order")
 form.addEventListener("submit", async function (event) {
    event.preventDefault();
+
+   // CartItem -> OrderDetails then create order
    console.log(cartItemsData)
    for (const cartItem of cartItemsData) {
       await creatOrderDetails(cartItem);
-      console.log(cartItem.id)
       await deleteCartItems(cartItem.id); 
    }
+   
    const formValue = {
       userId: currentuserID,
       total: totalCartPrice,
@@ -340,10 +333,61 @@ form.addEventListener("submit", async function (event) {
       date: getDateTime(),
       orderDetails: orderDetailsList,
    }
-   await creatOrder(formValue);
 
-    setTimeout(function () {
-      window.location.href = "userProfile.html";
-   }, 3000);
+   await creatOrder(formValue);
+   
+   // send email
+   sendEmail()
+   console.log("email", document.getElementById("email").value);
 })
 
+async function sendEmail() {
+   emailjs.init("vksyCyvH0Lqz2FSYE");
+   var serviceID = "service_323m41u";
+   var templateID = "template_gjfr09f";
+
+   const productAPI = "https://fourt7.onrender.com/api/products";
+   const productResponse = await fetch(productAPI);
+   const products = await productResponse.json();
+
+   const productsSendMail = [];
+   
+   productsInOrder.forEach(orderDetails => {
+      products.forEach(p => {
+         if(p.id == orderDetails.id)
+         {
+            console.log(p);
+            let productInOrder = {
+               name: p.name,
+               price: p.price.toLocaleString(),
+               quantity: orderDetails.quantity,
+               size: orderDetails.size,
+               imgUrl: p.imgUrl[0],
+            }
+            productsSendMail.push(productInOrder);
+         }
+      });
+   });
+
+   console.log(productsSendMail);
+   var params = {
+      total: totalCartPrice.toLocaleString(),
+      products: productsSendMail,
+      senderemail : document.getElementById("email").value,
+      senderfullname : document.getElementById("fname").value,
+      senderphone : document.getElementById("phone").value,
+      senderaddress : document.getElementById("house").value,
+   };
+
+   console.log("params nè:", params);
+
+   emailjs.send(serviceID, templateID, params)
+       .then(function(response) {
+           alert('Email sent successfully!');
+           console.log("sent email successfully")
+           window.location.href = "home.html";
+       })
+       .catch(function(error) {
+           console.error('Email send failed: ', error);
+       });
+}

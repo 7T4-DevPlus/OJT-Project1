@@ -17,7 +17,7 @@
     </div>
 
     <h2>Checkout </h2>
-    <form action="" id="checkout-order" onsubmit="return handleOrderButtonClick()">
+    <form action="" id="checkout-order">
         <main class="main">
             <div class="col-75">
                 <div class="container">
@@ -163,33 +163,33 @@
     </form>
     <script>
 
-        emailjs.init("vksyCyvH0Lqz2FSYE");
+        // emailjs.init("vksyCyvH0Lqz2FSYE");
 
-        document.getElementById('checkout-order').addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn chặn gửi form mặc định
+        // document.getElementById('checkout-order').addEventListener('submit', function(event) {
+        //     event.preventDefault(); // Ngăn chặn gửi form mặc định
 
-            var serviceID = "service_323m41u";
-            var templateID = "template_gjfr09f";
+        //     var serviceID = "service_323m41u";
+        //     var templateID = "template_gjfr09f";
 
-            var params = {
-                senderemail : document.getElementById("email").value,
-                senderfullname : document.getElementById("fname").value,
-                senderphone : document.getElementById("phone").value,
-                senderaddress : document.getElementById("house").value,
-            };
+        //     var params = {
+        //         senderemail : document.getElementById("email").value,
+        //         senderfullname : document.getElementById("fname").value,
+        //         senderphone : document.getElementById("phone").value,
+        //         senderaddress : document.getElementById("house").value,
+        //     };
 
-            emailjs.send(serviceID, templateID, params)
-                .then(function(response) {
-                    alert('Email sent successfully!');
-                })
-                .catch(function(error) {
-                    console.error('Email send failed: ', error);
-                });
-        });
+        //     emailjs.send(serviceID, templateID, params)
+        //         .then(function(response) {
+        //             alert('Email sent successfully!');
+        //         })
+        //         .catch(function(error) {
+        //             console.error('Email send failed: ', error);
+        //         });
+        // });
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="js/checkout.js"></script>
+    <script type="module" src="js/checkout.js"></script>
 
 </body>
 
