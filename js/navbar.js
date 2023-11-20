@@ -31,26 +31,26 @@ const userBtn = document.getElementById('userBtn');
 const cartBtn = document.getElementById('cartBtn');
 
 homePage.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5500/home.html`;
+    window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/`;
 });
 
 productPage.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5500/products.html`;
+    window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/products.html`;
 });
 
 contactPage.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5500/contact.html`;
+    window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/contact.html`;
 });
 
 userBtn.addEventListener("click", () => {
-    window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
+    window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/userProfile.html`;
 })
 
 cartBtn.addEventListener("click", () => {
     if(!localStorage.getItem("userId")){
-        window.top.location.href = "http://127.0.0.1:5500/loginsignup.html";
+        window.top.location.href = "https://develop-deploy--sparkly-pony-45d9b1.netlify.app/loginsignup.html";
         alert("please login to have your own cart!")
     }else{
-        window.top.location.href = `http://127.0.0.1:5500/cart.html`;
+        window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/cart.html`;
     }
 })

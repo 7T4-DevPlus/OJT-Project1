@@ -5,7 +5,7 @@ var totalPriceWithShippingAll = 0
 var address = "";
 var totalCartPrice = 0;
 var orderDetailsList = [];
-let productsInOrder = [];
+let productsInMail = [];
 
 async function displayCart() {
    var citis = document.getElementById("city");
@@ -142,7 +142,7 @@ async function displayCart() {
    });
 
    const totalCheckout = document.getElementById("total-checkout");
-   totalCheckout.querySelector("b").textContent = `${totalCartPrice.toLocaleString()}`;
+   totalCheckout.querySelector("b").textContent = `${totalCartPrice.toLocaleString()} VND`;
 
    const orderButton = document.getElementById("orderButton");
 
@@ -261,10 +261,10 @@ async function creatOrderDetails(ci) {
    })
       .then(postResponse => postResponse.json())
       .then(data => {
-         totalCartPrice += data.subtotal;
+         // totalCartPrice += data.subtotal;
          var newObjectId = data.id;
          orderDetailsList.push(newObjectId);
-         productsInOrder.push(data);
+         productsInMail.push(data);
       })
       .catch(error => console.error('Error:', error));
 };
@@ -338,7 +338,6 @@ form.addEventListener("submit", async function (event) {
    
    // send email
    sendEmail()
-   console.log("email", document.getElementById("email").value);
 })
 
 async function sendEmail() {
@@ -352,16 +351,17 @@ async function sendEmail() {
 
    const productsSendMail = [];
    
-   productsInOrder.forEach(orderDetails => {
+   productsInMail.forEach(productMail => {
+      console.log(productMail);
       products.forEach(p => {
-         if(p.id == orderDetails.id)
+         if(p.id == productMail.productId)
          {
             console.log(p);
             let productInOrder = {
                name: p.name,
                price: p.price.toLocaleString(),
-               quantity: orderDetails.quantity,
-               size: orderDetails.size,
+               quantity: productMail.quantity,
+               size: productMail.size,
                imgUrl: p.imgUrl[0],
             }
             productsSendMail.push(productInOrder);

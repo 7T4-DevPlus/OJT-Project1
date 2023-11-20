@@ -1,6 +1,6 @@
 function checkUser() {
     if(!localStorage.getItem("userId")){
-        window.location.href = "http://127.0.0.1:5500/loginsignup.html";
+        window.location.href = "https://develop-deploy--sparkly-pony-45d9b1.netlify.app/loginsignup.html";
     }
 }
 checkUser();
@@ -125,7 +125,7 @@ editForm.addEventListener('submit', async (event) => {
         });
 
     alert('User information saved.');
-    window.top.location.href = `http://127.0.0.1:5500/userProfile.html`;
+    window.top.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/userProfile.html`;
 
     loadUserData();
     loadContent('user-info');
@@ -222,5 +222,5 @@ window.onclick = function(event) {
 const logoutBtn = document.getElementById("logout");
 logoutBtn.onclick = function() {
     localStorage.removeItem("userId");
-    window.location.href = "http://127.0.0.1:5500/userProfile.html";
+    window.location.href = "https://develop-deploy--sparkly-pony-45d9b1.netlify.app/userProfile.html";
 }
