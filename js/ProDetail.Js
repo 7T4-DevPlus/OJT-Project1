@@ -52,7 +52,7 @@ const renderProducts = (elRender, data, assignId) => {
 const renderProductInfo = (elRender, data) => {
   return (elRender.innerHTML = `
     <h1 style="font-family: 'Oswald'">${data?.name ?? ''}</h1>
-    <h4>Mã sản phẩm: ${data?.productId ?? ''}</h4>
+    <h4>Product code: ${data?.productId ?? ''}</h4>
     <span style="display: block;"> ${data?.price.toLocaleString() ?? ''}vnđ</span>
   `)
 }

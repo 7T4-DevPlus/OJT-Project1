@@ -27,7 +27,7 @@ async function getProducts() {
                         <div class="hover-part">
                             <div class="pumpup-item" style="border-right: 1px solid white">
                             <button class="look-button" id="${product.productId}">
-                                Xem nhanh
+                                Quick view
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
@@ -38,7 +38,7 @@ async function getProducts() {
                             </div>
                             <div class="pumpup-item">
                             <button class="details-button" id="${product.id}">
-                                Mua ngay
+                                Buy now
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
@@ -65,7 +65,7 @@ async function getProducts() {
                         <div class="hover-part">
                             <div class="pumpup-item" style="border-right: 1px solid white">
                             <button class="look-button" id="${product.productId}">
-                                Xem nhanh
+                                Quick view
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
@@ -76,7 +76,7 @@ async function getProducts() {
                             </div>
                             <div class="pumpup-item">
                             <button class="details-button" id="${product.id}">
-                                Mua ngay
+                                Buy now
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
@@ -144,7 +144,7 @@ function productDetails(proId){
                         <hr>
                         <p>${product.price.toLocaleString()} VND</p>
                         <hr>
-                        <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
+                        <p style="font-size: 2vh; margin-bottom: 0">Size:</p>
                         <form id="add-to-cart-form" class="${proId}" onsubmit="return false">
                             <div>
                                 <input type="radio" id="sizeL" name="size" value="L">
@@ -155,11 +155,11 @@ function productDetails(proId){
                                 <label for="sizeS">S</label>
                             </div>
                             <button type="submit" class="add-cart-btn" onclick="window.location.href = 'https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${product.id}'">
-                                Thêm vào giỏ
+                                Add to cart
                             </button>
                         </form>
                         <div style="text-align: center;">
-                            <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
+                            <p style="font-size: 2vh;"> Or <b>more details</b></p>
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@ searchInput.addEventListener('keypress', function (event) {
                         <div class="hover-part">
                             <div class="pumpup-item" style="border-right: 1px solid white">
                             <button class="look-button" id="${product.productId}">
-                                Xem nhanh
+                                Quick view
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
@@ -242,7 +242,7 @@ searchInput.addEventListener('keypress', function (event) {
                             </div>
                             <div class="pumpup-item">
                             <button class="details-button" id="${product.id}">
-                                Mua ngay
+                                Buy now
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
@@ -269,7 +269,7 @@ searchInput.addEventListener('keypress', function (event) {
                         <div class="hover-part">
                             <div class="pumpup-item" style="border-right: 1px solid white">
                             <button class="look-button" id="${product.productId}">
-                                Xem nhanh
+                                Quick view
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
@@ -280,7 +280,7 @@ searchInput.addEventListener('keypress', function (event) {
                             </div>
                             <div class="pumpup-item">
                             <button class="details-button" id="${product.id}">
-                                Mua ngay
+                                Buy now
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
@@ -305,11 +305,7 @@ searchInput.addEventListener('keypress', function (event) {
         var detailsButtons = document.querySelectorAll(".details-button");
         detailsButtons.forEach((detailsBtn) => {
             detailsBtn.addEventListener("click", () => {
-<<<<<<< HEAD
-                window.location.href = `http://127.0.0.1:5500/productDetail.html?id=${detailsBtn.id}`;
-=======
                 window.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${detailsBtn.id}`;
->>>>>>> 995a8b397953b0e5ec5b8562cd3ee0868c71ba8b
             });
         })
 
@@ -350,7 +346,7 @@ searchInput.addEventListener('keypress', function (event) {
                             <hr>
                             <p>${product.price.toLocaleString()} <u>đ</u></p>
                             <hr>
-                            <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
+                            <p style="font-size: 2vh; margin-bottom: 0">Size:</p>
                             <form id="add-to-cart-form" class="${id}" onsubmit="return false">
                                 <div>
                                     <input type="radio" id="sizeL" name="size" value="L">
@@ -361,11 +357,11 @@ searchInput.addEventListener('keypress', function (event) {
                                     <label for="sizeS">S</label>
                                 </div>
                                 <button type="submit" class="add-cart-btn">
-                                    Thêm vào giỏ
+                                    Add to cart
                                 </button>
                             </form>
                             <div style="text-align: center;">
-                                <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
+                                <p style="font-size: 2vh;"> Or <b>more details</b></p>
                             </div>
                         </div>
                     </div>
@@ -431,7 +427,7 @@ searchInput.addEventListener('keypress', function (event) {
                         <div class="hover-part">
                             <div class="pumpup-item" style="border-right: 1px solid white">
                             <button class="look-button" id="${product.productId}">
-                                Xem nhanh
+                                Quick view
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004047/Image_OJT7T4_Project1/Session3_body/eye_zfoznw.png"
@@ -442,7 +438,7 @@ searchInput.addEventListener('keypress', function (event) {
                             </div>
                             <div class="pumpup-item">
                             <button class="details-button" id="${product.id}">
-                                Mua ngay
+                                Buy now
                                 <span>
                                     <img
                                     src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004048/Image_OJT7T4_Project1/Session3_body/cart_gskmks.png"
@@ -508,7 +504,7 @@ searchInput.addEventListener('keypress', function (event) {
                             <hr>
                             <p>${product.price.toLocaleString()} <u>đ</u></p>
                             <hr>
-                            <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
+                            <p style="font-size: 2vh; margin-bottom: 0">Size:</p>
                             <form id="add-to-cart-form" class="${id}" onsubmit="return false">
                                 <div>
                                     <input type="radio" id="sizeL" name="size" value="L">
@@ -519,11 +515,11 @@ searchInput.addEventListener('keypress', function (event) {
                                     <label for="sizeS">S</label>
                                 </div>
                                 <button type="submit" class="add-cart-btn">
-                                    Thêm vào giỏ
+                                    Add to cart
                                 </button>
                             </form>
                             <div style="text-align: center;">
-                                <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
+                                <p style="font-size: 2vh;"> Or <b>more details</b></p>
                             </div>
                         </div>
                     </div>
@@ -565,7 +561,7 @@ searchInput.addEventListener('keypress', function (event) {
         }
     }
 
- let originalProducts;
+let originalProducts;
 
     function sortProducts() {
         const sortOrder = document.getElementById("sortOrder").value;

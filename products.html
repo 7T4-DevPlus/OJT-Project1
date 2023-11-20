@@ -1,316 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Products</title>
-    <link rel="stylesheet" href="css/viewproducts.css">
-    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
-    <style>
-        body {
-            font-family: 'Oswald';
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>View Products</title>
+      <link rel="stylesheet" href="css/viewproducts.css" />
+      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" />
+      <style>
+         body {
+            font-family: "Oswald";
             font-size: 18px;
-        }
-    </style>
-</head>
+         }
+      </style>
+   </head>
 
-<body>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Navbar -->
-    <div id="navbar" style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1">
+   <body>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Navbar -->
+      <div
+         id="navbar"
+         style="position: sticky; top: 0; padding: 0; margin: 0; z-index: 1"
+      ></div>
 
-    </div>
-
-    <script>
-        $(function () {
+      <script>
+         $(function () {
             $("#navbar").load("navbar.html");
-        });
-    </script>
+         });
+      </script>
 
-    <section class="bread-crumb">
-        <div class="breadcrumb-container">
-            <div class="title-page">Tất cả sản phẩm</div>
+      <section class="bread-crumb">
+         <div class="breadcrumb-container">
+            <div class="title-page">Product list</div>
             <ul class="breadcrumb" itemscope="" itemtype="">
-                <li class="home">
-                    <a itemprop="url" href="https://develop-deploy--sparkly-pony-45d9b1.netlify.app/" title="Trang chủ">
-                        <span itemprop="title">Trang chủ</span>
-                    </a>
-                    <i class="fa fa-angle-right" aria-hidden="true"><img
-                            src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699413211/Image_OJT7T4_Project1/2bb52d0999064f581617_cgrbof.jpg"
-                            class="arrow-icon"></i>
-                </li>
-                <li>
-                    <strong>
-                        <span itemprop="title"> Tất cả sản phẩm</span>
-                    </strong>
-                </li>
+               <li class="home">
+                  <a
+                     itemprop="url"
+                     href="https://develop-deploy--sparkly-pony-45d9b1.netlify.app/"
+                     title="Trang chủ"
+                  >
+                     <span itemprop="title">Home Page</span>
+                  </a>
+                  <i class="fa fa-angle-right" aria-hidden="true"
+                     ><img
+                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699413211/Image_OJT7T4_Project1/2bb52d0999064f581617_cgrbof.jpg"
+                        class="arrow-icon"
+                  /></i>
+               </li>
+               <li>
+                  <strong>
+                     <span itemprop="title"> Product List</span>
+                  </strong>
+               </li>
             </ul>
-        </div>
-    </section>
-    <div class="body-products">
-        <div class="content">
+         </div>
+      </section>
+      <div class="body-products">
+         <div class="content">
             <aside class="aside-item collection-category">
-                <div class="aside-title">
-                    <h2 class="title-head margin-top-0"><span>Danh mục</span></h2>
-                </div>
-                <div class="categories-box">
-                    <ul class="lv1" style="
-                    padding-left: 5px;
-                ">
-                        <li class="nav-item nav-items ">
-                            <a href="/" title="Trang chủ">
-                                Trang chủ</a>
-                        </li>
-                        <li class="nav-item nav-items ">
-                            <a href="/gioi-thieu" title="Giới thiệu">
-                                Giới thiệu</a>
-                        </li>
-                        <div>
-                            <li class="nav-item nav-items active">
-                                <!-- <a href="/collections/all" class="nav-link" title="Sản phẩm">
+               <div class="aside-title">
+                  <h2 class="title-head margin-top-0"><span>Menu</span></h2>
+               </div>
+               <div class="categories-box">
+                  <ul class="lv1" style="padding-left: 5px">
+                     <li class="nav-item nav-items">
+                        <a href="/" title="Trang chủ"> Home</a>
+                     </li>
+                     <li class="nav-item nav-items">
+                        <a href="/gioi-thieu" title="Giới thiệu"> Introduction</a>
+                     </li>
+                     <div>
+                        <li class="nav-item nav-items active">
+                           <!-- <a href="/collections/all" class="nav-link" title="Sản phẩm">
                                     Sản phẩm
                                 </a> -->
-                                <a href="#" id="product-link">Sản phẩm</a>
-                                <span class="open-close">
-                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </li>
-                        </div>
-                        <div id="product-list">
-                            <ul class="lv2" style="padding-left: 10px;">
-
-                                <li class="">
-                                    <a class="nav-link" href="/summer-collection-2023" title="SUMMER COLLECTION 2023">
-                                        SUMMER COLLECTION 2023
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/pink-vibes" title="PINK VIBES">
-                                        PINK VIBES
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/chic-bae" title="1ST COLLECTION - CHIC BAE">
-                                        1ST COLLECTION - CHIC BAE
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/us-flowers-collection" title="US FLOWERS COLLECTION">
-                                        US FLOWERS COLLECTION
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/end-of-season" title="END OF SEASON">
-                                        END OF SEASON
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/private-sale" title="PRIVATE SALE">
-                                        PRIVATE SALE
-                                    </a>
-
-                                </li>
-
-                                <li class="">
-                                    <a class="nav-link" href="/jardin-de-trenxy" title="JARDIN DE TRENXY">
-                                        JARDIN DE TRENXY
-                                    </a>
-
-                                </li>
-                            </ul>
-                        </div>
-
-
-
-
-
-                        <li class="nav-item nav-items ">
-                            <a href="/tin-tuc" title="Tin tức">
-                                Tin tức</a>
+                           <a href="#" id="product-link">Products</a>
+                           <span class="open-close">
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                           </span>
                         </li>
-                        <li class="nav-item nav-items ">
-                            <a href="/lien-he" title="Liên hệ">
-                                Liên hệ</a>
-                        </li>
-                        <li class="nav-item nav-items ">
-                            <a href="/end-of-season" title="END OF SEASON">
-                                END OF SEASON</a>
-                        </li>
-                        <li class="nav-item nav-items ">
-                            <a href="/private-sale" title="PRIVATE SALE">
-                                PRIVATE SALE</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="aside-filter">
+                     </div>
+                     <div id="product-list">
+                        <ul class="lv2" style="padding-left: 10px">
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/summer-collection-2023"
+                                 title="SUMMER COLLECTION 2023"
+                              >
+                                 SUMMER COLLECTION 2023
+                              </a>
+                           </li>
 
-                        <div class="aside-title">
-                            <h2 class="title-head margin-top-0"><span>Bộ lọc</span></h2>
-                        </div>
-                        <div class="filter-container">
-                            <div class="filter-container__selected-filter">
-                                <input type="number" style="width: 5vw" id="min-price" placeholder="Từ" />
-                                <a>-</a>
-                                <input type="number" style="width: 5vw" id="max-price" placeholder="Đến" />
-                                <button id="filter-btn">Áp dụng</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <aside class="aside-item hidden-767">
+                           <li class="">
+                              <a class="nav-link" href="/pink-vibes" title="PINK VIBES">
+                                 PINK VIBES
+                              </a>
+                           </li>
 
-                            <div class="aside-content">
-                                <a href="/look-01" title="New collection">
-                                    <img class="img-responsive center-block"
-                                        src="//bizweb.dktcdn.net/100/474/290/themes/892181/assets/aside_banner.png?1691725029305"
-                                        data-lazyload="//bizweb.dktcdn.net/100/474/290/themes/892181/assets/aside_banner.png?1691725029305"
-                                        alt="New collection" style="
-                            width: 230px;
-                        ">
-                                </a>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/chic-bae"
+                                 title="1ST COLLECTION - CHIC BAE"
+                              >
+                                 1ST COLLECTION - CHIC BAE
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/us-flowers-collection"
+                                 title="US FLOWERS COLLECTION"
+                              >
+                                 US FLOWERS COLLECTION
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/end-of-season"
+                                 title="END OF SEASON"
+                              >
+                                 END OF SEASON
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/private-sale"
+                                 title="PRIVATE SALE"
+                              >
+                                 PRIVATE SALE
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a
+                                 class="nav-link"
+                                 href="/jardin-de-trenxy"
+                                 title="JARDIN DE TRENXY"
+                              >
+                                 JARDIN DE TRENXY
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+
+                     <li class="nav-item nav-items">
+                        <a href="/tin-tuc" title="Tin tức"> News</a>
+                     </li>
+                     <li class="nav-item nav-items">
+                        <a href="/lien-he" title="Liên hệ"> Contact</a>
+                     </li>
+                     <li class="nav-item nav-items">
+                        <a href="/end-of-season" title="END OF SEASON"> END OF SEASON</a>
+                     </li>
+                     <li class="nav-item nav-items">
+                        <a href="/private-sale" title="PRIVATE SALE"> PRIVATE SALE</a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <div class="aside-filter">
+                     <div class="aside-title">
+                        <h2 class="title-head margin-top-0"><span>Filter</span></h2>
+                     </div>
+                     <div class="filter-container">
+                        <div class="filter-container__selected-filter">
+                           <input
+                              type="number"
+                              style="width: 5vw"
+                              id="min-price"
+                              placeholder="From"
+                           />
+                           <a>-</a>
+                           <input
+                              type="number"
+                              style="width: 5vw"
+                              id="max-price"
+                              placeholder="To"
+                           />
+                           <button id="filter-btn">Apply</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div>
+                     <aside class="aside-item hidden-767">
+                        <div class="aside-content">
+                           <a href="/look-01" title="New collection">
+                              <img
+                                 class="img-responsive center-block"
+                                 src="//bizweb.dktcdn.net/100/474/290/themes/892181/assets/aside_banner.png?1691725029305"
+                                 data-lazyload="//bizweb.dktcdn.net/100/474/290/themes/892181/assets/aside_banner.png?1691725029305"
+                                 alt="New collection"
+                                 style="width: 230px"
+                              />
+                           </a>
+                        </div>
+                     </aside>
+                  </div>
+               </div>
             </aside>
-        </div>
+         </div>
 
-        <div class="nav">
+         <div class="nav">
             <div class="category-products products">
-                <div class="sort-Pagibar">
-                    <div class="searchProducts">
-                        <div class="box" style="background-color: rgb(249,245,242); height: 30px;"
-                            <img style="margin-top: 7px;
-                                width: 17px;
-                                height: 17px;
-                                margin-left: 0.8vw;"
-                                src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png"
-                                alt="Search" id="show-popup">
-                            <input type="text" id="searchInput" placeholder="Search box " />
+               <div class="sort-Pagibar">
+                  <div class="searchProducts">
+                     <div
+                        class="box"
+                        style="background-color: rgb(249, 245, 242); height: 30px"
+                        <img
+                        style="
+                           margin-top: 7px;
+                           width: 17px;
+                           height: 17px;
+                           margin-left: 0.8vw;
+                        "
+                        src="https://res.cloudinary.com/dfz0xsh2d/image/upload/v1699004037/Image_OJT7T4_Project1/Nav/icon-header-3_ngjcj1.png"
+                        alt="Search"
+                        id="show-popup"
+                     >
+                        <input type="text" id="searchInput" placeholder="Search box " />
+                     </div>
+                  </div>
+                  <div id="right-sort"></div>
+                  <div class="sortPagiBar">
+                     <div class="row">
+                        <div class="col-xs-5 col-md-6 col-sm-6">
+                           <div class="hidden-xs">
+                              <a href="javascript:;" data-view="grid">
+                                 <span class="btn button-view-mode view-mode-grid active">
+                                    <i class="fa fa-th" aria-hidden="true"></i>
+                                 </span>
+                              </a>
+                              <a
+                                 href="javascript:;"
+                                 data-view="list"
+                                 onclick="switchView('list')"
+                              >
+                                 <span class="btn button-view-mode view-mode-list">
+                                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                                 </span>
+                              </a>
+                              <div class="tt hidden"></div>
+                              <div class="dropdown">
+                                 <select
+                                    id="sortOrder"
+                                    class="sort-by custom-dropdown__select"
+                                 >
+                                    <option selected hidden value="default">
+                                       Default ▼
+                                    </option>
+                                    <option value="default">Default</option>
+                                    <option value="lowToHigh">Low to High</option>
+                                    <option value="highToLow">Hight to Low</option>
+                                    <option value="nameAZ">Name: A-Z</option>
+                                    <option value="nameZA">Name: Z-A</option>
+                                 </select>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                    <div id="right-sort">
-                    </div>
-                    <div class="sortPagiBar">
-                        <div class="row">
-                            <div class="col-xs-5 col-md-6 col-sm-6">
-                                <div class="hidden-xs">
-                                    <a href="javascript:;" data-view="grid">
-                                        <span class="btn button-view-mode view-mode-grid active ">
-                                            <i class="fa fa-th" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
-                                    <a href="javascript:;" data-view="list" onclick="switchView('list')">
-                                        <span class="btn button-view-mode view-mode-list ">
-                                            <i class="fa fa-th-list" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
-                                    <div class="tt hidden">
-
-                                    </div>
-                                    <div class="dropdown">
-                                        <select id="sortOrder" class="sort-by custom-dropdown__select">
-                                            <option selected hidden>Tùy chọn ▼</option>
-                                            <option value="lowToHigh">Giá tăng dần</option>
-                                            <option value="highToLow">Giá giảm dần</option>
-                                            <option value="nameAZ">Tên: A-Z</option>
-                                            <option value="nameZA">Tên: Z-A</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
             <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
+               function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+               }
 
-                window.onclick = function (event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
+               window.onclick = function (event) {
+                  if (!event.target.matches(".dropbtn")) {
+                     var dropdowns = document.getElementsByClassName("dropdown-content");
+                     var i;
+                     for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains("show")) {
+                           openDropdown.classList.remove("show");
                         }
-                    }
-                }
+                     }
+                  }
+               };
 
-                function changeImg(img) {
-                    displayImg.src = img;
-                }
-
+               function changeImg(img) {
+                  displayImg.src = img;
+               }
             </script>
 
             <div class="all-products">
-                <div id="products" class="products-view products-view-grid"
-                    style="display: grid; grid-template-columns: 33.3% 33.3% 33.4%;">
-                    <!-- All products from js          -->
-                </div>
+               <div
+                  id="products"
+                  class="products-view products-view-grid"
+                  style="display: grid; grid-template-columns: 33.3% 33.3% 33.4%"
+               >
+                  <!-- All products from js          -->
+               </div>
             </div>
-            <div id="product-modal" class="product-modal">
-
-            </div>
+            <div id="product-modal" class="product-modal"></div>
             <script type="module" src="js/viewproducts.js"></script>
-        </div>
-    </div>
+         </div>
+      </div>
 
-    <div>
-        <div class="shop-pag text-xs-right">
+      <div>
+         <div class="shop-pag text-xs-right">
             <nav>
-                <ul class="pagination ">
+               <ul class="pagination">
+                  <li class="page-item disabled">
+                     <a class="page-link hidden-xs" href="#">«</a>
+                  </li>
 
-                    <li class="page-item disabled"><a class="page-link hidden-xs" href="#">«</a></li>
+                  <li class="active page-item disabled">
+                     <a class="page-link" href="javascript:;">1</a>
+                  </li>
 
-                    <li class="active page-item disabled"><a class="page-link" href="javascript:;">1</a></li>
+                  <li class="page-item">
+                     <a class="page-link" onclick="doSearch(2)" href="javascript:;">2</a>
+                  </li>
 
-                    <li class="page-item"><a class="page-link" onclick="doSearch(2)" href="javascript:;">2</a>
-                    </li>
+                  <li class="page-item">
+                     <a class="page-link" onclick="doSearch(3)" href="javascript:;">3</a>
+                  </li>
 
-                    <li class="page-item"><a class="page-link" onclick="doSearch(3)" href="javascript:;">3</a>
-                    </li>
+                  <li class="page-item">
+                     <a class="page-link" onclick="doSearch(4)" href="javascript:;">4</a>
+                  </li>
 
-                    <li class="page-item"><a class="page-link" onclick="doSearch(4)" href="javascript:;">4</a>
-                    </li>
+                  <li class="page-item">
+                     <a class="page-link" onclick="doSearch(5)" href="javascript:;">5</a>
+                  </li>
 
-                    <li class="page-item"><a class="page-link" onclick="doSearch(5)" href="javascript:;">5</a>
-                    </li>
+                  <li class="page-item">
+                     <a class="page-link" onclick="doSearch(6)" href="javascript:;">6</a>
+                  </li>
 
-                    <li class="page-item"><a class="page-link" onclick="doSearch(6)" href="javascript:;">6</a>
-                    </li>
-
-                    <li class="page-item"><a class="page-link hidden-xs" onclick="doSearch(2)" href="javascript:;">»</a>
-                    </li>
-
-                </ul>
+                  <li class="page-item">
+                     <a
+                        class="page-link hidden-xs"
+                        onclick="doSearch(2)"
+                        href="javascript:;"
+                        >»</a
+                     >
+                  </li>
+               </ul>
             </nav>
-        </div>
-    </div>
+         </div>
+      </div>
 
-    <!-- This is FOOTER -->
-    <div style="bottom: 0; width: 100vw; right: 0; margin-top: 10vh;">
-        <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
-    </div>
-</body>
-
+      <!-- This is FOOTER -->
+      <div style="bottom: 0; width: 100vw; right: 0; margin-top: 10vh">
+         <iframe src="footer.html" width="100%" height="600px" scrolling="no"></iframe>
+      </div>
+   </body>
 </html>
