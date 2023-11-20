@@ -2,7 +2,7 @@ const userID = localStorage.getItem("userId");
 
 function checkUser() {
     if(!userID){
-        window.location.href = "http://127.0.0.1:5500/loginsignup.html";
+        window.location.href = "https://develop-deploy--sparkly-pony-45d9b1.netlify.app/loginsignup.html";
     }
 }
 checkUser();

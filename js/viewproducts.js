@@ -100,7 +100,7 @@ async function getProducts() {
 var detailsButtons = document.querySelectorAll(".details-button");
 detailsButtons.forEach((detailsBtn) => {
     detailsBtn.addEventListener("click", () => {
-        window.location.href = `http://127.0.0.1:5500/productDetail.html?id=${detailsBtn.id}`;
+        window.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${detailsBtn.id}`;
     });
 })
 
@@ -154,7 +154,7 @@ function productDetails(proId){
                                 <input type="radio" id="sizeS" name="size" value="S" style="margin-left: 10%">
                                 <label for="sizeS">S</label>
                             </div>
-                            <button type="submit" class="add-cart-btn" onclick="window.location.href = 'http://127.0.0.1:5500/productDetail.html?id=${product.id}'">
+                            <button type="submit" class="add-cart-btn" onclick="window.location.href = 'https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${product.id}'">
                                 Thêm vào giỏ
                             </button>
                         </form>
@@ -305,7 +305,11 @@ searchInput.addEventListener('keypress', function (event) {
         var detailsButtons = document.querySelectorAll(".details-button");
         detailsButtons.forEach((detailsBtn) => {
             detailsBtn.addEventListener("click", () => {
+<<<<<<< HEAD
                 window.location.href = `http://127.0.0.1:5500/productDetail.html?id=${detailsBtn.id}`;
+=======
+                window.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${detailsBtn.id}`;
+>>>>>>> 995a8b397953b0e5ec5b8562cd3ee0868c71ba8b
             });
         })
 
@@ -410,7 +414,7 @@ searchInput.addEventListener('keypress', function (event) {
 
     function filterByPrice() {
         const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-        const maxPrice = parseInt(document.getElementById('max-price').value) || 1000000;
+        const maxPrice = parseInt(document.getElementById('max-price').value) || 10000000;
 
         document.getElementById('products').innerHTML = '';
 
@@ -458,26 +462,135 @@ searchInput.addEventListener('keypress', function (event) {
             `;
             }
         });
+
+        var modal = document.getElementById("product-modal");
+        var detailsButtons = document.querySelectorAll(".details-button");
+        detailsButtons.forEach((detailsBtn) => {
+            detailsBtn.addEventListener("click", () => {
+                window.location.href = `https://develop-deploy--sparkly-pony-45d9b1.netlify.app/productDetail.html?id=${detailsBtn.id}`;
+            });
+        })
+
+        var lookButtons = document.querySelectorAll(".look-button");
+        lookButtons.forEach((lookBtn) => {
+            lookBtn.onclick = function () {
+                modal.style.display = "block";
+                var productId = lookBtn.id;
+                console.log(productId)
+                productDetails(productId)
+            }
+        })
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function productDetails(id) {
+            products.forEach((product) => {
+                if (product.productId === id) {
+                    modal.innerHTML =
+                        `<div class="product-details" id="${product.productId}" >
+                    <div style="display: flex;">
+                        <div class="left-block-modal">
+                            <img id="displayImg" class="displayImg" src="${product.imgUrl[0]}"
+                            style="width: 100%; margin: 2%;"/>
+                            <div class="product-pictures-container">
+                                <div id="product-pictures" class="product-pictures">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-block-modal">
+                            <p style="margin-bottom: 0;">${product.name}</p>
+                            <p style="font-size: 2vh;">${product.productId}</p>
+                            <hr>
+                            <p>${product.price.toLocaleString()} <u>đ</u></p>
+                            <hr>
+                            <p style="font-size: 2vh; margin-bottom: 0">Kích thước:</p>
+                            <form id="add-to-cart-form" class="${id}" onsubmit="return false">
+                                <div>
+                                    <input type="radio" id="sizeL" name="size" value="L">
+                                    <label for="sizeL">L</label>
+                                    <input type="radio" id="sizeM" name="size" value="M" style="margin-left: 10%">
+                                    <label for="sizeM">M</label>
+                                    <input type="radio" id="sizeS" name="size" value="S" style="margin-left: 10%">
+                                    <label for="sizeS">S</label>
+                                </div>
+                                <button type="submit" class="add-cart-btn">
+                                    Thêm vào giỏ
+                                </button>
+                            </form>
+                            <div style="text-align: center;">
+                                <p style="font-size: 2vh;"> Hoặc <b>xem chi tiết</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var displayImg = document.getElementsByClassName("displayImg");
+                    var addForm = document.getElementById('add-to-cart-form');
+                        addForm.addEventListener('submit', async (event) => {
+                            event.preventDefault();
+                            var size = document.querySelector('input[name="size"]:checked').value;
+
+                            var productId = addForm.className; 
+                            console.log("product id:", productId);
+                            console.log("userId:", localStorage.getItem("userId"))
+                            console.log("size:", size);
+
+                            if(!localStorage.getItem("userId")){
+                                alert("Please login to buy product")
+                            }else{
+                                const docRef = await addDoc(cartitemDB, {
+                                    "userId": localStorage.getItem("userId"), 
+                                    "productId": productId, 
+                                    "size": size, 
+                                    "quantity": 1
+                                });
+                                console.log(docRef.id);
+                            }
+                        });
+                </script>`
+                    let imgUrlSlide = product.imgUrl;
+                    imgUrlSlide.forEach(img => {
+                        document.getElementById("product-pictures").innerHTML +=
+                            `<div class="product-picture">
+                        <img onclick="changeImg(this.src)" class="slideImg" src="${img}"/>
+                    </div>`
+                    });
+                }
+            })
+        }
     }
+
+ let originalProducts;
 
     function sortProducts() {
         const sortOrder = document.getElementById("sortOrder").value;
         const productsContainer = document.getElementById("products");
-
+    
+        // Check if the originalProducts is not set
+        if (!originalProducts) {
+            // Set the originalProducts using the current children of the container
+            originalProducts = Array.from(productsContainer.children);
+        }
+    
         const filteredProducts = Array.from(productsContainer.children);
         productsContainer.filteredProducts = filteredProducts;
-
+    
         let sortedProducts;
-
+    
         if (sortOrder === "default") {
-            sortedProducts = filteredProducts.slice();
+            // Restore the original list of products
+            productsContainer.innerHTML = '';
+            originalProducts.forEach(product => productsContainer.appendChild(product));
         } else {
             sortedProducts = getSortedProducts(filteredProducts, sortOrder);
+            productsContainer.innerHTML = '';
+            sortedProducts.forEach(product => productsContainer.appendChild(product));
         }
-
-        productsContainer.innerHTML = '';
-
-        sortedProducts.forEach(product => productsContainer.appendChild(product));
     }
 
     function getSortedProducts(products, order) {

@@ -385,7 +385,7 @@ async function sendEmail() {
        .then(function(response) {
            alert('Email sent successfully!');
            console.log("sent email successfully")
-           window.location.href = "home.html";
+           window.location.href = "https://develop-deploy--sparkly-pony-45d9b1.netlify.app/";
        })
        .catch(function(error) {
            console.error('Email send failed: ', error);
