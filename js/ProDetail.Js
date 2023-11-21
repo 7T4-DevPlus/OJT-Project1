@@ -129,27 +129,27 @@ addBtn.addEventListener("click", async function () {
       productSize: size,
       subTotal : subTotal,
     }
+
+    const postUrl = "https://fourt7.onrender.com/api/cartItems" 
+
+    console.log(JSON.stringify(postCartItem))
+    fetch(postUrl, {
+      method: 'POST',
+      body: JSON.stringify(postCartItem),
+      headers: {
+          'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(a => {
+          console.log('Dữ liệu đã được gửi thành công:', a);
+          alert("Add product to cart successfully!");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
   } else {
     alert("Please login to buy product!")
   }
-
-  const postUrl = "https://fourt7.onrender.com/api/cartItems" 
-
-  console.log(JSON.stringify(postCartItem))
-  fetch(postUrl, {
-    method: 'POST',
-    body: JSON.stringify(postCartItem),
-    headers: {
-        'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(a => {
-        console.log('Dữ liệu đã được gửi thành công:', a);
-        alert("Add product to cart successfully!");
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
 })
